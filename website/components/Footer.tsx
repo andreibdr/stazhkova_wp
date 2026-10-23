@@ -11,7 +11,6 @@ import {
   ZillowIcon,
   WhatsAppIcon,
 } from '@/components/icons/SocialIcons';
-import MiamiSkylineDivider from '@/components/dividers/MiamiSkylineDivider';
 
 interface FooterProps {
   lang: 'ru' | 'en' | 'es';
@@ -58,9 +57,7 @@ export default function Footer({ lang }: FooterProps) {
   };
 
   return (
-    <>
-      <MiamiSkylineDivider fillColor="#1f201d" className="bg-[#f7fbfc] -mb-px" />
-      <footer className="bg-[#1f201d] text-white pt-10 pb-20 sm:pb-10">
+    <footer className="bg-[#1f201d] text-white pt-12 pb-20 sm:pb-10 border-t border-gray-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
@@ -229,6 +226,5 @@ export default function Footer({ lang }: FooterProps) {
         </div>
       </div>
     </footer>
-    </>
   );
 }
