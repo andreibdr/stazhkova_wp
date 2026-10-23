@@ -18,6 +18,8 @@ export interface Guide {
   title: string;
   excerpt: string;
   content: string;
+  image?: string;
+  step?: number;
 }
 
 export interface Lead {

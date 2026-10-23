@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -58,11 +59,24 @@ export default async function GuideArticlePage({ params }: Props) {
             <span>All Buyer Guides</span>
           </Link>
 
-          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100 mb-8">
+          <div className="bg-white rounded-3xl p-6 sm:p-12 shadow-sm border border-gray-100 mb-8 overflow-hidden">
+            {guide.image && (
+              <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-8 shadow-sm">
+                <Image
+                  src={guide.image}
+                  alt={guide.title}
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 896px"
+                />
+              </div>
+            )}
+
             <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-500 mb-4">
               <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                Verified Guide
+                Verified Guide • Step {guide.step || currentIndex + 1}
               </span>
               <span className="flex items-center gap-1.5">
                 <User className="w-3.5 h-3.5" />
