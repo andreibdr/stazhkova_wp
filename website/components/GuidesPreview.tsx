@@ -107,33 +107,33 @@ export default function GuidesPreview({ guides, lang }: GuidesPreviewProps) {
   const guidesIndexLink = lang === 'en' ? '/guides' : `/${lang}/guides`;
 
   return (
-    <section className="py-20 bg-[#f7fbfc] border-t border-gray-100">
+    <section className="py-12 sm:py-20 bg-[#f7fbfc] border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-12 gap-5 sm:gap-6">
           <div>
-            <span className="px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 uppercase tracking-wider mb-3 inline-block">
+            <span className="px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 uppercase tracking-wider mb-2.5 sm:mb-3 inline-block">
               {titles.tag}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#31312c] tracking-tight">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-[#31312c] tracking-tight">
               {titles.title}
             </h2>
-            <p className="mt-2 text-base text-gray-600 max-w-2xl font-light">
+            <p className="mt-2 text-sm sm:text-base text-gray-600 max-w-2xl font-light">
               {titles.subtitle}
             </p>
           </div>
 
           <Link
             href={guidesIndexLink}
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-800 hover:text-[#20c063] hover:border-emerald-300 transition-colors shrink-0 shadow-xs"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 bg-white text-sm font-semibold text-gray-800 hover:text-[#20c063] hover:border-emerald-300 transition-colors shrink-0 shadow-xs"
           >
             <span>{titles.all}</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
 
-        {/* 4x2 Symmetric Grid of Square Infographic Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Symmetric Grid of Infographic Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-6">
           {guides.slice(0, 7).map((guide, idx) => {
             const stepNumber = guide.step || idx + 1;
             const meta = stepMeta[stepNumber] || {
@@ -152,34 +152,34 @@ export default function GuidesPreview({ guides, lang }: GuidesPreviewProps) {
               <Link
                 key={guide.id}
                 href={guideUrl}
-                className="relative aspect-square p-6 sm:p-7 rounded-3xl bg-white border border-gray-100 hover:border-[#20c063] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group overflow-hidden shadow-xs"
+                className="relative aspect-auto sm:aspect-square p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-white border border-gray-100 hover:border-[#20c063] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group overflow-hidden shadow-xs"
               >
                 {/* Big subtle watermark step number */}
-                <div className="absolute top-3 right-5 text-6xl font-black text-gray-100/80 group-hover:text-emerald-100/90 transition-colors select-none pointer-events-none">
+                <div className="absolute top-3 right-4 sm:right-5 text-4xl sm:text-6xl font-black text-gray-100/80 group-hover:text-emerald-100/90 transition-colors select-none pointer-events-none">
                   0{stepNumber}
                 </div>
 
                 {/* Top: Infographic Icon */}
                 <div className="relative z-10">
-                  <div className="mb-4">
-                    <div className="w-12 h-12 rounded-2xl bg-[#eafaf1] text-[#20c063] border border-emerald-100/80 flex items-center justify-center group-hover:bg-[#20c063] group-hover:text-white group-hover:scale-105 transition-all shadow-xs">
-                      <IconComponent className="w-6 h-6" />
+                  <div className="mb-3 sm:mb-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#eafaf1] text-[#20c063] border border-emerald-100/80 flex items-center justify-center group-hover:bg-[#20c063] group-hover:text-white group-hover:scale-105 transition-all shadow-xs">
+                      <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
                     </div>
                   </div>
 
                   {/* Micro-category */}
-                  <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-1">
+                  <span className="text-[10px] sm:text-[11px] font-semibold text-gray-400 uppercase tracking-wider block mb-1">
                     {categoryName}
                   </span>
 
                   {/* Title */}
-                  <h3 className="font-bold text-gray-900 text-base leading-snug group-hover:text-[#20c063] transition-colors line-clamp-3">
+                  <h3 className="font-bold text-gray-900 text-sm sm:text-base leading-snug group-hover:text-[#20c063] transition-colors line-clamp-2 sm:line-clamp-3">
                     {guide.title}
                   </h3>
                 </div>
 
                 {/* Bottom: Infographic Action Row */}
-                <div className="relative z-10 pt-3.5 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-gray-500 group-hover:text-[#20c063] transition-colors">
+                <div className="relative z-10 mt-4 sm:mt-0 pt-3 sm:pt-3.5 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-gray-500 group-hover:text-[#20c063] transition-colors">
                   <span className="flex items-center gap-1.5">
                     <span>{titles.read}</span>
                     <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
@@ -191,26 +191,26 @@ export default function GuidesPreview({ guides, lang }: GuidesPreviewProps) {
           })}
 
           {/* 8th Card: Symmetric CTA completing the 4x2 grid */}
-          <div className="relative aspect-square p-6 sm:p-7 rounded-3xl bg-gradient-to-br from-[#1f201d] via-[#2a2c27] to-[#1f201d] text-white flex flex-col justify-between shadow-xl border border-gray-800 hover:border-[#20c063] hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden">
+          <div className="relative aspect-auto sm:aspect-square p-5 sm:p-7 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-[#1f201d] via-[#2a2c27] to-[#1f201d] text-white flex flex-col justify-between shadow-xl border border-gray-800 hover:border-[#20c063] hover:-translate-y-1.5 transition-all duration-300 group overflow-hidden">
             <div className="relative z-10">
-              <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-[#20c063]/20 text-[#20c063] border border-[#20c063]/30 flex items-center justify-center group-hover:scale-105 transition-all">
-                  <Sparkles className="w-6 h-6" />
+              <div className="flex items-center justify-between mb-3 sm:mb-4">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-[#20c063]/20 text-[#20c063] border border-[#20c063]/30 flex items-center justify-center group-hover:scale-105 transition-all">
+                  <Sparkles className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-full border border-emerald-800/50">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-2.5 py-1 rounded-full border border-emerald-800/50">
                   {ctaCard.badge}
                 </span>
               </div>
 
-              <h3 className="font-bold text-white text-base sm:text-[17px] leading-snug mb-2">
+              <h3 className="font-bold text-white text-base sm:text-[17px] leading-snug mb-1.5 sm:mb-2">
                 {ctaCard.title}
               </h3>
-              <p className="text-xs text-gray-300 font-light leading-relaxed line-clamp-3">
+              <p className="text-xs text-gray-300 font-light leading-relaxed line-clamp-2 sm:line-clamp-3">
                 {ctaCard.subtitle}
               </p>
             </div>
 
-            <div className="relative z-10 pt-3">
+            <div className="relative z-10 mt-4 sm:mt-0 pt-3">
               <a
                 href="#findmyhome"
                 className="w-full py-2.5 px-4 bg-[#20c063] hover:bg-[#1aa654] text-white rounded-xl text-xs font-bold tracking-wide uppercase flex items-center justify-center gap-2 shadow-md transition-all group-hover:shadow-emerald-500/20"
