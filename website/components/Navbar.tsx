@@ -15,24 +15,24 @@ export default function Navbar({ lang }: NavbarProps) {
 
   const navLabels = {
     ru: {
-      about: 'О Елене',
-      work: 'Работаем с Еленой',
+      about: 'Обо мне',
+      work: 'Как я работаю',
       reviews: 'Отзывы',
       guides: 'Гайды',
       video: 'Видео',
       findHome: 'Найти мой дом',
     },
     en: {
-      about: 'About Elena',
-      work: 'Work with Elena',
+      about: 'About Me',
+      work: 'Work with Me',
       reviews: 'Reviews',
       guides: 'Guides',
       video: 'Video',
       findHome: 'Find My Home',
     },
     es: {
-      about: 'Sobre Elena',
-      work: 'Trabaja con Elena',
+      about: 'Sobre mí',
+      work: 'Cómo trabajo',
       reviews: 'Reseñas',
       guides: 'Guías',
       video: 'Video',

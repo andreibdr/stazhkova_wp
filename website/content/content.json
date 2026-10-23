@@ -1,8 +1,8 @@
 {
   "ru": {
     "nav": {
-      "about": "О Елене",
-      "work": "Работаем с Еленой",
+      "about": "Обо мне",
+      "work": "Как я работаю",
       "reviews": "Отзывы",
       "process": "Этапы",
       "guides": "Гайды",
@@ -77,8 +77,8 @@
       "success_desc": "Елена свяжется с вами лично в течение нескольких часов."
     },
     "work_with_elena": {
-      "title_accent": "Работаем с",
-      "title_main": "Еленой",
+      "title_accent": "Как я",
+      "title_main": "работаю",
       "intro": "Я специализируюсь на покупке недвижимости в Южной Флориде для покупателей из других штатов и стран (особенно из России и Европы). Вот с кем я работаю чаще всего:",
       "questions": [
         "Пытались искать объект сами и запутались?",
@@ -126,8 +126,8 @@
       ]
     },
     "about_elena": {
-      "title_accent": "Про",
-      "title_main": "Елену",
+      "title_accent": "Обо",
+      "title_main": "мне",
       "photo": "/images/elena_about.webp",
       "messages": [
         "Я - Елена Стажкова, эксперт по недвижимости и консультант по инвестициям с более чем 15-летним опытом в инвестиционном консультировании, управлении портфелями и оценке стратегий. Я окончила Московский государственный университет имени М. В. Ломоносова с дипломом магистра искусств и завершила там аспирантуру, что дало мне прочную основу для моей карьеры.",
@@ -147,8 +147,8 @@
   },
   "en": {
     "nav": {
-      "about": "About Elena",
-      "work": "Work with Elena",
+      "about": "About Me",
+      "work": "Work with Me",
       "reviews": "Reviews",
       "process": "Process",
       "guides": "Guides",
@@ -224,7 +224,7 @@
     },
     "work_with_elena": {
       "title_accent": "Work with",
-      "title_main": "Elena",
+      "title_main": "Me",
       "intro": "I specialize in helping out-of-state and international buyers — including investors from Russia and Europe — find the perfect home, condo, or income-producing property in South Florida. Here’s who I help most…",
       "questions": [
         "Tried searching for property in Miami or South Florida on your own and got overwhelmed?",
@@ -273,7 +273,7 @@
     },
     "about_elena": {
       "title_accent": "About",
-      "title_main": "Elena",
+      "title_main": "Me",
       "photo": "/images/elena_about.webp",
       "messages": [
         "I’m Elena Stazhkova, a dedicated real estate expert and investment consultant with over 15 years of experience in investment advisory, portfolio management, and strategy evaluation. I graduated from Lomonosov Moscow State University with a Master’s of Arts and completed postgraduate studies there, which equipped me with a strong foundation for my career.",
@@ -293,8 +293,8 @@
   },
   "es": {
     "nav": {
-      "about": "Sobre Elena",
-      "work": "Trabaja con Elena",
+      "about": "Sobre mí",
+      "work": "Cómo trabajo",
       "reviews": "Reseñas",
       "process": "Proceso",
       "guides": "Guías",
@@ -369,8 +369,8 @@
       "success_desc": "Elena se comunicará con usted personalmente en unas pocas horas."
     },
     "work_with_elena": {
-      "title_accent": "Trabaja con",
-      "title_main": "Elena",
+      "title_accent": "Cómo",
+      "title_main": "trabajo",
       "intro": "Me especializo en ayudar a compradores de otros estados y extranjeros —incluyendo inversores de Rusia, Europa y Latinoamérica— a encontrar la casa, condo o propiedad de inversión ideal en el Sur de Florida. Estas son las personas a las que más ayudo:",
       "questions": [
         "¿Intentaste buscar propiedades en Miami o el Sur de Florida por tu cuenta y te sentiste abrumado?",
@@ -419,7 +419,7 @@
     },
     "about_elena": {
       "title_accent": "Sobre",
-      "title_main": "Elena",
+      "title_main": "mí",
       "photo": "/images/elena_about.webp",
       "messages": [
         "Soy Elena Stazhkova, profesional de bienes raíces y consultora de inversiones con más de 15 años de experiencia en asesoría de inversiones, gestión de portafolios y evaluación estratégica. Me gradué de la Universidad Estatal de Moscú Lomonosov con una Maestría en Artes y completé estudios de posgrado allí, lo que me brindó una sólida base para mi carrera.",
