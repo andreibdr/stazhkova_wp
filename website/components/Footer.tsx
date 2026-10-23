@@ -64,6 +64,17 @@ export default function Footer({ lang }: FooterProps) {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Subtle Florida Skyline Watermark */}
+        <div className="pb-8 -mt-4 flex justify-center overflow-hidden pointer-events-none select-none opacity-[0.06]">
+          <Image
+            src="/images/miami-skyline-silhouette-white.png"
+            alt="Miami Skyline"
+            width={1332}
+            height={350}
+            className="w-full max-w-3xl h-auto object-contain"
+          />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-8 border-b border-gray-800">
           {/* Brand Col */}
           <div className="space-y-4">

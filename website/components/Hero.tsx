@@ -65,6 +65,17 @@ export default function Hero({ content, lang }: HeroProps) {
             </div>
           </div>
         </div>
+
+        {/* Subtle Florida Skyline Watermark at bottom boundary */}
+        <div className="mt-8 -mb-10 sm:-mb-12 flex justify-center overflow-hidden pointer-events-none select-none opacity-[0.08]">
+          <Image
+            src="/images/miami-skyline-silhouette.png"
+            alt="Miami Skyline"
+            width={1332}
+            height={350}
+            className="w-full max-w-4xl h-auto object-contain"
+          />
+        </div>
       </div>
     </section>
   );
