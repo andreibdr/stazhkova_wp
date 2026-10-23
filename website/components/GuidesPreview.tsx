@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { BookOpen, ArrowRight } from 'lucide-react';
 import { Guide } from '@/lib/content';
 
@@ -75,39 +74,25 @@ export default function GuidesPreview({ guides, lang }: GuidesPreviewProps) {
               <Link
                 key={guide.id}
                 href={guideUrl}
-                className="group p-5 rounded-3xl bg-white border border-gray-100 hover:border-emerald-300 hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
+                className="group p-6 rounded-3xl bg-white border border-gray-100 hover:border-emerald-300 hover:shadow-lg transition-all flex flex-col justify-between"
               >
                 <div>
-                  {guide.image ? (
-                    <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-4 bg-gray-100 shadow-xs">
-                      <Image
-                        src={guide.image}
-                        alt={guide.title}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      />
-                      <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-xs font-bold text-gray-900 shadow-sm border border-gray-100">
-                        {titles.step} {guide.step || idx + 1}
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-xs font-bold px-2.5 py-1 rounded-lg bg-emerald-50 text-emerald-800">
-                        {titles.step} {guide.step || idx + 1}
-                      </span>
-                      <BookOpen className="w-4 h-4 text-gray-400 group-hover:text-[#20c063] transition-colors" />
-                    </div>
-                  )}
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-100/50">
+                      {titles.step} {guide.step || idx + 1}
+                    </span>
+                    <BookOpen className="w-4 h-4 text-gray-400 group-hover:text-[#20c063] transition-colors" />
+                  </div>
 
-                  <h3 className="font-bold text-gray-900 text-lg mb-2 group-hover:text-[#20c063] transition-colors line-clamp-2">
+                  <h3 className="font-bold text-gray-900 text-base sm:text-lg mb-2 group-hover:text-[#20c063] transition-colors line-clamp-2 leading-snug">
                     {guide.title}
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-600 font-light line-clamp-3 leading-relaxed">
                     {guide.excerpt}
                   </p>
                 </div>
-                <div className="mt-5 pt-4 border-t border-gray-100/80 flex items-center gap-1.5 text-xs font-bold text-[#20c063]">
+
+                <div className="mt-5 pt-4 border-t border-gray-100 flex items-center gap-1.5 text-xs font-bold text-[#20c063]">
                   <span>{titles.read}</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </div>
