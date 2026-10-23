@@ -3,6 +3,8 @@ backup/
 *.zip
 *.gz
 *.mp4
+*.py
+original_homepage_*.txt
 extract_content.py
 extracted_data.json
 4.plugins/

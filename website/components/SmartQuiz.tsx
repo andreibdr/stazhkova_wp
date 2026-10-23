@@ -15,10 +15,11 @@ import {
 
 interface QuizProps {
   quizData: any;
+  transitionData: any;
   lang: 'ru' | 'en' | 'es';
 }
 
-export default function SmartQuiz({ quizData, lang }: QuizProps) {
+export default function SmartQuiz({ quizData, transitionData, lang }: QuizProps) {
   const [step, setStep] = useState(1);
   const totalSteps = 5;
 
@@ -38,7 +39,6 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
 
   const handleSelectOption = (field: string, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
-    // Auto advance to next step for higher conversion
     if (step < 5) {
       setStep((prev) => prev + 1);
     }
@@ -86,22 +86,28 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
   const progressPercent = (step / totalSteps) * 100;
 
   return (
-    <section id="quiz" className="py-20 bg-white">
+    <section id="findmyhome" className="py-20 bg-[#f7fbfc] border-y border-gray-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10">
-          <span className="inline-block px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 uppercase tracking-wider mb-3">
-            {lang === 'ru' ? 'Персональный подбор' : lang === 'es' ? 'Búsqueda personalizada' : 'Tailored Search'}
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-[#31312c] tracking-tight">
-            {quizData.title}
-          </h2>
-          <p className="mt-3 text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            {quizData.subtitle}
+        {/* Transition Text & Button from Original WP */}
+        <div className="text-center mb-12 space-y-6">
+          <p className="text-[17px] sm:text-[19px] text-[#000000] font-light max-w-2xl mx-auto leading-relaxed">
+            {transitionData.text}
           </p>
+          <div>
+            <a
+              href="#quiz-box"
+              className="inline-block px-8 py-3.5 bg-[#31312c] hover:bg-[#20c063] text-white font-bold text-sm tracking-wide uppercase rounded-xl shadow-md transition-all"
+            >
+              {transitionData.button}
+            </a>
+          </div>
         </div>
 
-        {/* Quiz Card */}
-        <div className="bg-[#f7fbfc] rounded-3xl p-6 sm:p-10 border border-gray-100 shadow-xl relative overflow-hidden">
+        {/* Quiz Container with original border-radius: 30px & border-color: #D3D7DA */}
+        <div
+          id="quiz-box"
+          className="bg-white rounded-[30px] p-6 sm:p-12 border border-[#D3D7DA] shadow-xl relative overflow-hidden"
+        >
           {/* Progress Bar */}
           {!isSubmitted && (
             <div className="mb-8">
@@ -115,7 +121,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
                 </span>
                 <span>{Math.round(progressPercent)}%</span>
               </div>
-              <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+              <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div
                   className="h-full bg-[#20c063] transition-all duration-300 ease-out"
                   style={{ width: `${progressPercent}%` }}
@@ -139,7 +145,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a
                   href={`https://wa.me/13475154087?text=${encodeURIComponent(
-                    `Hello Elena, I just submitted the property request on your website for ${formData.area || 'Miami'}.`
+                    `Hello Elena, I just submitted the property search request for ${formData.area || 'Miami'}.`
                   )}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -148,10 +154,10 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
                   <MessageCircle className="w-5 h-5" />
                   <span>
                     {lang === 'ru'
-                      ? 'Написать Елене в WhatsApp'
+                      ? 'Написать в WhatsApp'
                       : lang === 'es'
-                      ? 'Contactar a Elena por WhatsApp'
-                      : 'Chat with Elena on WhatsApp'}
+                      ? 'Contactar por WhatsApp'
+                      : 'Chat on WhatsApp'}
                   </span>
                 </a>
                 <button
@@ -180,7 +186,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
               {step === 1 && (
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-emerald-100 text-[#20c063]">
+                    <div className="p-2.5 rounded-xl bg-emerald-50 text-[#20c063]">
                       <Bed className="w-5 h-5" />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold text-[#31312c]">
@@ -195,8 +201,8 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
                         onClick={() => handleSelectOption('bedrooms', opt)}
                         className={`p-4 rounded-2xl text-left border text-base font-medium transition-all ${
                           formData.bedrooms === opt
-                            ? 'bg-emerald-50 border-[#20c063] text-emerald-900 shadow-sm'
-                            : 'bg-white border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/30 text-gray-800'
+                            ? 'bg-emerald-50 border-[#20c063] text-emerald-900 shadow-xs'
+                            : 'bg-white border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/20 text-gray-800'
                         }`}
                       >
                         {opt}
@@ -210,7 +216,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
               {step === 2 && (
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-emerald-100 text-[#20c063]">
+                    <div className="p-2.5 rounded-xl bg-emerald-50 text-[#20c063]">
                       <MapPin className="w-5 h-5" />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold text-[#31312c]">
@@ -225,8 +231,8 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
                         onClick={() => handleSelectOption('area', opt)}
                         className={`p-4 rounded-2xl text-left border text-base font-medium transition-all ${
                           formData.area === opt
-                            ? 'bg-emerald-50 border-[#20c063] text-emerald-900 shadow-sm'
-                            : 'bg-white border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/30 text-gray-800'
+                            ? 'bg-emerald-50 border-[#20c063] text-emerald-900 shadow-xs'
+                            : 'bg-white border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/20 text-gray-800'
                         }`}
                       >
                         {opt}
@@ -240,7 +246,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
               {step === 3 && (
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-emerald-100 text-[#20c063]">
+                    <div className="p-2.5 rounded-xl bg-emerald-50 text-[#20c063]">
                       <Clock className="w-5 h-5" />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold text-[#31312c]">
@@ -255,8 +261,8 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
                         onClick={() => handleSelectOption('timeline', opt)}
                         className={`p-4 rounded-2xl text-left border text-base font-medium transition-all ${
                           formData.timeline === opt
-                            ? 'bg-emerald-50 border-[#20c063] text-emerald-900 shadow-sm'
-                            : 'bg-white border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/30 text-gray-800'
+                            ? 'bg-emerald-50 border-[#20c063] text-emerald-900 shadow-xs'
+                            : 'bg-white border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/20 text-gray-800'
                         }`}
                       >
                         {opt}
@@ -270,7 +276,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
               {step === 4 && (
                 <div className="space-y-6">
                   <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-emerald-100 text-[#20c063]">
+                    <div className="p-2.5 rounded-xl bg-emerald-50 text-[#20c063]">
                       <DollarSign className="w-5 h-5" />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold text-[#31312c]">
@@ -285,8 +291,8 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
                         onClick={() => handleSelectOption('budget', opt)}
                         className={`p-4 rounded-2xl text-left border text-base font-medium transition-all ${
                           formData.budget === opt
-                            ? 'bg-emerald-50 border-[#20c063] text-emerald-900 shadow-sm'
-                            : 'bg-white border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/30 text-gray-800'
+                            ? 'bg-emerald-50 border-[#20c063] text-emerald-900 shadow-xs'
+                            : 'bg-white border-gray-200 hover:border-emerald-300 hover:bg-emerald-50/20 text-gray-800'
                         }`}
                       >
                         {opt}
@@ -300,7 +306,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
               {step === 5 && (
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2.5 rounded-xl bg-emerald-100 text-[#20c063]">
+                    <div className="p-2.5 rounded-xl bg-emerald-50 text-[#20c063]">
                       <Send className="w-5 h-5" />
                     </div>
                     <h3 className="text-xl sm:text-2xl font-bold text-[#31312c]">
@@ -324,8 +330,8 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
                         required
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        placeholder={lang === 'ru' ? 'Например: Елена' : 'e.g. Elena'}
-                        className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 focus:outline-none focus:border-[#20c063] focus:ring-2 focus:ring-[#20c063]/20 text-gray-900"
+                        placeholder="Elena"
+                        className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 focus:outline-none focus:border-[#20c063] focus:bg-white text-gray-900"
                       />
                     </div>
 
@@ -339,7 +345,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="+1 (305) ..."
-                          className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 focus:outline-none focus:border-[#20c063] focus:ring-2 focus:ring-[#20c063]/20 text-gray-900"
+                          className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 focus:outline-none focus:border-[#20c063] focus:bg-white text-gray-900"
                         />
                       </div>
                       <div>
@@ -351,7 +357,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="name@example.com"
-                          className="w-full px-4 py-3 bg-white rounded-xl border border-gray-200 focus:outline-none focus:border-[#20c063] focus:ring-2 focus:ring-[#20c063]/20 text-gray-900"
+                          className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 focus:outline-none focus:border-[#20c063] focus:bg-white text-gray-900"
                         />
                       </div>
                     </div>
@@ -375,7 +381,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
               )}
 
               {/* Navigation buttons */}
-              <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-200/60">
+              <div className="flex items-center justify-between mt-8 pt-6 border-t border-gray-100">
                 {step > 1 ? (
                   <button
                     type="button"
@@ -395,7 +401,7 @@ export default function SmartQuiz({ quizData, lang }: QuizProps) {
                     onClick={() => setStep((prev) => prev + 1)}
                     className="inline-flex items-center gap-2 text-sm font-semibold text-[#20c063] hover:text-[#1aa654] transition-colors"
                   >
-                    <span>{lang === 'ru' ? 'Пропустить шаг' : lang === 'es' ? 'Saltar' : 'Skip step'}</span>
+                    <span>{lang === 'ru' ? 'Далее' : lang === 'es' ? 'Siguiente' : 'Next'}</span>
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 )}

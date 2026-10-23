@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Star, ChevronLeft, ChevronRight, ExternalLink, Quote } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Review } from '@/lib/content';
 
 interface ReviewsProps {
@@ -10,125 +10,168 @@ interface ReviewsProps {
   settings?: any;
 }
 
-export default function ReviewsCarousel({ reviews, data, settings }: ReviewsProps) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export default function ReviewsCarousel({ reviews, data }: ReviewsProps) {
+  const [currentPage, setCurrentPage] = useState(0);
+  const [expandedIds, setExpandedIds] = useState<{ [key: number]: boolean }>({});
 
-  // Filter only visible reviews
   const activeReviews = reviews.filter((r) => !r.hidden);
-
   if (activeReviews.length === 0) return null;
 
+  const pageSize = 6; // 2 rows x 3 columns = 6 reviews per slide
+  const totalPages = Math.ceil(activeReviews.length / pageSize);
+
+  const currentReviews = activeReviews.slice(
+    currentPage * pageSize,
+    currentPage * pageSize + pageSize
+  );
+
   const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? activeReviews.length - 1 : prev - 1));
+    setCurrentPage((prev) => (prev === 0 ? totalPages - 1 : prev - 1));
   };
 
   const handleNext = () => {
-    setCurrentIndex((prev) => (prev === activeReviews.length - 1 ? 0 : prev + 1));
+    setCurrentPage((prev) => (prev === totalPages - 1 ? 0 : prev + 1));
   };
 
-  const current = activeReviews[currentIndex];
-  const zillowProfile = settings?.zillowProfileUrl || 'https://www.zillow.com/profile/ElenaStazhkova';
-  const zillowWrite =
-    settings?.zillowWriteReviewUrl ||
-    'https://www.zillow.com/reviews/write/?s=X1-ZU10z7apkel7i89_8i7yn';
+  const toggleExpand = (id: number) => {
+    setExpandedIds((prev) => ({ ...prev, [id]: !prev[id] }));
+  };
 
   return (
-    <section id="reviews" className="py-20 bg-[#f7fbfc] relative overflow-hidden">
+    <section id="reviews" className="py-20 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800 uppercase tracking-wider">
-                Zillow Verified
-              </span>
-              <div className="flex text-amber-500">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-current" />
-                ))}
-              </div>
-              <span className="text-xs font-bold text-gray-700">5.0 / 5.0</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#31312c] tracking-tight">
-              {data.title}
-            </h2>
-            <p className="mt-2 text-base text-gray-600 max-w-xl">
-              {data.subtitle}
-            </p>
-          </div>
-
-          {/* Links to Zillow */}
-          <div className="flex flex-wrap items-center gap-3">
-            <a
-              href={zillowProfile}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-white border border-gray-200 rounded-xl text-xs font-semibold text-gray-800 hover:text-blue-600 hover:border-blue-300 transition-colors shadow-xs"
-            >
-              <span>{data.view_zillow}</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-            <a
-              href={zillowWrite}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold shadow-xs transition-colors"
-            >
-              <span>{data.write_review}</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-          </div>
+        {/* Section Header */}
+        <div className="text-center mb-14">
+          <h2 className="text-4xl sm:text-5xl font-light tracking-tight text-[#31312c]">
+            {data.title_accent ? (
+              <>
+                <span className="font-bold text-[#20c063]">{data.title_accent} </span>
+                <span className="font-light text-[#31312c]">{data.title_main}</span>
+              </>
+            ) : (
+              <>
+                <span className="font-light text-[#31312c]">{data.title_main} </span>
+                <span className="font-bold text-[#20c063]">{data.title_accent}</span>
+              </>
+            )}
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-gray-500 font-light max-w-2xl mx-auto">
+            {data.subtitle}
+          </p>
         </div>
 
-        {/* Carousel Card */}
-        <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-lg border border-gray-100 relative">
-          <Quote className="w-16 h-16 text-emerald-100 absolute top-6 right-6 -rotate-12 pointer-events-none" />
+        {/* Carousel Grid with Side Navigation Buttons */}
+        <div className="relative px-2 sm:px-8">
+          {/* Left Arrow Button */}
+          {totalPages > 1 && (
+            <button
+              onClick={handlePrev}
+              className="absolute -left-3 sm:-left-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gray-200/80 hover:bg-gray-300 text-gray-600 flex items-center justify-center transition-all shadow-sm"
+              aria-label="Previous Reviews"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          )}
 
-          <div className="flex items-center gap-2 mb-4">
-            <div className="flex text-amber-500">
-              {[...Array(current.rating)].map((_, i) => (
-                <Star key={i} className="w-5 h-5 fill-current" />
+          {/* Right Arrow Button */}
+          {totalPages > 1 && (
+            <button
+              onClick={handleNext}
+              className="absolute -right-3 sm:-right-6 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-gray-200/80 hover:bg-gray-300 text-gray-600 flex items-center justify-center transition-all shadow-sm"
+              aria-label="Next Reviews"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          )}
+
+          {/* 2 Rows x 3 Columns Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-10">
+            {currentReviews.map((rev) => {
+              const isExpanded = Boolean(expandedIds[rev.id]);
+              const isLong = rev.text.length > 170;
+              const displayText =
+                isLong && !isExpanded ? rev.text.substring(0, 170) + '...' : rev.text;
+
+              return (
+                <div key={rev.id} className="flex flex-col items-start">
+                  {/* Speech Bubble Container */}
+                  <div className="relative w-full bg-white rounded-3xl p-6 shadow-md border border-gray-100 flex flex-col justify-between min-h-[220px]">
+                    <div>
+                      {/* Top Header inside bubble: Quotes + Stars */}
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-gray-300 text-2xl font-serif leading-none select-none">
+                          ““
+                        </span>
+                        <div className="flex text-amber-400">
+                          {[...Array(rev.rating)].map((_, i) => (
+                            <Star key={i} className="w-4 h-4 fill-current" />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Review Text */}
+                      <p className="text-sm text-gray-600 italic font-light leading-relaxed">
+                        {displayText}{' '}
+                        {isLong && (
+                          <button
+                            onClick={() => toggleExpand(rev.id)}
+                            className="text-xs text-gray-500 font-medium hover:text-[#20c063] underline inline-block ml-1"
+                          >
+                            {isExpanded ? 'Show Less' : 'Show More'}
+                          </button>
+                        )}
+                      </p>
+                    </div>
+
+                    {/* Bottom Right: Blue Zillow Logo */}
+                    <div className="flex justify-end mt-4">
+                      <div className="w-7 h-7 flex items-center justify-center text-[#1277e1]" title="Zillow">
+                        <svg viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+                          <path d="M12 2L2 10.5h3v9.5h14v-9.5h3L12 2zm2.5 14.5h-5v-1.8l3.1-3.7H9.5v-1.5h5v1.8l-3.1 3.7h3.1v1.5z" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* Speech Bubble Tail (Triangle pointing down) */}
+                    <div
+                      className="absolute -bottom-2.5 left-10 w-0 h-0"
+                      style={{
+                        borderLeft: '10px solid transparent',
+                        borderRight: '10px solid transparent',
+                        borderTop: '11px solid #ffffff',
+                        filter: 'drop-shadow(0 1px 1px rgba(0,0,0,0.06))',
+                      }}
+                    />
+                  </div>
+
+                  {/* Author Name Under the Speech Bubble Tail */}
+                  <div className="mt-4 pl-8">
+                    <span className="text-xs font-bold text-gray-800 tracking-wider uppercase">
+                      {rev.author}
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Pagination Dots */}
+          {totalPages > 1 && (
+            <div className="flex items-center justify-center gap-2 mt-10">
+              {[...Array(totalPages)].map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentPage(idx)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all ${
+                    currentPage === idx
+                      ? 'bg-gray-700 w-3'
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
               ))}
             </div>
-            <span className="text-xs font-semibold text-gray-400">
-              • {current.date}
-            </span>
-          </div>
-
-          <p className="text-base sm:text-lg text-gray-800 leading-relaxed font-light italic mb-8 relative z-10">
-            &ldquo;{current.text}&rdquo;
-          </p>
-
-          <div className="flex items-center justify-between pt-6 border-t border-gray-100">
-            <div>
-              <div className="font-bold text-gray-900 text-base">
-                {current.author}
-              </div>
-              <div className="text-xs text-emerald-600 font-medium">
-                Verified Client Review on Zillow
-              </div>
-            </div>
-
-            {/* Slider Controls */}
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-semibold text-gray-400 mr-2">
-                {currentIndex + 1} / {activeReviews.length}
-              </span>
-              <button
-                onClick={handlePrev}
-                className="p-2.5 rounded-full border border-gray-200 hover:bg-gray-100 text-gray-700 transition-colors"
-                aria-label="Previous review"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleNext}
-                className="p-2.5 rounded-full border border-gray-200 hover:bg-gray-100 text-gray-700 transition-colors"
-                aria-label="Next review"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </section>

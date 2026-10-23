@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, MessageCircle, Menu, X, ShieldCheck } from 'lucide-react';
+import { Phone, MessageCircle, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   lang: 'ru' | 'en' | 'es';
@@ -15,32 +15,29 @@ export default function Navbar({ lang }: NavbarProps) {
   const navLabels = {
     ru: {
       about: 'О Елене',
-      services: 'Услуги',
+      work: 'Работаем с Еленой',
+      reviews: 'Отзывы',
       process: 'Этапы',
-      reviews: 'Отзывы Zillow',
-      areas: 'Районы',
       guides: 'Гайды',
-      findHome: 'Подобрать дом',
+      findHome: 'Найти мой дом',
       call: 'Позвонить',
     },
     en: {
       about: 'About Elena',
-      services: 'Services',
+      work: 'Work with Elena',
+      reviews: 'Reviews',
       process: 'Process',
-      reviews: 'Zillow Reviews',
-      areas: 'Areas',
       guides: 'Guides',
-      findHome: 'Find a Home',
+      findHome: 'Find My Home',
       call: 'Call',
     },
     es: {
       about: 'Sobre Elena',
-      services: 'Servicios',
+      work: 'Trabaja con Elena',
+      reviews: 'Reseñas',
       process: 'Proceso',
-      reviews: 'Reseñas Zillow',
-      areas: 'Zonas',
       guides: 'Guías',
-      findHome: 'Buscar propiedad',
+      findHome: 'Encuéntrame mi casa',
       call: 'Llamar',
     },
   }[lang];
@@ -59,41 +56,27 @@ export default function Navbar({ lang }: NavbarProps) {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link href={langLinks[lang]} className="flex items-center gap-3 group">
-            <div className="relative w-12 h-12 rounded-full overflow-hidden border-2 border-[#20c063]">
+            <div className="relative w-44 h-12">
               <Image
-                src="/images/elena.webp"
-                alt="Elena Stazhkova"
+                src="/images/logo_horizon_black.webp"
+                alt="Elena Stazhkova Real Estate"
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
               />
-            </div>
-            <div>
-              <div className="font-bold text-lg tracking-tight text-[#31312c] group-hover:text-[#20c063] transition-colors">
-                Elena Stazhkova
-              </div>
-              <div className="text-xs text-gray-500 font-medium tracking-wide uppercase">
-                Miami Real Estate Expert
-              </div>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-gray-700">
+          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-gray-700">
             <a href="#about" className="hover:text-[#20c063] transition-colors">
               {navLabels.about}
             </a>
             <a href="#workelena" className="hover:text-[#20c063] transition-colors">
-              {navLabels.services}
-            </a>
-            <a href="#steps" className="hover:text-[#20c063] transition-colors">
-              {navLabels.process}
+              {navLabels.work}
             </a>
             <a href="#reviews" className="hover:text-[#20c063] transition-colors">
               {navLabels.reviews}
-            </a>
-            <a href="#areas" className="hover:text-[#20c063] transition-colors">
-              {navLabels.areas}
             </a>
             <Link href={guidesLink} className="hover:text-[#20c063] transition-colors">
               {navLabels.guides}
@@ -130,7 +113,7 @@ export default function Navbar({ lang }: NavbarProps) {
               </Link>
             </div>
 
-            {/* WhatsApp Direct */}
+            {/* WhatsApp */}
             <a
               href="https://wa.me/13475154087"
               target="_blank"
@@ -141,7 +124,7 @@ export default function Navbar({ lang }: NavbarProps) {
               <MessageCircle className="w-5 h-5" />
             </a>
 
-            {/* Direct Call Button */}
+            {/* Phone */}
             <a
               href="tel:+13475154087"
               className="flex items-center gap-2 text-sm font-semibold text-gray-800 hover:text-[#20c063] transition-colors"
@@ -152,8 +135,8 @@ export default function Navbar({ lang }: NavbarProps) {
 
             {/* CTA Button */}
             <a
-              href="#quiz"
-              className="px-4 py-2.5 bg-[#20c063] hover:bg-[#1aa654] text-white text-sm font-semibold rounded-xl shadow-xs transition-all hover:shadow-md"
+              href="#findmyhome"
+              className="px-5 py-2.5 bg-[#20c063] hover:bg-[#1aa654] text-white text-sm font-semibold rounded-xl shadow-xs transition-all hover:shadow-md"
             >
               {navLabels.findHome}
             </a>
@@ -208,14 +191,7 @@ export default function Navbar({ lang }: NavbarProps) {
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
           >
-            {navLabels.services}
-          </a>
-          <a
-            href="#steps"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
-          >
-            {navLabels.process}
+            {navLabels.work}
           </a>
           <a
             href="#reviews"
@@ -223,13 +199,6 @@ export default function Navbar({ lang }: NavbarProps) {
             className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
           >
             {navLabels.reviews}
-          </a>
-          <a
-            href="#areas"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
-          >
-            {navLabels.areas}
           </a>
           <Link
             href={guidesLink}
@@ -247,7 +216,7 @@ export default function Navbar({ lang }: NavbarProps) {
               +1 (347) 515-4087
             </a>
             <a
-              href="#quiz"
+              href="#findmyhome"
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center w-full py-2.5 bg-[#20c063] text-white rounded-xl font-semibold text-sm"
             >

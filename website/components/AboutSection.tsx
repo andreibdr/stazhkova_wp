@@ -1,86 +1,62 @@
 import React from 'react';
 import Image from 'next/image';
-import { GraduationCap, Award, Globe, PhoneCall } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 interface AboutProps {
   data: any;
-  lang: 'ru' | 'en' | 'es';
 }
 
-export default function AboutSection({ data, lang }: AboutProps) {
+export default function AboutSection({ data }: AboutProps) {
   return (
-    <section id="about" className="py-20 bg-white">
+    <section id="about" className="py-20 bg-[#f7fbfc] border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Heading */}
+        <div className="text-center mb-14">
+          <h2 className="text-4xl sm:text-5xl font-light tracking-tight text-[#31312c]">
+            <span className="font-bold text-[#20c063]">{data.title_accent} </span>
+            <span className="font-light text-[#31312c]">{data.title_main}</span>
+          </h2>
+        </div>
+
+        {/* 2 Columns: Photo (Left) + 3 Message Cards (Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Photo */}
-          <div className="lg:col-span-5 relative flex justify-center">
-            <div className="relative w-full max-w-sm aspect-4/5 rounded-3xl overflow-hidden shadow-2xl border-4 border-[#f7fbfc]">
+          {/* Left: Original Elena Photo (Elena_green.webp) */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border-4 border-white">
               <Image
-                src="/images/elena-agent.webp"
+                src={data.photo || '/images/elena_green.webp'}
                 alt="Elena Stazhkova"
                 fill
                 className="object-cover"
-                sizes="(max-width: 768px) 100vw, 400px"
+                sizes="(max-width: 768px) 100vw, 450px"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <div className="absolute bottom-6 left-6 right-6 text-white">
-                <div className="text-xl font-bold">Elena Stazhkova</div>
-                <div className="text-xs text-emerald-300 font-medium">Realtor® & Investment Consultant</div>
-                <div className="text-xs text-gray-200 mt-1">FL License #3352133</div>
-              </div>
             </div>
           </div>
 
-          {/* Bio text */}
-          <div className="lg:col-span-7 space-y-6">
-            <span className="px-3.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 uppercase tracking-wider inline-block">
-              {data.title}
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#31312c] tracking-tight">
-              {data.subtitle}
-            </h2>
-
-            <div className="space-y-4 text-base sm:text-lg text-gray-600 font-light leading-relaxed">
-              <p>{data.p1}</p>
-              <p>{data.p2}</p>
-              <p>{data.p3}</p>
+          {/* Right: 3 Styled Message Boxes matching WP alert-info, alert-success, vista_blue */}
+          <div className="lg:col-span-7 space-y-5">
+            {/* Box 1: Alert Info (Blue) */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-[#eef7fd] border border-[#d2ebfc] text-[#24587c] flex items-start gap-3.5 shadow-xs">
+              <ChevronRight className="w-5 h-5 text-[#31708f] shrink-0 mt-0.5" />
+              <p className="text-[14px] sm:text-[15px] leading-relaxed font-normal">
+                {data.messages[0]}
+              </p>
             </div>
 
-            {/* Highlights Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-              <div className="p-4 rounded-2xl bg-[#f7fbfc] border border-gray-100">
-                <GraduationCap className="w-6 h-6 text-[#20c063] mb-2" />
-                <div className="font-bold text-gray-900 text-sm">МГУ им. Ломоносова</div>
-                <div className="text-xs text-gray-500">Магистр экономики</div>
-              </div>
-              <div className="p-4 rounded-2xl bg-[#f7fbfc] border border-gray-100">
-                <Award className="w-6 h-6 text-[#20c063] mb-2" />
-                <div className="font-bold text-gray-900 text-sm">15+ Лет Опыта</div>
-                <div className="text-xs text-gray-500">Инвестиции & Аналитика</div>
-              </div>
-              <div className="p-4 rounded-2xl bg-[#f7fbfc] border border-gray-100">
-                <Globe className="w-6 h-6 text-[#20c063] mb-2" />
-                <div className="font-bold text-gray-900 text-sm">3 Языка</div>
-                <div className="text-xs text-gray-500">Русский, English, Español</div>
-              </div>
+            {/* Box 2: Alert Success (Green) */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-[#edf7ee] border border-[#cbe9cc] text-[#2b6a2f] flex items-start gap-3.5 shadow-xs">
+              <ChevronRight className="w-5 h-5 text-[#3c763d] shrink-0 mt-0.5" />
+              <p className="text-[14px] sm:text-[15px] leading-relaxed font-normal">
+                {data.messages[1]}
+              </p>
             </div>
 
-            <div className="pt-2">
-              <a
-                href="https://wa.me/13475154087"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#20c063] hover:bg-[#1aa654] text-white font-semibold rounded-xl shadow-xs transition-all"
-              >
-                <PhoneCall className="w-4 h-4" />
-                <span>
-                  {lang === 'ru'
-                    ? 'Связаться с Еленой'
-                    : lang === 'es'
-                    ? 'Contactar a Elena'
-                    : 'Get in Touch with Elena'}
-                </span>
-              </a>
+            {/* Box 3: Vista Blue (Indigo / Soft Blue) */}
+            <div className="p-5 sm:p-6 rounded-2xl bg-[#f0f4f9] border border-[#d6e2f1] text-[#2c476c] flex items-start gap-3.5 shadow-xs">
+              <ChevronRight className="w-5 h-5 text-[#4169e1] shrink-0 mt-0.5" />
+              <p className="text-[14px] sm:text-[15px] leading-relaxed font-normal">
+                {data.messages[2]}
+              </p>
             </div>
           </div>
         </div>

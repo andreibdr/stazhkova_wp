@@ -1,213 +1,189 @@
 {
   "ru": {
+    "nav": {
+      "about": "О Елене",
+      "work": "Работаем с Еленой",
+      "reviews": "Отзывы",
+      "process": "Этапы",
+      "guides": "Гайды",
+      "findHome": "Найти мой дом",
+      "call": "Позвонить"
+    },
     "hero": {
-      "title_line1": "????? ????????",
-      "title_line2": "????? ?? ???????????? ? ??????",
-      "subtitle": "??????? ??? ????? ????? ? ????? ??????? ? ?????? ?????????, ????? ???????? ????????? ?? ????????????.",
-      "cta_button": "????????? ????????????",
-      "guides_button": "???? ?? ???????",
-      "experience_badge": "15+ ??? ????? ? ??????????? | 10+ ??? ??????? ?? ???????",
-      "license_badge": "???????? ??????? #3352133"
+      "title_main": "Елена Стажкова",
+      "title_accent": "Агент по Недвижимости",
+      "subtitle": "Найдите дом своей мечты в Южной Флориде с Еленой Стажковой, вашим надёжным экспертом по недвижимости.",
+      "bullets": [
+        "Мой ориентированный на клиента подход, подкреплённый более чем 15 годами в инвестиционном консультировании и 10 годами в качестве риелтора в Майами, делает процесс покупки эффективным, доступным и без стресса.",
+        "Я ставлю в приоритет каждого клиента, применяя знания рынка, оптимизацию ставки капитализации (CAP rate) и сильные навыки переговоров, чтобы обеспечить наилучшие возможности в люксовой, многоквартирной и коммерческой недвижимости.",
+        "Используйте мою эксклюзивную команду профессионалов, включая адвокатов по недвижимости, специалистов по ипотеке, инспекторов домов и управляющих недвижимостью, чтобы обеспечить вашу сделку от начала до конца.",
+        "Если вы покупаете удалённо, не можете посетить объекты или нуждаетесь в поддержке для инспекций и закрытия, я возьму на себя всё от вашего имени, включая виртуальные варианты и многоязычное сопровождение.",
+        "Я могу помочь с покупкой домов, кондо или инвестиционных объектов в ключевых районах Южной Флориды, таких как яркие городские районы Майами, Авентура, Голливуд, спокойные пляжи Форт-Лодердейла и за их пределами."
+      ],
+      "cta_text": "Рассматриваете инвестиции в дом, кондо или коммерческую недвижимость в Южной Флориде? Нажмите кнопку ниже и дайте мне знать, что вы ищете!",
+      "cta_button": "Найти мой дом",
+      "photo": "/images/lena-4.png"
     },
-    "bullets": [
-      "??? ??????????????? ?? ??????? ??????, ????????????? ????? ??? 15 ?????? ? ?????????????? ???????????????? ? 10 ?????? ? ???????? ???????? ? ??????, ?????? ??????? ??????? ???????????, ????????? ? ??? ???????.",
-      "? ?????? ? ????????? ??????? ???????, ???????? ?????? ?????, ??????????? ?????? ????????????? (CAP rate) ? ??????? ?????? ???????????, ????? ?????????? ????????? ??????????? ? ????????, ??????????????? ? ???????????? ????????????.",
-      "??????????? ??? ???????????? ??????? ??????????????, ??????? ????????? ?? ????????????, ???????????? ?? ???????, ??????????? ????? ? ??????????? ?????????????, ????? ?????????? ???? ?????? ?? ?????? ?? ?????.",
-      "?????? ??????????????????, ?????????? ???????????? ?????? ? ?????????????? ????? ???????? ??? ??? ??????."
-    ],
-    "target_audience": {
-      "title": "? ??? ???????? ?????",
-      "subtitle": "? ??????????????? ?? ??????? ???????????? ? ????? ??????? ??? ??????????? ?? ?????? ?????? ? ?????. ??? ? ??? ? ??????? ???? ?????:",
-      "items": [
-        {
-          "title": "?????????? ? ??????????????? ???????",
-          "desc": "???????? Zillow, ?? ?????? ?? ???????????? ??????????, ??????? ???????? ? ?????????? ?????? ?????????? (HOA)? ? ?????????? ???????? ????? ? ????????? ??? ?????? ???????."
-        },
-        {
-          "title": "????????? (?????????? & CAP Rate)",
-          "desc": "????? ???????? ???????????? ? ??????? ????????????? ????????? ?????? ??????????, ??????, ????????? ? ??????? ??????? ? ??????? ???????? ???????????."
-        },
-        {
-          "title": "??????? ?? ??????? (Relocation)",
-          "desc": "??????????? ?? ???-?????, ?????????? ??? ?????? ??????? ?????? ??????? ?????????? ?????, ????? ??? ?????, ?????????????? ? ?????? ??????????????."
-        },
-        {
-          "title": "??????? ??????? ???? (First-Time Buyer)",
-          "desc": "??????? ?????? ??? ??????? ??????: ?? ????????? ????????? ?? ??????? (Pre-Approval) ?? ???????? ?????? ? ????????? ??????."
-        }
-      ]
+    "reviews_section": {
+      "title_accent": "Отзывы",
+      "title_main": "о Елене Стажковой",
+      "subtitle": "Все отзывы автоматически транслируются с сайта Zillow.com (на английском языке)",
+      "view_zillow": "Профиль на Zillow",
+      "write_review": "Оставить отзыв на Zillow"
     },
-    "steps": {
-      "title": "??? ???????? ??????",
-      "subtitle": "???????? ????????? ??????? ?? ?????? ???????????? ?? ???????? ??????",
-      "items": [
-        {
-          "step": "01",
-          "title": "?????????? ? ?????????",
-          "desc": "??? ?????????? ? ????????? ????? ?????: ????? ??? ?????, ?????? ??? ? ?????? ??? ??????????? ??????????? ??????, ????? ? ???????? ??????."
-        },
-        {
-          "step": "02",
-          "title": "?????? ???????? ? ??????",
-          "desc": "????????? ????? ??? ????????? ??????-????????? ????? ???????? ???? MLS, ???????? ??????? ?????? ? ??????????? ???????."
-        },
-        {
-          "step": "03",
-          "title": "?????, ?????????? ? ?????",
-          "desc": "?????????? ?????????? ????????? ??????????? (Offer), ????????? ? ????? ?????????, ???????????? ?????????, ?????? ? ???????? ??????."
-        }
-      ]
-    },
-    "about": {
-      "title": "??? ???",
-      "subtitle": "????? ???????? ? ??????????????? ??????? ? ?????????????? ???????",
-      "p1": "? ? ????? ????????, ??????? ?? ???????????? ? ??????????? ? ????? ??? 15-?????? ?????? ? ?????????? ? ?????????????? ????????????????, ?????????? ?????????? ? ?????? ???????.",
-      "p2": "???????? ?????????? ??????????????? ??????????? ????? ?. ?. ?????????? (???) ? ???????? ???????? ?????????. ??? ????? 10 ??? ??????? ????????? ?? ????? ???????????? ????? ???????.",
-      "p3": "???????? ?????? ???????, ?????????? ? ????????? ???????, ??? ????????? ??? ?????????? ????? ?????????? ? ??????????, ???????????? ? ??????? ????? ??????????."
+    "transition": {
+      "text": "Будь то второй дом у моря или ваше основное место жительства в «Солнечном штате», я профессионально проведу вас по рынку и подберу идеальный вариант, соответствующий вашим потребностям и финансам.",
+      "button": "Найти мой дом"
     },
     "quiz": {
-      "title": "????????????? ?????? ????????????",
-      "subtitle": "???????? ?? 4 ???????, ? ????? ????? ?????????? ???????? ?????????? ???????? ?? ???????? ???? MLS",
-      "step1_title": "??????? ?????? ??? ???????????",
+      "title": "Подбор недвижимости",
+      "subtitle": "Ответьте на несколько вопросов, чтобы я подобрала для вас идеальные варианты",
+      "step1_title": "Сколько спален вам необходимо?",
       "step1_options": [
-        "?????? / 1 ???????",
-        "2 ???????",
-        "3 ???????",
-        "4+ ???????"
+        "Студия / 1 спальня",
+        "2 спальни",
+        "3 спальни",
+        "4+ спальни"
       ],
-      "step2_title": "? ????? ?????? ????? ??????? ????? ?????????????",
+      "step2_title": "В каком районе ищете недвижимость?",
       "step2_options": [
         "Sunny Isles Beach",
         "Aventura",
         "Miami / Brickell",
         "Hollywood / Hallandale",
         "Fort Lauderdale",
-        "?????? ?????"
+        "Другой район"
       ],
-      "step3_title": "????? ?????????? ????????? ????????",
+      "step3_title": "Когда хотите совершить сделку?",
       "step3_options": [
-        "??? ????? ?????? (?? 1 ??????)",
-        "? ??????? 1-3 ???????",
-        "? ??????? 3-6 ???????",
-        "???? ?????? ??????????????"
+        "Как можно скорее",
+        "В течение 1-3 месяцев",
+        "В течение 3-6 месяцев",
+        "Пока присматриваюсь"
       ],
-      "step4_title": "????? ??? ??????????????? ???????",
+      "step4_title": "Какой ваш примерный бюджет?",
       "step4_options": [
-        "?? $500,000",
-        "$500,000 ? $1,000,000",
-        "$1,000,000 ? $2,500,000",
+        "До $500,000",
+        "$500,000 – $1,000,000",
+        "$1,000,000 – $2,500,000",
         "$2,500,000+"
       ],
-      "step5_title": "???? ????????? ???????? ?????????",
-      "name_label": "???? ???",
-      "phone_label": "??????? (WhatsApp)",
-      "email_label": "Email",
-      "submit_button": "???????? ???????????? ????????",
-      "success_title": "???????! ?????? ???????",
-      "success_desc": "????? ???????? ? ???? ? ????????? ????? (?????? ? ??????? 1?2 ?????) ? ???????? ???????? ????????."
+      "step5_title": "Куда отправить подборку?",
+      "name_label": "Ваше Имя",
+      "phone_label": "Телефон",
+      "email_label": "Адрес Email",
+      "submit_button": "Получить подборку объектов",
+      "success_title": "Спасибо! Заявка принята",
+      "success_desc": "Елена свяжется с вами лично в течение нескольких часов."
     },
-    "reviews_section": {
-      "title": "?????? ????????",
-      "subtitle": "??? ?????? ???????????? ? ????????????? ? Zillow.com (??????? 5.0 ?????)",
-      "view_zillow": "???????? ??????? ?? Zillow",
-      "write_review": "???????? ????? ?? Zillow"
-    },
-    "areas": {
-      "title": "??????? ? ????? ???????",
-      "subtitle": "??????, ? ??????? ? ???????????????",
-      "items": [
+    "work_with_elena": {
+      "title_accent": "Работаем с",
+      "title_main": "Еленой",
+      "intro": "Я специализируюсь на покупке недвижимости в Южной Флориде для покупателей из других штатов и стран (особенно из России и Европы). Вот с кем я работаю чаще всего:",
+      "questions": [
+        "Пытались искать объект сами и запутались?",
+        "Инвестор, ищете доходную недвижимость с хорошей капитализацией?",
+        "Планируете переезд во Флориду или покупку второго дома/квартиры для отдыха?",
+        "Не знаете районы и с чего начать?",
+        "Был негативный опыт с другим риелтором?",
+        "Боитесь переплатить?",
+        "Не уверены в тайминге и текущих ценах?",
+        "Хотите купить удалённо, не прилетая каждый раз?",
+        "Нужна помощь с арендой, управлением или 1031 exchange (отсрочка налога при обмене инвестиционной недвижимости)?",
+        "Готовы купить прямо сейчас и хотите общаться на русском?"
+      ],
+      "banner": "Если хоть на один вопрос ответ «Да» — мой проверенный процесс удалённой покупки и инвестиций создан именно для вас.",
+      "parts": [
         {
-          "name": "Sunny Isles Beach",
-          "desc": "??????????? ????????, ????????? ???????????? ?? ?????? ????? ??????"
+          "title": "Часть 1 – Подготовка и план",
+          "p1": "Всё начинается с понимания ваших целей: это будет личная квартира, второй дом для отдыха или чистая инвестиция с доходностью? Мне важно знать ваш бюджет, желаемые районы и какую доходность вы хотите получать — чтобы с первого дня выстроить правильную стратегию именно под вас.",
+          "p2": "Запишитесь на короткий звонок 10–15 минут (без всяких обязательств). Говорим на русском, английском или испанском — как вам удобнее. Я расскажу, как я работаю, чем отличаюсь от других риелторов и как уже десятки клиентов из России, Украины, Казахстана и Европы закрывали сделки, ни разу не прилетая во Флориду лично.",
+          "p3": "Пока вы решаете, как будете платить (наличные или ипотека — подберу лучших кредиторов, которые дают ипотеку нерезидентам), мы с командой уже начнём присылать только те объекты, которые подходят под ваши критерии. Новые предложения, снижение цен и актуальные обзоры рынка будут приходить вам прямо в WhatsApp или на почту."
         },
         {
-          "name": "Aventura",
-          "desc": "?????????? ???????? ?????, ???????? ????? Aventura Mall, ???????? ?????"
+          "title": "Часть 2 – Просмотр и принятие решения (даже из другой страны)",
+          "p1": "Сегодня 80 % моих клиентов покупают полностью удалённо — и это абсолютно безопасно:",
+          "bullets": [
+            "Живые видео-показы по Zoom/WhatsApp в любое удобное вам время",
+            "Детальные записанные видеообзоры с замерами, проверкой шума и честным разбором плюсов/минусов",
+            "Съёмка с дрона и прогулки по району — чтобы вы почувствовали место, как будто сами там",
+            "Полный анализ аналогов — чтобы ваше предложение было выгодным, но при этом выиграло конкурс"
+          ],
+          "p2": "Как только вы выбрали объект — я жёстко торгуюсь. Мои клиенты регулярно экономят десятки тысяч долларов от запрошенной цены. Дальше всё беру на себя: адвокаты, кредиторы, инспекторы — всё под контролем."
         },
         {
-          "name": "Miami Beach & Brickell",
-          "desc": "???????? ??????? ?????, ????????? ???????? ??????, ???????? ? ?????"
-        },
-        {
-          "name": "Hollywood & Hallandale",
-          "desc": "?????? ?????????, ???????? ?????? ???? ? ???????? ?????"
-        },
-        {
-          "name": "Fort Lauderdale",
-          "desc": "????????????? ????????, ???????? ??????? ? ???????? ? ???????"
+          "title": "Часть 3 – Покупка и защита ваших инвестиций",
+          "p1": "После подписания контракта:",
+          "bullets": [
+            "Лицензированный инспектор всё проверит (я лично присутствую на инспекции, если вас нет)",
+            "Мой адвокат и титульная компания защищают ваши интересы на 100 %",
+            "Оформляю страховку, HOA, а при желании сразу ставлю управляющую компанию и нахожу арендаторов — чтобы вы начали получать доход с первого месяца"
+          ],
+          "p2": "От первого звонка до получения ключей (или первых арендных платежей) я с вами на связи в вашем часовом поясе и на родном языке.",
+          "quote": "Отзыв реального клиента: «Елена вела всю сделку из Москвы — мы прилетели во Флориду только после закрытия. Всё прошло идеально».",
+          "p3": "Готовы купить или инвестировать в Южную Флориду без стресса и на русском языке? Нажмите кнопку ниже и напишите, что именно вы ищете — отвечу лично в течение нескольких часов."
         }
       ]
+    },
+    "about_elena": {
+      "title_accent": "Про",
+      "title_main": "Елену",
+      "photo": "/images/elena_green.webp",
+      "messages": [
+        "Я - Елена Стажкова, эксперт по недвижимости и консультант по инвестициям с более чем 15-летним опытом в инвестиционном консультировании, управлении портфелями и оценке стратегий. Я окончила Московский государственный университет имени М. В. Ломоносова с дипломом магистра искусств и завершила там аспирантуру, что дало мне прочную основу для моей карьеры.",
+        "Двенадцать лет назад я переехала в Майами, и последние 10 лет работаю риелтором на полную ставку. В моей команде лучшие юристы по недвижимости, специалисты по ипотеке и инспекторы жилья, что гарантирует моим клиентам плавный и безстрессовый опыт. Меня неоднократно награждали как лучшего агента, и моё глубокое понимание рынка недвижимости южной Флориды позволяет мне находить для вас лучшие решения.",
+        "Я специализируюсь на элитной недвижимости, работая с инвесторами, многоквартирными объектами, коммерческой недвижимостью и формированием инвестиционных портфелей с акцентом на оптимизацию доходности (CAP rate). Моя команда предлагает профессиональные услуги по управлению недвижимостью. Будь вы покупателем впервые или приобретаете недвижимость удалённо, я делаю процесс эффективным, доступным и адаптированным к вашим потребностям."
+      ]
+    },
+    "what_next": {
+      "title": "Что делать дальше?",
+      "items": [
+        "Нажмите кнопку ниже и расскажите, что вы ищете — на русском, английском или испанском, как вам удобнее.",
+        "Я свяжусь с вами лично в течение нескольких часов (по телефону, WhatsApp или Zoom — как вам комфортнее).",
+        "Мы составим и запустим чёткий план действий, который идеально подойдёт именно под ваши задачи: отдых у океана, переезд семьёй или выгодная инвестиция с доходностью."
+      ],
+      "button": "Найти мой дом"
     }
   },
   "en": {
+    "nav": {
+      "about": "About Elena",
+      "work": "Work with Elena",
+      "reviews": "Reviews",
+      "process": "Process",
+      "guides": "Guides",
+      "findHome": "Find My Home",
+      "call": "Call"
+    },
     "hero": {
-      "title_line1": "Elena Stazhkova",
-      "title_line2": "Real Estate Agent in Miami",
+      "title_main": "Elena Stazhkova",
+      "title_accent": "Real Estate",
       "subtitle": "Discover your dream home in South Florida with Elena Stazhkova, your trusted real estate expert.",
-      "cta_button": "Find Properties",
-      "guides_button": "Buyer's Guide",
-      "experience_badge": "15+ Years Investment Experience | 10+ Years Miami Realtor",
-      "license_badge": "Florida License #3352133"
+      "bullets": [
+        "My dedicated and client-focused approach, backed by over 15 years in investment advisory and 10 years as a full-time realtor in Miami, makes the buying process efficient, accessible, and stress-free.",
+        "I prioritize every client, applying deep market knowledge, CAP rate optimization, and strong negotiation skills to deliver the best value and opportunities in luxury, multifamily, and commercial real estate.",
+        "Leverage my exclusive team of top professionals – including real estate attorneys, mortgage specialists, home inspectors, and property managers – to ensure your transaction is smooth from start to finish.",
+        "If you're purchasing remotely, unable to visit properties, or need support for inspections and closing, I'll handle all details on your behalf, including virtual options and multilingual guidance.",
+        "I can assist with buying homes, condos, or investment properties in key South Florida areas like Miami's vibrant urban districts, Aventura, Hollywood, Fort Lauderdale's serene beaches, and beyond."
+      ],
+      "cta_text": "Thinking of investing in a South Florida home, condo, or commercial property? Click the button below and let me know what you're looking for.",
+      "cta_button": "Find My Home",
+      "photo": "/images/lena-4.png"
     },
-    "bullets": [
-      "My dedicated and client-focused approach, backed by over 15 years in investment advisory and 10 years as a full-time realtor in Miami, makes the buying process efficient, accessible, and stress-free.",
-      "I prioritize every client, applying deep market knowledge, CAP rate optimization, and strong negotiation skills to deliver the best value and opportunities in luxury, multifamily, and commercial real estate.",
-      "Leverage my exclusive team of top professionals ? including real estate attorneys, mortgage specialists, home inspectors, and property managers ? to secure your transaction seamlessly.",
-      "Strict confidentiality, total transaction transparency, and a custom property search tailored to your goals."
-    ],
-    "target_audience": {
-      "title": "Who Works with Elena",
-      "subtitle": "Specializing in South Florida home purchases for out-of-state and international buyers:",
-      "items": [
-        {
-          "title": "Tired of Searching on Your Own?",
-          "desc": "Browsed Zillow only to find outdated listings, hidden HOA fees, and confusing restrictions? I filter real inventory to save you weeks of time."
-        },
-        {
-          "title": "Real Estate Investors",
-          "desc": "Looking for high CAP-rate rental properties? I compute net yields, insurance, taxes, and find top performing assets."
-        },
-        {
-          "title": "Relocating to Florida",
-          "desc": "Moving from NY, California, or abroad? I guide you on school districts, neighborhoods, lifestyle, and seamless transition."
-        },
-        {
-          "title": "First-Time Home Buyers",
-          "desc": "Clear explanations of each step: from mortgage Pre-Approval to escrow, inspection, and receiving keys."
-        }
-      ]
+    "reviews_section": {
+      "title_main": "Elena Stazhkova's",
+      "title_accent": "Reviews",
+      "subtitle": "All reviews are imported automatically in real-time from my verified Zillow.com profile",
+      "view_zillow": "View on Zillow",
+      "write_review": "Write a Review on Zillow"
     },
-    "steps": {
-      "title": "How We Work Together",
-      "subtitle": "A clear, transparent process from initial consultation to the closing table",
-      "items": [
-        {
-          "step": "01",
-          "title": "Strategy & Preparation",
-          "desc": "Clarify your goals: primary residence, vacation home, or investment. Review budget, locations, and financing options."
-        },
-        {
-          "step": "02",
-          "title": "Curated Search & Showings",
-          "desc": "Personalized MLS search, on-site or HD video walkthroughs, in-depth evaluation of property history and HOA rules."
-        },
-        {
-          "step": "03",
-          "title": "Offer, Escrow & Closing",
-          "desc": "Strong contract negotiation, overseeing home inspection, title insurance, loan approval, and key handover."
-        }
-      ]
-    },
-    "about": {
-      "title": "About Elena",
-      "subtitle": "Elena Stazhkova ? Licensed Florida Realtor & Investment Advisor",
-      "p1": "I am Elena Stazhkova, a real estate professional and investment consultant with over 15 years of experience in investment advisory, portfolio management, and strategic asset evaluation.",
-      "p2": "I hold a Master's degree in Economics from Lomonosov Moscow State University (MSU) and have been an active full-time Realtor in South Florida for over 10 years.",
-      "p3": "Fluent in English, Russian, and Spanish, enabling smooth cross-border negotiations with sellers, lenders, and closing agents."
+    "transition": {
+      "text": "Whether it’s a second home by the sea or your primary residence in the Sunshine State, I’ll expertly guide you through the market and deliver the perfect match for your needs and finances.",
+      "button": "Find My Home"
     },
     "quiz": {
-      "title": "Find Your Dream Property in Miami",
-      "subtitle": "Answer 4 quick questions to receive a tailored MLS selection curated by Elena",
+      "title": "Property Search",
+      "subtitle": "Answer a few questions so I can hand-pick the best MLS listings for you",
       "step1_title": "How many bedrooms do you need?",
       "step1_options": [
         "Studio / 1 Bedroom",
@@ -215,7 +191,7 @@
         "3 Bedrooms",
         "4+ Bedrooms"
       ],
-      "step2_title": "Which area in South Florida are you interested in?",
+      "step2_title": "Which area in South Florida are you looking in?",
       "step2_options": [
         "Sunny Isles Beach",
         "Aventura",
@@ -226,7 +202,7 @@
       ],
       "step3_title": "When are you planning to purchase?",
       "step3_options": [
-        "ASAP (within 1 month)",
+        "ASAP",
         "Within 1-3 months",
         "Within 3-6 months",
         "Just exploring"
@@ -234,128 +210,134 @@
       "step4_title": "What is your approximate budget?",
       "step4_options": [
         "Under $500,000",
-        "$500,000 ? $1,000,000",
-        "$1,000,000 ? $2,500,000",
+        "$500,000 – $1,000,000",
+        "$1,000,000 – $2,500,000",
         "$2,500,000+"
       ],
-      "step5_title": "Where should we send your custom listing selection?",
+      "step5_title": "Where should we send your custom selection?",
       "name_label": "Your Name",
-      "phone_label": "Phone / WhatsApp",
-      "email_label": "Email",
-      "submit_button": "Get Custom Property Selection",
+      "phone_label": "Phone Number",
+      "email_label": "Email Address",
+      "submit_button": "Get Handpicked Listings",
       "success_title": "Thank you! Request received",
-      "success_desc": "Elena will get in touch shortly (usually within 1?2 hours) with your curated property list."
+      "success_desc": "Elena will reach out personally within a few hours."
     },
-    "reviews_section": {
-      "title": "Client Reviews",
-      "subtitle": "All reviews verified and synced directly from Zillow.com (5.0 ????? Rating)",
-      "view_zillow": "View Zillow Profile",
-      "write_review": "Write a Review on Zillow"
-    },
-    "areas": {
-      "title": "Prime South Florida Areas",
-      "subtitle": "Neighborhoods where I specialize",
-      "items": [
+    "work_with_elena": {
+      "title_accent": "Work with",
+      "title_main": "Elena",
+      "intro": "I specialize in helping out-of-state and international buyers — including investors from Russia and Europe — find the perfect home, condo, or income-producing property in South Florida. Here’s who I help most…",
+      "questions": [
+        "Tried searching for property in Miami or South Florida on your own and got overwhelmed?",
+        "Are you an investor looking for luxury, multifamily, or commercial real estate with strong CAP rates?",
+        "Planning to relocate to Florida or buy a second/vacation home here?",
+        "Not familiar with the local neighborhoods and don’t know where to start?",
+        "Had a bad experience with another agent and want someone truly on your side?",
+        "Worried about overpaying or making the wrong investment?",
+        "Unsure about market timing and current conditions in South Florida?",
+        "Want to buy remotely without flying in every time?",
+        "Need help with rental income, property management, or 1031 exchange?",
+        "Ready to buy now but prefer everything in English?"
+      ],
+      "banner": "If you said “Yes” to any of the above, my proven remote & investment-focused buying process is exactly what you need.",
+      "parts": [
         {
-          "name": "Sunny Isles Beach",
-          "desc": "Florida's Riviera, premier luxury oceanfront condominiums"
+          "title": "Part 1 – Prepare & Plan",
+          "p1": "Everything starts with understanding your goals: is this a personal residence, vacation home, or pure investment? I need to know your budget, preferred areas, and expected return so I can build the right strategy from day one.",
+          "p2": "Schedule a quick 10–15 minute call (no obligation, of course). We’ll speak in Russian, English, or Spanish — whichever is most comfortable for you. I’ll explain how I work, what makes me different, and how I’ve helped dozens of international clients close successfully, often without ever visiting Florida in person.",
+          "p3": "While you decide on financing (cash or mortgage — I’ll connect you with top lenders who work with foreign nationals), my team and I will start sending you hand-picked listings that match your criteria exactly. You’ll receive new properties, price changes, and market updates directly to your email or WhatsApp."
         },
         {
-          "name": "Aventura",
-          "desc": "Prime family location, world-class Aventura Mall, top-tier schools"
+          "title": "Part 2 – Preview & Decide (even from another country)",
+          "p1": "Most of my clients today buy remotely. I make it safe and simple:",
+          "bullets": [
+            "Live video tours on Zoom/WhatsApp whenever you want",
+            "Detailed recorded walkthroughs with measurements, noise checks, and honest pros/cons",
+            "Drone footage and neighborhood tours so you really feel the area",
+            "Full comparable sales analysis so your offer is competitive yet smart"
+          ],
+          "p2": "When you’re ready to move forward, I fight hard in negotiations (my clients regularly save tens of thousands off asking price) and coordinate every detail with my trusted team of attorneys, lenders, and inspectors."
         },
         {
-          "name": "Miami Beach & Brickell",
-          "desc": "Vibrant business center, fine dining, culture, and coastal living"
-        },
-        {
-          "name": "Hollywood & Hallandale",
-          "desc": "Charming coastline, outstanding value and relaxed waterfront living"
-        },
-        {
-          "name": "Fort Lauderdale",
-          "desc": "Venice of America, world yachting capital with canals and estates"
+          "title": "Part 3 – Purchase & Protect Your Investment",
+          "p1": "Once under contract:",
+          "bullets": [
+            "Licensed inspector checks everything (I’m there in person if you can’t be)",
+            "My title company and real-estate attorney protect your interests 100 %",
+            "I handle HOA documents, insurance quotes, and even set up property management and rental tenants if you want immediate income"
+          ],
+          "p2": "From the first call to the moment you get the keys (or start collecting rent), I’m with you every step of the way — in your language and on your schedule.",
+          "quote": "Clients say: “Elena handled everything from Moscow — we never even came to Florida until after closing. Everything was perfect.”",
+          "p3": "Ready to buy or invest in South Florida without stress and in your native language? Click the button below and tell me what you’re looking for — I’ll reply personally within a few hours."
         }
       ]
+    },
+    "about_elena": {
+      "title_accent": "About",
+      "title_main": "Elena",
+      "photo": "/images/elena_green.webp",
+      "messages": [
+        "I’m Elena Stazhkova, a dedicated real estate expert and investment consultant with over 15 years of experience in investment advisory, portfolio management, and strategy evaluation. I graduated from Lomonosov Moscow State University with a Master’s of Arts and completed postgraduate studies there, which equipped me with a strong foundation for my career.",
+        "Twelve years ago, I moved to Miami, and for the past 10 years, I’ve been working as a full-time realtor. My team includes top real estate attorneys, mortgage specialists, and home inspectors, ensuring a smooth and stress-free experience for my clients. I’ve been honored as a top agent multiple times, and my deep understanding of South Florida’s real estate market allows me to find the best solutions for you.",
+        "I specialize in luxury real estate, working with investors, multifamily properties, commercial real estate, and building investment portfolios with a focus on CAP rate optimization and property management. My team offers professional property management services. Whether you’re a first-time buyer or purchasing remotely, I make the process efficient, accessible, and tailored to your needs."
+      ]
+    },
+    "what_next": {
+      "title": "Here is What to Do Next",
+      "items": [
+        "Click the button below and tell me what you’re looking for (in English, Russian, or Spanish — whichever is easiest for you).",
+        "I’ll reach out personally within a few hours (phone, WhatsApp, or Zoom — your choice) to discuss everything in detail.",
+        "Together we’ll build and execute a clear, step-by-step plan that perfectly matches your goals — whether it’s a vacation condo, family relocation, or a high-return investment property."
+      ],
+      "button": "Find My Home"
     }
   },
   "es": {
+    "nav": {
+      "about": "Sobre Elena",
+      "work": "Trabaja con Elena",
+      "reviews": "Reseñas",
+      "process": "Proceso",
+      "guides": "Guías",
+      "findHome": "Encuéntrame mi casa",
+      "call": "Llamar"
+    },
     "hero": {
-      "title_line1": "Elena Stazhkova",
-      "title_line2": "Agente de Bienes Ra?ces en Miami",
-      "subtitle": "Descubre la casa de tus sue?os en el sur de Florida con Elena Stazhkova, tu experta de confianza en bienes ra?ces.",
-      "cta_button": "Buscar propiedades",
-      "guides_button": "Gu?a de compra",
-      "experience_badge": "15+ A?os de Experiencia en Inversiones | 10+ A?os Realtor en Miami",
-      "license_badge": "Licencia de Florida #3352133"
+      "title_main": "Elena Stazhkova",
+      "title_accent": "Bienes Raíces",
+      "subtitle": "Descubre tu hogar soñado en el sur de Florida con Elena Stazhkova, tu experta confiable en bienes raíces.",
+      "bullets": [
+        "Mi enfoque dedicado y totalmente centrado en el cliente, respaldado por más de 15 años en asesoría de inversiones y 10 años como agente inmobiliario de tiempo completo en Miami, hace que el proceso de compra sea eficiente, accesible y sin estrés.",
+        "Priorizo a cada cliente aplicando un profundo conocimiento del mercado, optimización de CAP rate y fuertes habilidades de negociación para obtener el mejor valor y las mejores oportunidades en propiedades de lujo, multifamiliares y comerciales.",
+        "Aproveche mi equipo exclusivo de élite: abogados inmobiliarios, especialistas en hipotecas, inspectores de viviendas y administradores de propiedades, para que su operación sea 100 % fluida de principio a fin.",
+        "Si compra a distancia, no puede viajar o necesita apoyo con inspecciones y cierre, yo me encargo de absolutamente todo por usted, incluyendo tours virtuales en vivo y acompañamiento multilingüe.",
+        "Puedo ayudarle a comprar casas, condominios o propiedades de inversión en las zonas más deseadas del Sur de Florida: los vibrantes distritos urbanos de Miami, Aventura, Hollywood, las playas tranquilas de Fort Lauderdale y muchas áreas más."
+      ],
+      "cta_text": "¿Está pensando en invertir o comprar una casa, condo o propiedad comercial en el Sur de Florida? Haga clic en el botón de abajo y cuénteme qué está buscando.",
+      "cta_button": "Encuéntrame mi casa",
+      "photo": "/images/lena-4.png"
     },
-    "bullets": [
-      "Mi enfoque dedicado al cliente, respaldado por m?s de 15 a?os en asesoramiento de inversiones y 10 a?os como realtor en Miami, hace que el proceso sea eficiente y sin estr?s.",
-      "Priorizo a cada cliente, aplicando conocimiento del mercado, optimizaci?n de CAP rate y s?lidas habilidades de negociaci?n en propiedades residenciales y comerciales.",
-      "Aproveche mi equipo exclusivo de profesionales: abogados inmobiliarios, especialistas en hipotecas, inspectores y administradores de propiedades.",
-      "Confidencialidad rigurosa, transparencia total y b?squeda personalizada seg?n sus objetivos."
-    ],
-    "target_audience": {
-      "title": "?Con qui?n trabaja Elena?",
-      "subtitle": "Especializada en compra de propiedades en el sur de Florida para compradores locales e internacionales:",
-      "items": [
-        {
-          "title": "?Cansado de buscar por su cuenta?",
-          "desc": "Filtrar? el inventario real de MLS para ahorrarle semanas de tiempo y evitar anuncios desactualizados."
-        },
-        {
-          "title": "Inversionistas Inmobiliarios",
-          "desc": "?Busca rentabilidad y alto CAP rate? Calculo rendimientos netos, impuestos y seguros para maximizar su inversi?n."
-        },
-        {
-          "title": "Mudanza a Florida (Relocalizaci?n)",
-          "desc": "?Se muda desde otro estado o pa?s? Le oriento sobre las mejores zonas, escuelas y estilo de vida."
-        },
-        {
-          "title": "Compradores por primera vez",
-          "desc": "Explicaci?n clara de cada paso: pre-aprobaci?n hipotecaria, inspecci?n, dep?sito en plica (escrow) y cierre."
-        }
-      ]
+    "reviews_section": {
+      "title_accent": "Reseñas de",
+      "title_main": "Elena Stazhkova",
+      "subtitle": "Todas las reseñas son 100 % reales y se importan automáticamente en tiempo real desde mi perfil verificado en Zillow.com",
+      "view_zillow": "Ver en Zillow",
+      "write_review": "Escribir reseña en Zillow"
     },
-    "steps": {
-      "title": "C?mo trabajamos",
-      "subtitle": "Un proceso transparente y guiado desde la primera llamada hasta la entrega de llaves",
-      "items": [
-        {
-          "step": "01",
-          "title": "Estrategia y preparaci?n",
-          "desc": "Definimos objetivos: residencia principal, segunda vivienda o inversi?n. Evaluamos presupuesto y zonas ideales."
-        },
-        {
-          "step": "02",
-          "title": "B?squeda MLS y visitas",
-          "desc": "B?squeda personalizada, visitas presenciales o recorridos virtuales en alta definici?n con an?lisis de la comunidad."
-        },
-        {
-          "step": "03",
-          "title": "Oferta, inspecci?n y cierre",
-          "desc": "Negociaci?n contractual firme, supervisi?n de inspecci?n t?cnica, t?tulo de propiedad y entrega de llaves."
-        }
-      ]
-    },
-    "about": {
-      "title": "Sobre Elena",
-      "subtitle": "Elena Stazhkova ? Agente Inmobiliaria con Licencia de Florida",
-      "p1": "Soy Elena Stazhkova, profesional de bienes ra?ces y consultora de inversiones con m?s de 15 a?os de experiencia en gesti?n de carteras y an?lisis estrat?gico.",
-      "p2": "Poseo una Maestr?a en Econom?a de la Universidad Estatal de Mosc? (MSU) y cuento con m?s de 10 a?os de trayectoria activa en el mercado del sur de Florida.",
-      "p3": "Hablo con fluidez ingl?s, ruso y espa?ol, facilitando negociaciones directas con compradores, vendedores e instituciones financieras."
+    "transition": {
+      "text": "Ya sea una segunda residencia junto al mar o tu vivienda principal en el Estado del Sol, te guiaré con expertise por el mercado y encontraré la propiedad perfecta que se ajuste exactamente a tus necesidades y presupuesto.",
+      "button": "Encuéntrame mi casa"
     },
     "quiz": {
-      "title": "Encuentre su propiedad ideal en Miami",
-      "subtitle": "Responda 4 breves preguntas y Elena le enviar? una selecci?n exclusiva del MLS",
-      "step1_title": "?Cu?ntos dormitorios necesita?",
+      "title": "Búsqueda de propiedad",
+      "subtitle": "Responda unas preguntas y le enviaré las mejores opciones disponibles",
+      "step1_title": "¿Cuántos dormitorios necesita?",
       "step1_options": [
         "Estudio / 1 Dormitorio",
         "2 Dormitorios",
         "3 Dormitorios",
         "4+ Dormitorios"
       ],
-      "step2_title": "?En qu? zona del sur de Florida busca?",
+      "step2_title": "¿En qué zona busca propiedad?",
       "step2_options": [
         "Sunny Isles Beach",
         "Aventura",
@@ -364,59 +346,95 @@
         "Fort Lauderdale",
         "Otra zona"
       ],
-      "step3_title": "?Cu?ndo planea realizar la compra?",
+      "step3_title": "¿Cuándo planea realizar la compra?",
       "step3_options": [
-        "Lo antes posible (menos de 1 mes)",
+        "Lo antes posible",
         "En 1 a 3 meses",
         "En 3 a 6 meses",
-        "Solo explorando opciones"
+        "Solo explorando"
       ],
-      "step4_title": "?Cu?l es su presupuesto aproximado?",
+      "step4_title": "¿Cuál es su presupuesto aproximado?",
       "step4_options": [
         "Menos de $500,000",
-        "$500,000 ? $1,000,000",
-        "$1,000,000 ? $2,500,000",
+        "$500,000 – $1,000,000",
+        "$1,000,000 – $2,500,000",
         "$2,500,000+"
       ],
-      "step5_title": "?A d?nde le enviamos las opciones?",
+      "step5_title": "¿A dónde le enviamos las opciones?",
       "name_label": "Su Nombre",
-      "phone_label": "Tel?fono / WhatsApp",
-      "email_label": "Correo Electr?nico",
-      "submit_button": "Recibir selecci?n personalizada",
-      "success_title": "?Gracias! Solicitud recibida",
-      "success_desc": "Elena se comunicar? con usted en breve (generalmente dentro de 1 a 2 horas)."
+      "phone_label": "Teléfono",
+      "email_label": "Correo Electrónico",
+      "submit_button": "Recibir opciones personalizadas",
+      "success_title": "¡Gracias! Solicitud recibida",
+      "success_desc": "Elena se comunicará con usted personalmente en unas pocas horas."
     },
-    "reviews_section": {
-      "title": "Opiniones de Clientes",
-      "subtitle": "Rese?as verificadas y sincronizadas desde Zillow.com (Calificaci?n 5.0 ?????)",
-      "view_zillow": "Ver perfil en Zillow",
-      "write_review": "Escribir rese?a en Zillow"
-    },
-    "areas": {
-      "title": "Zonas Destacadas en el Sur de Florida",
-      "subtitle": "?reas donde me especializo",
-      "items": [
+    "work_with_elena": {
+      "title_accent": "Trabaja con",
+      "title_main": "Elena",
+      "intro": "Me especializo en ayudar a compradores de otros estados y extranjeros —incluyendo inversores de Rusia, Europa y Latinoamérica— a encontrar la casa, condo o propiedad de inversión ideal en el Sur de Florida. Estas son las personas a las que más ayudo:",
+      "questions": [
+        "¿Intentaste buscar propiedades en Miami o el Sur de Florida por tu cuenta y te sentiste abrumado?",
+        "¿Eres inversor y buscas propiedades de lujo, multifamiliares o comerciales con buenos CAP rates?",
+        "¿Planeas mudarte a Florida o comprar una segunda casa / propiedad vacacional aquí?",
+        "¿No conoces los barrios locales y no sabes por dónde empezar?",
+        "¿Tuviste una mala experiencia con otro agente y quieres a alguien que realmente esté de tu lado?",
+        "¿Te preocupa pagar de más o hacer una mala inversión?",
+        "¿Tienes dudas sobre el momento del mercado y las condiciones actuales en el Sur de Florida?",
+        "¿Quieres comprar a distancia sin tener que volar cada vez?",
+        "¿Necesitas ayuda con ingresos por alquiler, administración de propiedades o 1031 exchange?",
+        "¿Estás listo para comprar ahora y prefieres que todo sea en español?"
+      ],
+      "banner": "Si respondiste “Sí” a cualquiera de estas preguntas, mi proceso probado de compra remota e inversión es exactamente lo que necesitas.",
+      "parts": [
         {
-          "name": "Sunny Isles Beach",
-          "desc": "La Riviera de Florida, condominios de lujo frente al mar"
+          "title": "Parte 1 – Preparación y Plan",
+          "p1": "Todo comienza entendiendo tus objetivos: ¿es residencia principal, casa vacacional o inversión pura? Necesito saber tu presupuesto, zonas preferidas y la rentabilidad que esperas para armar desde el día 1 la estrategia perfecta para ti.",
+          "p2": "Agenda una llamada rápida de 10–15 minutos (sin ningún compromiso). Hablamos en español, ruso o inglés — el idioma que te resulte más cómodo. Te explico cómo trabajo, en qué me diferencio y cómo he cerrado decenas de operaciones con clientes internacionales que nunca pisaron Florida hasta tener las llaves en la mano.",
+          "p3": "Mientras decides la forma de pago (efectivo o hipoteca — te conecto con los mejores prestamistas que dan crédito a extranjeros), mi equipo y yo empezamos a enviarte propiedades seleccionadas a mano que encajan exactamente con lo que buscas. Recibirás nuevos listados, bajadas de precio y actualizaciones del mercado directo a tu correo o WhatsApp."
         },
         {
-          "name": "Aventura",
-          "desc": "Zona familiar de primer nivel, centro comercial Aventura Mall, excelentes escuelas"
+          "title": "Parte 2 – Visita y Decisión (incluso desde otro país)",
+          "p1": "Hoy el 80 % de mis clientes compra 100 % a distancia. Lo hago seguro y sencillo:",
+          "bullets": [
+            "Tours en vivo por Zoom o WhatsApp cuando tú quieras",
+            "Videos grabados detallados con medidas, prueba de ruido y opinión sincera de pros/contras",
+            "Imágenes con dron y recorridos por el barrio para que sientas el lugar como si estuvieras ahí",
+            "Análisis completo de ventas comparables para que tu oferta sea competitiva pero inteligente"
+          ],
+          "p2": "Cuando estés listo para avanzar, negocio duro (mis clientes ahorran regularmente decenas de miles de dólares del precio pedido) y coordino cada detalle con mi equipo de confianza: abogados, prestamistas e inspectores."
         },
         {
-          "name": "Miami Beach & Brickell",
-          "desc": "Epicentro financiero, gastronom?a internacional y vida costera"
-        },
-        {
-          "name": "Hollywood & Hallandale",
-          "desc": "Costas atractivas, excelente relaci?n calidad-precio"
-        },
-        {
-          "name": "Fort Lauderdale",
-          "desc": "La Venecia de Am?rica, capital n?utica mundial con canales y residencias"
+          "title": "Parte 3 – Compra y Protección de tu Inversión",
+          "p1": "Una vez bajo contrato:",
+          "bullets": [
+            "Un inspector con licencia revisa absolutamente todo (estoy presente en persona si tú no puedes)",
+            "Mi compañía de títulos y abogado inmobiliario protegen tus intereses al 100 %",
+            "Tramito seguro, HOA y, si lo deseas, configuro de inmediato la administración y busco inquilinos para que comiences a recibir ingresos desde el primer mes"
+          ],
+          "p2": "Desde la primera llamada hasta que recibas las llaves (o los primeros pagos de renta), estoy contigo en cada paso, en tu idioma y en tu horario.",
+          "quote": "Opinión de cliente real: «Elena manejó toda la transacción mientras estábamos en el exterior. Llegamos a Florida únicamente para el cierre. Todo salió impecable».",
+          "p3": "¿Listo para comprar o invertir en el Sur de Florida sin estrés y en tu idioma? Haz clic en el botón de abajo y cuéntame qué buscas — responderé personalmente en pocas horas."
         }
       ]
+    },
+    "about_elena": {
+      "title_accent": "Sobre",
+      "title_main": "Elena",
+      "photo": "/images/elena_green.webp",
+      "messages": [
+        "Soy Elena Stazhkova, profesional de bienes raíces y consultora de inversiones con más de 15 años de experiencia en asesoría de inversiones, gestión de portafolios y evaluación estratégica. Me gradué de la Universidad Estatal de Moscú Lomonosov con una Maestría en Artes y completé estudios de posgrado allí, lo que me brindó una sólida base para mi carrera.",
+        "Hace doce años me mudé a Miami, y durante los últimos 10 años he trabajado como agente inmobiliaria de tiempo completo. Mi equipo incluye a los mejores abogados de bienes raíces, especialistas en hipotecas e inspectores de viviendas, asegurando una experiencia fluida y sin estrés para mis clientes. He sido premiada como mejor agente en múltiples ocasiones, y mi profundo conocimiento del mercado inmobiliario del Sur de Florida me permite encontrar las mejores soluciones para usted.",
+        "Me especializo en propiedades de lujo, trabajando con inversionistas, propiedades multifamiliares, comerciales y en la creación de portafolios con énfasis en optimización de CAP rate y administración de propiedades. Ya sea que compre por primera vez o adquiera a distancia, hago que el proceso sea eficiente, accesible y adaptado a sus necesidades."
+      ]
+    },
+    "what_next": {
+      "title": "¿Qué hacer ahora?",
+      "items": [
+        "Haga clic en el botón de abajo y cuénteme qué está buscando (en español, inglés o ruso, lo que le resulte más cómodo).",
+        "Me pondré en contacto con usted personalmente en unas pocas horas (por teléfono, WhatsApp o Zoom, según prefiera).",
+        "Juntos armaremos y ejecutaremos un plan claro, paso a paso, adaptado a sus metas: descanso junto al mar, mudanza familiar o inversión rentable."
+      ],
+      "button": "Encuéntrame mi casa"
     }
   }
 }
