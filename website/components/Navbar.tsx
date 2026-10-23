@@ -3,7 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, MessageCircle, Menu, X } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/icons/SocialIcons';
 
 interface NavbarProps {
   lang: 'ru' | 'en' | 'es';
@@ -126,10 +127,10 @@ export default function Navbar({ lang }: NavbarProps) {
               href="https://wa.me/13475154087"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2.5 rounded-full text-emerald-600 hover:bg-emerald-50 transition-colors"
+              className="p-2 rounded-full hover:bg-emerald-50 transition-colors"
               title="WhatsApp"
             >
-              <MessageCircle className="w-5 h-5" />
+              <WhatsAppIcon className="w-5 h-5 text-[#25d366]" />
             </a>
 
             {/* Direct Call Button */}

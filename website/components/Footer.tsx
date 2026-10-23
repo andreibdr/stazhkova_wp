@@ -3,6 +3,14 @@
 import React from 'react';
 import Image from 'next/image';
 import { Phone, Mail, MapPin, ShieldCheck } from 'lucide-react';
+import {
+  LinkedInIcon,
+  InstagramIcon,
+  YoutubeIcon,
+  FacebookIcon,
+  ZillowIcon,
+  WhatsAppIcon,
+} from '@/components/icons/SocialIcons';
 
 interface FooterProps {
   lang: 'ru' | 'en' | 'es';
@@ -40,9 +48,11 @@ export default function Footer({ lang }: FooterProps) {
     speaksLanguage: ['Russian', 'English', 'Spanish'],
     license: '3352133',
     sameAs: [
-      'https://www.zillow.com/profile/ElenaStazhkova',
-      'https://www.instagram.com/elena_realestate_miami',
+      'https://www.linkedin.com/in/stazhkova-elena/',
+      'https://www.instagram.com/elena_realestate_miami/',
+      'https://www.youtube.com/@ElenaStazhkova',
       'https://www.facebook.com/ElenaStazhkovaMiami',
+      'https://www.zillow.com/profile/ElenaStazhkova',
     ],
   };
 
@@ -107,52 +117,83 @@ export default function Footer({ lang }: FooterProps) {
             </div>
           </div>
 
-          {/* Social Profiles */}
+          {/* Social Profiles with Authentic Brand Icons */}
           <div>
             <h4 className="font-bold text-sm tracking-wider uppercase text-white mb-4">
-              {lang === 'ru' ? 'Профили' : lang === 'es' ? 'Perfiles' : 'Profiles'}
+              {lang === 'ru' ? 'Соцсети и Профили' : lang === 'es' ? 'Perfiles Sociales' : 'Social Profiles'}
             </h4>
-            <div className="space-y-2.5 text-xs sm:text-sm text-gray-300">
-              <div>
-                <a
-                  href="https://www.zillow.com/profile/ElenaStazhkova"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#20c063] transition-colors"
-                >
-                  Zillow Premier Agent (5.0 ★)
-                </a>
-              </div>
-              <div>
-                <a
-                  href="https://www.instagram.com/elena_realestate_miami"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#20c063] transition-colors"
-                >
-                  Instagram @elena_realestate_miami
-                </a>
-              </div>
-              <div>
-                <a
-                  href="https://www.facebook.com/ElenaStazhkovaMiami"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#20c063] transition-colors"
-                >
-                  Facebook Page
-                </a>
-              </div>
-              <div>
-                <a
-                  href="https://wa.me/13475154087"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#20c063] transition-colors text-emerald-400 font-semibold"
-                >
-                  WhatsApp Direct Chat
-                </a>
-              </div>
+            <div className="flex flex-col gap-2.5 text-xs sm:text-sm text-gray-300">
+              <a
+                href="https://www.linkedin.com/in/stazhkova-elena/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 hover:text-[#0a66c2] transition-colors group"
+              >
+                <span className="p-1.5 rounded-lg bg-gray-800 text-gray-300 group-hover:bg-[#0a66c2] group-hover:text-white transition-all">
+                  <LinkedInIcon className="w-4 h-4" />
+                </span>
+                <span>LinkedIn</span>
+              </a>
+
+              <a
+                href="https://www.instagram.com/elena_realestate_miami/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 hover:text-[#e4405f] transition-colors group"
+              >
+                <span className="p-1.5 rounded-lg bg-gray-800 text-gray-300 group-hover:bg-[#e4405f] group-hover:text-white transition-all">
+                  <InstagramIcon className="w-4 h-4" />
+                </span>
+                <span>Instagram</span>
+              </a>
+
+              <a
+                href="https://www.youtube.com/@ElenaStazhkova"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 hover:text-[#ff0000] transition-colors group"
+              >
+                <span className="p-1.5 rounded-lg bg-gray-800 text-gray-300 group-hover:bg-[#ff0000] group-hover:text-white transition-all">
+                  <YoutubeIcon className="w-4 h-4" />
+                </span>
+                <span>YouTube @ElenaStazhkova</span>
+              </a>
+
+              <a
+                href="https://www.facebook.com/ElenaStazhkovaMiami"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 hover:text-[#1877f2] transition-colors group"
+              >
+                <span className="p-1.5 rounded-lg bg-gray-800 text-gray-300 group-hover:bg-[#1877f2] group-hover:text-white transition-all">
+                  <FacebookIcon className="w-4 h-4" />
+                </span>
+                <span>Facebook</span>
+              </a>
+
+              <a
+                href="https://www.zillow.com/profile/ElenaStazhkova"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 hover:text-[#006aff] transition-colors group"
+              >
+                <span className="p-1.5 rounded-lg bg-gray-800 text-gray-300 group-hover:bg-[#006aff] group-hover:text-white transition-all">
+                  <ZillowIcon className="w-4 h-4" />
+                </span>
+                <span>Zillow Premier Agent (5.0 ★)</span>
+              </a>
+
+              <a
+                href="https://wa.me/13475154087"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2.5 hover:text-[#25d366] transition-colors group text-emerald-400 font-medium"
+              >
+                <span className="p-1.5 rounded-lg bg-gray-800 text-emerald-400 group-hover:bg-[#25d366] group-hover:text-white transition-all">
+                  <WhatsAppIcon className="w-4 h-4" />
+                </span>
+                <span>WhatsApp Direct Chat</span>
+              </a>
             </div>
           </div>
 
