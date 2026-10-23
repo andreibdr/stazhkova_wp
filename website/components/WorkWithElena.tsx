@@ -52,11 +52,11 @@ export default function WorkWithElena({ data }: WorkProps) {
           </div>
         </div>
 
-        {/* Banner with original styling: border-radius: 30px, white bg, center text */}
-        <div className="my-14 p-8 sm:p-12 rounded-[30px] bg-white border border-gray-100 shadow-xl text-center">
-          <h3 className="text-2xl sm:text-3xl lg:text-[34px] font-normal text-[#31312c] leading-snug max-w-4xl mx-auto">
+        {/* Banner: compact, balanced typography without orphans and excessive padding */}
+        <div className="my-8 py-5 sm:py-6 px-6 sm:px-10 rounded-2xl bg-[#f7fbfc] border border-gray-100 shadow-xs text-center max-w-4xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-[21px] font-medium text-[#31312c] leading-relaxed text-balance">
             {data.banner}
-          </h3>
+          </p>
         </div>
 
         {/* 3 Columns: Parts 1, 2, 3 */}

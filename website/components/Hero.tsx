@@ -63,22 +63,6 @@ export default function Hero({ content, lang }: HeroProps) {
                 {hero.cta_button}
               </a>
             </div>
-
-            {/* Official Real Estate Trust Badges */}
-            <div className="pt-3 border-t border-gray-200/60 flex flex-wrap items-center gap-3 text-xs font-semibold text-gray-500">
-              <span className="px-2.5 py-1 rounded-md bg-white border border-gray-200 text-gray-700">
-                REALTOR®
-              </span>
-              <span className="px-2.5 py-1 rounded-md bg-white border border-gray-200 text-gray-700">
-                Equal Housing Opportunity
-              </span>
-              <span className="px-2.5 py-1 rounded-md bg-white border border-gray-200 text-gray-700">
-                MLS Provider
-              </span>
-              <span className="px-2.5 py-1 rounded-md bg-white border border-gray-200 text-gray-700">
-                Zillow Premier Agent (5.0 ★)
-              </span>
-            </div>
           </div>
         </div>
       </div>
