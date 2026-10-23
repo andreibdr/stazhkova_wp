@@ -14,7 +14,7 @@ export default function Footer({ lang }: FooterProps) {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
     name: 'Elena Stazhkova',
-    image: 'https://stazhkova.com/images/elena.webp',
+    image: 'https://stazhkova.com/images/lena-4.png',
     url: 'https://stazhkova.com',
     telephone: '+1-347-515-4087',
     email: 'elena@stazhkova.com',
@@ -49,7 +49,6 @@ export default function Footer({ lang }: FooterProps) {
 
   return (
     <footer className="bg-[#1f201d] text-white pt-16 pb-24 sm:pb-16 border-t border-gray-800">
-      {/* Schema.org JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
@@ -59,24 +58,16 @@ export default function Footer({ lang }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
           {/* Brand Col */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#20c063]">
-                <Image
-                  src="/images/elena.webp"
-                  alt="Elena Stazhkova"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div>
-                <div className="font-bold text-base tracking-tight text-white">
-                  Elena Stazhkova
-                </div>
-                <div className="text-xs text-emerald-400 font-medium">
-                  Licensed Florida Realtor®
-                </div>
-              </div>
+            {/* White Official Logo on Dark Footer */}
+            <div className="relative w-52 h-14">
+              <Image
+                src="/images/logo_horizon_weba.webp"
+                alt="Elena Stazhkova Real Estate"
+                fill
+                className="object-contain object-left"
+              />
             </div>
+
             <p className="text-xs sm:text-sm text-gray-400 leading-relaxed font-light">
               {lang === 'ru'
                 ? 'Профессиональный подбор и сопровождение сделок с недвижимостью в Майами и Южной Флориде. Инвестиционный консалтинг.'
@@ -166,7 +157,7 @@ export default function Footer({ lang }: FooterProps) {
             </div>
           </div>
 
-          {/* Areas Served */}
+          {/* Areas Served & Admin */}
           <div>
             <h4 className="font-bold text-sm tracking-wider uppercase text-white mb-4">
               {lang === 'ru' ? 'Локации' : lang === 'es' ? 'Zonas' : 'Areas'}
@@ -191,8 +182,7 @@ export default function Footer({ lang }: FooterProps) {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
           <p>© 2026 Elena Stazhkova. All rights reserved.</p>
           <p>
-            Equal Housing Opportunity. Information is deemed reliable but not
-            guaranteed.
+            Equal Housing Opportunity. REALTOR®. Information is deemed reliable but not guaranteed.
           </p>
         </div>
       </div>

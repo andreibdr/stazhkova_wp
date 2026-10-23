@@ -17,28 +17,22 @@ export default function Navbar({ lang }: NavbarProps) {
       about: 'О Елене',
       work: 'Работаем с Еленой',
       reviews: 'Отзывы',
-      process: 'Этапы',
       guides: 'Гайды',
       findHome: 'Найти мой дом',
-      call: 'Позвонить',
     },
     en: {
       about: 'About Elena',
       work: 'Work with Elena',
       reviews: 'Reviews',
-      process: 'Process',
       guides: 'Guides',
       findHome: 'Find My Home',
-      call: 'Call',
     },
     es: {
       about: 'Sobre Elena',
       work: 'Trabaja con Elena',
       reviews: 'Reseñas',
-      process: 'Proceso',
       guides: 'Guías',
       findHome: 'Encuéntrame mi casa',
-      call: 'Llamar',
     },
   }[lang];
 
@@ -54,21 +48,21 @@ export default function Navbar({ lang }: NavbarProps) {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href={langLinks[lang]} className="flex items-center gap-3 group">
-            <div className="relative w-44 h-12">
+          {/* Official Brand Logo */}
+          <Link href={langLinks[lang]} className="flex items-center">
+            <div className="relative w-48 sm:w-60 h-12 sm:h-14">
               <Image
-                src="/images/logo_horizon_black.webp"
+                src="/images/logo_horizon_black_weba.webp"
                 alt="Elena Stazhkova Real Estate"
                 fill
-                className="object-contain"
+                className="object-contain object-left"
                 priority
               />
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-medium text-gray-700">
+          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-gray-700">
             <a href="#about" className="hover:text-[#20c063] transition-colors">
               {navLabels.about}
             </a>
@@ -113,7 +107,7 @@ export default function Navbar({ lang }: NavbarProps) {
               </Link>
             </div>
 
-            {/* WhatsApp */}
+            {/* WhatsApp Direct */}
             <a
               href="https://wa.me/13475154087"
               target="_blank"
@@ -124,7 +118,7 @@ export default function Navbar({ lang }: NavbarProps) {
               <MessageCircle className="w-5 h-5" />
             </a>
 
-            {/* Phone */}
+            {/* Direct Call Button */}
             <a
               href="tel:+13475154087"
               className="flex items-center gap-2 text-sm font-semibold text-gray-800 hover:text-[#20c063] transition-colors"
