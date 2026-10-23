@@ -155,19 +155,16 @@ export default function GuidesPreview({ guides, lang }: GuidesPreviewProps) {
                 className="relative aspect-square p-6 sm:p-7 rounded-3xl bg-white border border-gray-100 hover:border-[#20c063] hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group overflow-hidden shadow-xs"
               >
                 {/* Big subtle watermark step number */}
-                <div className="absolute top-2 right-4 text-6xl font-black text-gray-100/70 group-hover:text-emerald-100/90 transition-colors select-none pointer-events-none">
+                <div className="absolute top-3 right-5 text-6xl font-black text-gray-100/80 group-hover:text-emerald-100/90 transition-colors select-none pointer-events-none">
                   0{stepNumber}
                 </div>
 
-                {/* Top: Icon + Step Badge */}
+                {/* Top: Infographic Icon */}
                 <div className="relative z-10">
-                  <div className="flex items-center justify-between mb-4">
+                  <div className="mb-4">
                     <div className="w-12 h-12 rounded-2xl bg-[#eafaf1] text-[#20c063] border border-emerald-100/80 flex items-center justify-center group-hover:bg-[#20c063] group-hover:text-white group-hover:scale-105 transition-all shadow-xs">
                       <IconComponent className="w-6 h-6" />
                     </div>
-                    <span className="text-[11px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-100/60">
-                      {titles.step} {stepNumber}
-                    </span>
                   </div>
 
                   {/* Micro-category */}
