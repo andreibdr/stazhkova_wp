@@ -117,60 +117,61 @@ export default function Footer({ lang }: FooterProps) {
             </div>
           </div>
 
-          {/* Social Profiles with Authentic Brand Icons */}
+          {/* Social Profiles with Icons Row + Zillow & WhatsApp */}
           <div>
             <h4 className="font-bold text-sm tracking-wider uppercase text-white mb-4">
               {lang === 'ru' ? 'Соцсети и Профили' : lang === 'es' ? 'Perfiles Sociales' : 'Social Profiles'}
             </h4>
-            <div className="flex flex-col gap-2.5 text-xs sm:text-sm text-gray-300">
+
+            {/* Social Icons in a Row without text */}
+            <div className="flex items-center gap-2.5 mb-4">
               <a
                 href="https://www.linkedin.com/in/stazhkova-elena/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 hover:text-[#0a66c2] transition-colors group"
+                title="LinkedIn"
+                aria-label="LinkedIn"
+                className="w-9 h-9 rounded-xl bg-gray-800 text-gray-300 hover:bg-[#0a66c2] hover:text-white flex items-center justify-center transition-all shadow-xs"
               >
-                <span className="p-1.5 rounded-lg bg-gray-800 text-gray-300 group-hover:bg-[#0a66c2] group-hover:text-white transition-all">
-                  <LinkedInIcon className="w-4 h-4" />
-                </span>
-                <span>LinkedIn</span>
+                <LinkedInIcon className="w-4 h-4" />
               </a>
 
               <a
                 href="https://www.instagram.com/elena_realestate_miami/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 hover:text-[#e4405f] transition-colors group"
+                title="Instagram"
+                aria-label="Instagram"
+                className="w-9 h-9 rounded-xl bg-gray-800 text-gray-300 hover:bg-[#e4405f] hover:text-white flex items-center justify-center transition-all shadow-xs"
               >
-                <span className="p-1.5 rounded-lg bg-gray-800 text-gray-300 group-hover:bg-[#e4405f] group-hover:text-white transition-all">
-                  <InstagramIcon className="w-4 h-4" />
-                </span>
-                <span>Instagram</span>
+                <InstagramIcon className="w-4 h-4" />
               </a>
 
               <a
                 href="https://www.youtube.com/@ElenaStazhkova"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 hover:text-[#ff0000] transition-colors group"
+                title="YouTube @ElenaStazhkova"
+                aria-label="YouTube"
+                className="w-9 h-9 rounded-xl bg-gray-800 text-gray-300 hover:bg-[#ff0000] hover:text-white flex items-center justify-center transition-all shadow-xs"
               >
-                <span className="p-1.5 rounded-lg bg-gray-800 text-gray-300 group-hover:bg-[#ff0000] group-hover:text-white transition-all">
-                  <YoutubeIcon className="w-4 h-4" />
-                </span>
-                <span>YouTube @ElenaStazhkova</span>
+                <YoutubeIcon className="w-4 h-4" />
               </a>
 
               <a
                 href="https://www.facebook.com/ElenaStazhkovaMiami"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2.5 hover:text-[#1877f2] transition-colors group"
+                title="Facebook"
+                aria-label="Facebook"
+                className="w-9 h-9 rounded-xl bg-gray-800 text-gray-300 hover:bg-[#1877f2] hover:text-white flex items-center justify-center transition-all shadow-xs"
               >
-                <span className="p-1.5 rounded-lg bg-gray-800 text-gray-300 group-hover:bg-[#1877f2] group-hover:text-white transition-all">
-                  <FacebookIcon className="w-4 h-4" />
-                </span>
-                <span>Facebook</span>
+                <FacebookIcon className="w-4 h-4" />
               </a>
+            </div>
 
+            {/* Zillow and WhatsApp with text */}
+            <div className="space-y-2.5 text-xs sm:text-sm text-gray-300">
               <a
                 href="https://www.zillow.com/profile/ElenaStazhkova"
                 target="_blank"
