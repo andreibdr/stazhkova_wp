@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Phone, MessageCircle, Home } from 'lucide-react';
 
 interface QuickBarProps {
@@ -8,6 +9,8 @@ interface QuickBarProps {
 }
 
 export default function QuickBar({ lang }: QuickBarProps) {
+  const homePath = lang === 'en' ? '/' : `/${lang}`;
+
   const labels = {
     ru: { call: 'Звонок', wa: 'WhatsApp', quiz: 'Подобрать дом' },
     en: { call: 'Call', wa: 'WhatsApp', quiz: 'Find Home' },
@@ -35,13 +38,13 @@ export default function QuickBar({ lang }: QuickBarProps) {
           <span className="text-[10px] font-bold mt-0.5">{labels.wa}</span>
         </a>
 
-        <a
-          href="#quiz"
+        <Link
+          href={`${homePath}#quiz`}
           className="flex flex-col items-center justify-center py-1.5 rounded-xl bg-[#20c063] text-white hover:bg-[#1aa654] transition-colors"
         >
           <Home className="w-5 h-5" />
           <span className="text-[10px] font-bold mt-0.5">{labels.quiz}</span>
-        </a>
+        </Link>
       </div>
     </div>
   );

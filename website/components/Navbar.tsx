@@ -50,6 +50,12 @@ export default function Navbar({ lang }: NavbarProps) {
   const guidesLink = lang === 'en' ? '/guides' : `/${lang}/guides`;
   const videoLink = lang === 'en' ? '/video' : `/${lang}/video`;
 
+  const homePath = lang === 'en' ? '/' : `/${lang}`;
+  const aboutLink = `${homePath}#about`;
+  const workLink = `${homePath}#workelena`;
+  const reviewsLink = `${homePath}#reviews`;
+  const findHomeLink = `${homePath}#findmyhome`;
+
   const pathname = usePathname() || '';
 
   const getTargetUrl = (targetLang: 'en' | 'ru' | 'es') => {
@@ -86,15 +92,15 @@ export default function Navbar({ lang }: NavbarProps) {
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-gray-700">
-            <a href="#about" className="hover:text-[#20c063] transition-colors">
+            <Link href={aboutLink} className="hover:text-[#20c063] transition-colors">
               {navLabels.about}
-            </a>
-            <a href="#workelena" className="hover:text-[#20c063] transition-colors">
+            </Link>
+            <Link href={workLink} className="hover:text-[#20c063] transition-colors">
               {navLabels.work}
-            </a>
-            <a href="#reviews" className="hover:text-[#20c063] transition-colors">
+            </Link>
+            <Link href={reviewsLink} className="hover:text-[#20c063] transition-colors">
               {navLabels.reviews}
-            </a>
+            </Link>
             <Link href={guidesLink} className="hover:text-[#20c063] transition-colors">
               {navLabels.guides}
             </Link>
@@ -157,12 +163,12 @@ export default function Navbar({ lang }: NavbarProps) {
             </a>
 
             {/* CTA Button */}
-            <a
-              href="#findmyhome"
+            <Link
+              href={findHomeLink}
               className="px-5 py-2.5 bg-[#20c063] hover:bg-[#1aa654] text-white text-sm font-semibold rounded-xl shadow-xs transition-all hover:shadow-md"
             >
               {navLabels.findHome}
-            </a>
+            </Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -205,27 +211,27 @@ export default function Navbar({ lang }: NavbarProps) {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden border-t border-gray-100 bg-white px-4 pt-3 pb-6 space-y-3">
-          <a
-            href="#about"
+          <Link
+            href={aboutLink}
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
           >
             {navLabels.about}
-          </a>
-          <a
-            href="#workelena"
+          </Link>
+          <Link
+            href={workLink}
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
           >
             {navLabels.work}
-          </a>
-          <a
-            href="#reviews"
+          </Link>
+          <Link
+            href={reviewsLink}
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
           >
             {navLabels.reviews}
-          </a>
+          </Link>
           <Link
             href={guidesLink}
             onClick={() => setMobileMenuOpen(false)}
@@ -248,13 +254,13 @@ export default function Navbar({ lang }: NavbarProps) {
               <Phone className="w-4 h-4 text-[#20c063]" />
               +1 (347) 515-4087
             </a>
-            <a
-              href="#findmyhome"
+            <Link
+              href={findHomeLink}
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center w-full py-2.5 bg-[#20c063] text-white rounded-xl font-semibold text-sm"
             >
               {navLabels.findHome}
-            </a>
+            </Link>
           </div>
         </div>
       )}
