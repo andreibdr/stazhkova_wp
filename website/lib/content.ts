@@ -99,15 +99,61 @@ export function saveReviews(reviews: Review[]) {
   fs.writeFileSync(file, JSON.stringify(reviews, null, 2), 'utf-8');
 }
 
+export function formatGuideContent(content: string): string {
+  if (!content) return '';
+
+  // 1. Replace Gutenberg wp:embed blocks with YouTube URL
+  let html = content.replace(
+    /<!--\s*wp:embed\s*\{[^}]*\"url\"\s*:\s*\"([^\"]+)\"[^}]*\}\s*-->\s*<figure[^>]*>\s*<div[^>]*>[\s\S]*?<\/div>\s*<\/figure>\s*<!--\s*\/wp:embed\s*-->/gi,
+    (_, url) => {
+      const match = url.match(/(?:youtube\.com\/(?:watch\?.*v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i);
+      if (match) {
+        return `<div class="my-8 aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-black"><iframe src="https://www.youtube-nocookie.com/embed/${match[1]}" title="Elena Stazhkova Real Estate Guide Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full border-0" loading="lazy"></iframe></div>`;
+      }
+      return url;
+    }
+  );
+
+  // 2. Replace any leftover wp-block-embed figure with YouTube
+  html = html.replace(
+    /<figure[^>]*class=\"[^\"]*wp-block-embed[^\"]*\"[^>]*>[\s\S]*?https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\/[^\s\"\'<>]+\s*[\s\S]*?<\/figure>/gi,
+    (fig) => {
+      const match = fig.match(/(?:youtube\.com\/(?:watch\?.*v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i);
+      if (match) {
+        return `<div class="my-8 aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-black"><iframe src="https://www.youtube-nocookie.com/embed/${match[1]}" title="Elena Stazhkova Real Estate Guide Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full border-0" loading="lazy"></iframe></div>`;
+      }
+      return fig;
+    }
+  );
+
+  // 3. Replace standalone paragraphs containing a YouTube link
+  html = html.replace(
+    /<p>\s*(https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be)\/[^\s\"\'<>]+)\s*<\/p>/gi,
+    (_, url) => {
+      const match = url.match(/(?:youtube\.com\/(?:watch\?.*v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/i);
+      if (match) {
+        return `<div class="my-8 aspect-video w-full rounded-2xl overflow-hidden shadow-lg border border-gray-200 bg-black"><iframe src="https://www.youtube-nocookie.com/embed/${match[1]}" title="Elena Stazhkova Real Estate Guide Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full border-0" loading="lazy"></iframe></div>`;
+      }
+      return `<p>${url}</p>`;
+    }
+  );
+
+  return html;
+}
+
 export function getGuides(lang?: string): Guide[] {
   try {
     const file = path.join(contentDir, 'guides.json');
     if (fs.existsSync(file)) {
       const guides: Guide[] = JSON.parse(fs.readFileSync(file, 'utf-8'));
+      const formatted = guides.map((g) => ({
+        ...g,
+        content: formatGuideContent(g.content),
+      }));
       if (lang) {
-        return guides.filter((g) => g.lang === lang);
+        return formatted.filter((g) => g.lang === lang);
       }
-      return guides;
+      return formatted;
     }
   } catch (e) {
     console.error('Error reading guides:', e);
