@@ -57,7 +57,7 @@ export default function Footer({ lang }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#1f201d] text-white pt-12 pb-20 sm:pb-10 border-t border-gray-800 relative overflow-hidden">
+    <footer className="bg-[#1f201d] text-white pt-10 pb-14 sm:pb-6 border-t border-white/[0.06] relative overflow-hidden">
       {/* Background Florida Skyline watermark — 0 added height */}
       <div className="absolute inset-x-0 bottom-0 pointer-events-none select-none overflow-hidden flex justify-center z-0 opacity-[0.035]">
         <Image
@@ -75,7 +75,7 @@ export default function Footer({ lang }: FooterProps) {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-8 border-b border-gray-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-6 border-b border-white/[0.06]">
           {/* Brand Col */}
           <div className="space-y-4">
             {/* Official Logo on Dark Footer */}
@@ -222,7 +222,7 @@ export default function Footer({ lang }: FooterProps) {
         </div>
 
         {/* Copyright Centered */}
-        <div className="pt-6 text-center text-xs text-gray-400">
+        <div className="pt-4 text-center text-xs text-gray-400">
           <p>
             Copyright 2025-2026 | Big Data Realty. All Rights Reserved | Made by{' '}
             <a
