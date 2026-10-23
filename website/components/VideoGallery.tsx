@@ -89,9 +89,9 @@ export default function VideoGallery({ videos, lang }: VideoGalleryProps) {
 
           <div className="relative aspect-video w-full rounded-2xl overflow-hidden shadow-md bg-black">
             <iframe
-              src={`https://www.youtube-nocookie.com/embed/${activeVideo.id}?autoplay=1`}
+              src={`https://www.youtube-nocookie.com/embed/${activeVideo.id}`}
               title={activeVideo.title}
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               className="w-full h-full border-0"
             />

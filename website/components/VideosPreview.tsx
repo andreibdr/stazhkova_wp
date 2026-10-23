@@ -116,9 +116,9 @@ export default function VideosPreview({ videos, lang }: VideosPreviewProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <iframe
-              src={`https://www.youtube-nocookie.com/embed/${modalVideoId}?autoplay=1`}
+              src={`https://www.youtube-nocookie.com/embed/${modalVideoId}`}
               title="YouTube Video"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               className="w-full h-full border-0"
             />
