@@ -47,14 +47,14 @@ export default function Footer({ lang }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#1f201d] text-white pt-16 pb-24 sm:pb-16 border-t border-gray-800">
+    <footer className="bg-[#1f201d] text-white pt-12 pb-20 sm:pb-10 border-t border-gray-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-8 border-b border-gray-800">
           {/* Brand Col */}
           <div className="space-y-4">
             {/* Official Logo on Dark Footer */}
@@ -168,8 +168,8 @@ export default function Footer({ lang }: FooterProps) {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
+        {/* Copyright Centered */}
+        <div className="pt-6 text-center text-xs text-gray-400">
           <p>
             Copyright 2025-2026 | Big Data Realty. All Rights Reserved | Made by{' '}
             <a
@@ -180,9 +180,6 @@ export default function Footer({ lang }: FooterProps) {
             >
               fewhands.com
             </a>
-          </p>
-          <p className="text-gray-500">
-            Equal Housing Opportunity. REALTOR®. Information is deemed reliable but not guaranteed.
           </p>
         </div>
       </div>
