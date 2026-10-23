@@ -11,8 +11,20 @@ export default function Hero({ content, lang }: HeroProps) {
   const { hero } = content;
 
   return (
-    <section className="bg-[#f7fbfc] pt-12 pb-14 border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#f7fbfc] pt-12 pb-14 border-b border-gray-100 relative overflow-hidden">
+      {/* Subtle Florida Skyline as background watermark inside Hero — 0 added height */}
+      <div className="absolute inset-x-0 bottom-0 pointer-events-none select-none overflow-hidden flex justify-center z-0 opacity-[0.05]">
+        <Image
+          src="/images/miami-skyline-silhouette.png"
+          alt=""
+          width={1332}
+          height={350}
+          className="w-full max-w-5xl h-auto object-contain object-bottom"
+          priority={false}
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main Centered Header */}
         <div className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl lg:text-[50px] tracking-tight leading-tight">
@@ -64,17 +76,6 @@ export default function Hero({ content, lang }: HeroProps) {
               </a>
             </div>
           </div>
-        </div>
-
-        {/* Subtle Florida Skyline Watermark at bottom boundary */}
-        <div className="mt-8 -mb-10 sm:-mb-12 flex justify-center overflow-hidden pointer-events-none select-none opacity-[0.08]">
-          <Image
-            src="/images/miami-skyline-silhouette.png"
-            alt="Miami Skyline"
-            width={1332}
-            height={350}
-            className="w-full max-w-4xl h-auto object-contain"
-          />
         </div>
       </div>
     </section>

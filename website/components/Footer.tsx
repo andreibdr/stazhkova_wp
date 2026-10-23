@@ -57,24 +57,24 @@ export default function Footer({ lang }: FooterProps) {
   };
 
   return (
-    <footer className="bg-[#1f201d] text-white pt-12 pb-20 sm:pb-10 border-t border-gray-800">
+    <footer className="bg-[#1f201d] text-white pt-12 pb-20 sm:pb-10 border-t border-gray-800 relative overflow-hidden">
+      {/* Background Florida Skyline watermark — 0 added height */}
+      <div className="absolute inset-x-0 bottom-0 pointer-events-none select-none overflow-hidden flex justify-center z-0 opacity-[0.035]">
+        <Image
+          src="/images/miami-skyline-silhouette-white.png"
+          alt=""
+          width={1332}
+          height={350}
+          className="w-full max-w-5xl h-auto object-contain object-bottom"
+        />
+      </div>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Subtle Florida Skyline Watermark */}
-        <div className="pb-8 -mt-4 flex justify-center overflow-hidden pointer-events-none select-none opacity-[0.06]">
-          <Image
-            src="/images/miami-skyline-silhouette-white.png"
-            alt="Miami Skyline"
-            width={1332}
-            height={350}
-            className="w-full max-w-3xl h-auto object-contain"
-          />
-        </div>
-
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-8 border-b border-gray-800">
           {/* Brand Col */}
           <div className="space-y-4">
