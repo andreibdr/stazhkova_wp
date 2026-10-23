@@ -26,6 +26,8 @@ export default function VideoGallery({ videos, lang }: VideoGalleryProps) {
       watchOnYt: 'Смотреть на YouTube',
       nowPlaying: 'Сейчас воспроизводится',
       latestVideos: 'Все видеообзоры',
+      playVideo: 'Смотреть',
+      noVideos: 'Новые видео на русском языке скоро появятся на канале.',
     },
     en: {
       tag: 'YouTube Channel',
@@ -34,6 +36,8 @@ export default function VideoGallery({ videos, lang }: VideoGalleryProps) {
       watchOnYt: 'Watch on YouTube',
       nowPlaying: 'Now Playing',
       latestVideos: 'All Video Tours & Analysis',
+      playVideo: 'Play Video',
+      noVideos: 'New videos will be published soon.',
     },
     es: {
       tag: 'Canal de YouTube',
@@ -42,8 +46,18 @@ export default function VideoGallery({ videos, lang }: VideoGalleryProps) {
       watchOnYt: 'Ver en YouTube',
       nowPlaying: 'Reproduciendo ahora',
       latestVideos: 'Todos los recorridos en video',
+      playVideo: 'Ver video',
+      noVideos: 'Nuevos videos en español se publicarán próximamente.',
     },
   }[lang];
+
+  if (videos.length === 0) {
+    return (
+      <div className="bg-white rounded-3xl p-12 text-center border border-gray-100 shadow-sm">
+        <p className="text-gray-500 font-medium">{t.noVideos}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-12">
@@ -100,64 +114,66 @@ export default function VideoGallery({ videos, lang }: VideoGalleryProps) {
       )}
 
       {/* Grid of all videos */}
-      <div>
-        <h4 className="text-2xl font-bold text-[#31312c] mb-6">
-          {t.latestVideos}
-        </h4>
+      {videos.length > 1 && (
+        <div>
+          <h4 className="text-2xl font-bold text-[#31312c] mb-6">
+            {t.latestVideos}
+          </h4>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {videos.map((video) => {
-            const isSelected = video.id === activeVideoId;
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {videos.map((video) => {
+              const isSelected = video.id === activeVideoId;
 
-            return (
-              <div
-                key={video.id}
-                onClick={() => {
-                  setActiveVideoId(video.id);
-                  window.scrollTo({ top: 120, behavior: 'smooth' });
-                }}
-                className={`group cursor-pointer bg-white rounded-3xl p-4 border transition-all duration-300 flex flex-col justify-between ${
-                  isSelected
-                    ? 'border-red-500 ring-2 ring-red-100 shadow-lg'
-                    : 'border-gray-100 hover:border-red-300 hover:shadow-xl'
-                }`}
-              >
-                <div>
-                  <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-4 bg-gray-100">
-                    <Image
-                      src={video.thumbnail || `/images/youtube/${video.id}.jpg`}
-                      alt={video.title}
-                      fill
-                      unoptimized
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
-                      <div className="w-12 h-12 rounded-full bg-red-600 group-hover:scale-110 text-white flex items-center justify-center shadow-lg transition-transform">
-                        <Play className="w-5 h-5 fill-current ml-0.5" />
+              return (
+                <div
+                  key={video.id}
+                  onClick={() => {
+                    setActiveVideoId(video.id);
+                    window.scrollTo({ top: 120, behavior: 'smooth' });
+                  }}
+                  className={`group cursor-pointer bg-white rounded-3xl p-4 border transition-all duration-300 flex flex-col justify-between ${
+                    isSelected
+                      ? 'border-red-500 ring-2 ring-red-100 shadow-lg'
+                      : 'border-gray-100 hover:border-red-300 hover:shadow-xl'
+                  }`}
+                >
+                  <div>
+                    <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-4 bg-gray-100">
+                      <Image
+                        src={video.thumbnail || `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`}
+                        alt={video.title}
+                        fill
+                        unoptimized
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+                        <div className="w-12 h-12 rounded-full bg-red-600 group-hover:scale-110 text-white flex items-center justify-center shadow-lg transition-transform">
+                          <Play className="w-5 h-5 fill-current ml-0.5" />
+                        </div>
                       </div>
                     </div>
+
+                    <h5 className="font-bold text-gray-900 text-sm sm:text-base leading-snug line-clamp-2 group-hover:text-red-600 transition-colors mb-2">
+                      {video.title}
+                    </h5>
                   </div>
 
-                  <h5 className="font-bold text-gray-900 text-sm sm:text-base leading-snug line-clamp-2 group-hover:text-red-600 transition-colors mb-2">
-                    {video.title}
-                  </h5>
+                  <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
+                    <span className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {video.published}
+                    </span>
+                    <span className="font-semibold text-red-600 group-hover:underline">
+                      {t.playVideo}
+                    </span>
+                  </div>
                 </div>
-
-                <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-500">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5" />
-                    {video.published}
-                  </span>
-                  <span className="font-semibold text-red-600 group-hover:underline">
-                    Play Video
-                  </span>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

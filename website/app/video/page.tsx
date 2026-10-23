@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default async function VideoPage() {
   const lang = 'en';
-  const videos = await getChannelVideos();
+  const videos = await getChannelVideos(lang);
 
   return (
     <>

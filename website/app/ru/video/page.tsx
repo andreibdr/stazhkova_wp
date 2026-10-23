@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 
 export default async function RussianVideoPage() {
   const lang = 'ru';
-  const videos = await getChannelVideos();
+  const videos = await getChannelVideos(lang);
 
   return (
     <>
