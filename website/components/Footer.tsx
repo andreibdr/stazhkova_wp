@@ -1,9 +1,8 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Mail, MapPin, ShieldCheck, Lock } from 'lucide-react';
+import { Phone, Mail, MapPin, ShieldCheck } from 'lucide-react';
 
 interface FooterProps {
   lang: 'ru' | 'en' | 'es';
@@ -157,7 +156,7 @@ export default function Footer({ lang }: FooterProps) {
             </div>
           </div>
 
-          {/* Areas Served & Admin */}
+          {/* Areas Served */}
           <div>
             <h4 className="font-bold text-sm tracking-wider uppercase text-white mb-4">
               {lang === 'ru' ? 'Локации' : lang === 'es' ? 'Zonas' : 'Areas'}
@@ -166,15 +165,6 @@ export default function Footer({ lang }: FooterProps) {
               Sunny Isles Beach, Aventura, Miami Beach, Brickell, Bal Harbour,
               Hollywood, Hallandale Beach, Fort Lauderdale.
             </p>
-            <div className="mt-4 pt-4 border-t border-gray-800">
-              <Link
-                href="/admin"
-                className="inline-flex items-center gap-1.5 text-xs text-gray-500 hover:text-emerald-400 transition-colors"
-              >
-                <Lock className="w-3.5 h-3.5" />
-                <span>Admin Login</span>
-              </Link>
-            </div>
           </div>
         </div>
 
