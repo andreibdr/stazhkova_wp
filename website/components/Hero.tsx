@@ -12,6 +12,18 @@ export default function Hero({ content, lang }: HeroProps) {
 
   return (
     <section className="bg-[#f7fbfc] pt-12 pb-14 border-b border-gray-100 relative overflow-hidden">
+      {/* Subtle Florida Palms Watermark pinned directly to the bottom border & aligned to the right */}
+      <div className="absolute right-2 sm:right-8 lg:right-16 xl:right-24 bottom-0 w-48 sm:w-64 md:w-80 lg:w-96 pointer-events-none select-none z-0 opacity-[0.07] overflow-hidden leading-none">
+        <Image
+          src="/images/florida-palms-silhouette.png"
+          alt=""
+          width={812}
+          height={1112}
+          className="w-full h-auto object-contain object-bottom block"
+          priority={false}
+        />
+      </div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main Centered Header */}
         <div className="text-center mb-10">
@@ -39,20 +51,8 @@ export default function Hero({ content, lang }: HeroProps) {
           </div>
 
           {/* Right Column: 5 Bullet points with FontAwesome checkmark + CTA */}
-          <div className="lg:col-span-7 space-y-5 relative">
-            {/* Subtle Florida Palms Watermark in lower right behind text */}
-            <div className="absolute right-0 -bottom-6 sm:-bottom-8 w-56 sm:w-72 md:w-80 pointer-events-none select-none z-0 opacity-[0.06] overflow-hidden">
-              <Image
-                src="/images/florida-palms-silhouette.png"
-                alt=""
-                width={896}
-                height={1199}
-                className="w-full h-auto object-contain object-bottom-right"
-                priority={false}
-              />
-            </div>
-
-            <div className="space-y-3.5 relative z-10">
+          <div className="lg:col-span-7 space-y-5">
+            <div className="space-y-3.5">
               {hero.bullets.map((bullet: string, idx: number) => (
                 <div key={idx} className="flex items-start gap-3">
                   <CheckCircle className="w-5 h-5 text-[#20c063] shrink-0 mt-0.5" />
@@ -63,11 +63,11 @@ export default function Hero({ content, lang }: HeroProps) {
               ))}
             </div>
 
-            <p className="pt-2 text-[15px] sm:text-[16px] font-medium text-gray-900 leading-relaxed relative z-10">
+            <p className="pt-2 text-[15px] sm:text-[16px] font-medium text-gray-900 leading-relaxed">
               {hero.cta_text}
             </p>
 
-            <div className="pt-2 relative z-10">
+            <div className="pt-2">
               <a
                 href="#findmyhome"
                 className="inline-block px-8 py-3.5 bg-[#31312c] hover:bg-[#20c063] text-white font-bold text-sm tracking-wide uppercase rounded-xl shadow-md transition-all"
