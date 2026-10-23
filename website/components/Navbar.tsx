@@ -18,6 +18,7 @@ export default function Navbar({ lang }: NavbarProps) {
       work: 'Работаем с Еленой',
       reviews: 'Отзывы',
       guides: 'Гайды',
+      video: 'Видео',
       findHome: 'Найти мой дом',
     },
     en: {
@@ -25,6 +26,7 @@ export default function Navbar({ lang }: NavbarProps) {
       work: 'Work with Elena',
       reviews: 'Reviews',
       guides: 'Guides',
+      video: 'Video',
       findHome: 'Find My Home',
     },
     es: {
@@ -32,6 +34,7 @@ export default function Navbar({ lang }: NavbarProps) {
       work: 'Trabaja con Elena',
       reviews: 'Reseñas',
       guides: 'Guías',
+      video: 'Video',
       findHome: 'Encuéntrame mi casa',
     },
   }[lang];
@@ -43,6 +46,7 @@ export default function Navbar({ lang }: NavbarProps) {
   };
 
   const guidesLink = lang === 'en' ? '/guides' : `/${lang}/guides`;
+  const videoLink = lang === 'en' ? '/video' : `/${lang}/video`;
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
@@ -74,6 +78,9 @@ export default function Navbar({ lang }: NavbarProps) {
             </a>
             <Link href={guidesLink} className="hover:text-[#20c063] transition-colors">
               {navLabels.guides}
+            </Link>
+            <Link href={videoLink} className="hover:text-[#20c063] transition-colors">
+              {navLabels.video}
             </Link>
           </nav>
 
@@ -200,6 +207,13 @@ export default function Navbar({ lang }: NavbarProps) {
             className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
           >
             {navLabels.guides}
+          </Link>
+          <Link
+            href={videoLink}
+            onClick={() => setMobileMenuOpen(false)}
+            className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
+          >
+            {navLabels.video}
           </Link>
           <div className="pt-2 border-t border-gray-100 flex flex-col gap-2">
             <a

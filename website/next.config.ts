@@ -15,6 +15,26 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/youtube',
+        destination: '/video',
+        permanent: true,
+      },
+      {
+        source: '/videos',
+        destination: '/video',
+        permanent: true,
+      },
+      {
+        source: '/es/youtube',
+        destination: '/es/video',
+        permanent: true,
+      },
+      {
+        source: '/ru/youtube',
+        destination: '/ru/video',
+        permanent: true,
+      },
+      {
         source: '/guides-en',
         destination: '/guides',
         permanent: true,
