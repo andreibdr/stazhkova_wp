@@ -38,13 +38,14 @@ export default function WorkWithElena({ data }: WorkProps) {
           </div>
 
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[480px] aspect-square rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-white">
+            {/* Circular Photo matching authentic WordPress vc_box_circle style */}
+            <div className="relative w-72 sm:w-80 lg:w-[400px] h-72 sm:h-80 lg:h-[400px] aspect-square rounded-full overflow-hidden shadow-2xl border-8 border-white bg-white">
               <Image
                 src="/images/image01.webp"
-                alt="Work with Elena Stazhkova"
+                alt="Elena Stazhkova Real Estate"
                 fill
                 className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 480px"
+                sizes="(max-width: 1024px) 100vw, 400px"
                 priority
               />
             </div>
