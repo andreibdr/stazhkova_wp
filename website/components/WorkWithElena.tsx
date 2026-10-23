@@ -38,14 +38,14 @@ export default function WorkWithElena({ data }: WorkProps) {
           </div>
 
           <div className="lg:col-span-5 flex justify-center">
-            {/* Circular Photo matching vc_box_circle_2 image01.jpg */}
-            <div className="relative w-72 sm:w-80 h-72 sm:h-80 rounded-full overflow-hidden shadow-2xl border-8 border-[#f7fbfc]">
+            {/* Circular Photo matching vc_box_circle_2 image01.webp with head completely in frame */}
+            <div className="relative w-64 sm:w-72 h-64 sm:h-72 rounded-full overflow-hidden shadow-2xl border-6 border-[#f7fbfc] bg-white">
               <Image
-                src="/images/image01.jpg"
+                src="/images/image01.webp"
                 alt="Work with Elena Stazhkova"
                 fill
-                className="object-cover"
-                sizes="(max-width: 768px) 280px, 320px"
+                className="object-cover object-top"
+                sizes="(max-width: 768px) 250px, 300px"
               />
             </div>
           </div>

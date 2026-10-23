@@ -11,10 +11,10 @@ export default function Hero({ content, lang }: HeroProps) {
   const { hero } = content;
 
   return (
-    <section className="bg-[#f7fbfc] pt-14 pb-14 border-b border-gray-100">
+    <section className="bg-[#f7fbfc] pt-12 pb-14 border-b border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Centered Header */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10">
           <h1 className="text-4xl sm:text-5xl lg:text-[50px] tracking-tight leading-tight">
             <span className="font-light text-[#31312c]">{hero.title_main} </span>
             <span className="font-bold text-[#20c063]">{hero.title_accent}</span>
@@ -25,27 +25,27 @@ export default function Hero({ content, lang }: HeroProps) {
         </div>
 
         {/* 2 Columns: Photo (Left) + Bullets & CTA (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-          {/* Left Column: Elena Photo (lena-4.png) with vc_box_rounded */}
-          <div className="lg:col-span-6 flex justify-center">
-            <div className="relative w-full max-w-lg aspect-[4/5] rounded-3xl overflow-hidden shadow-lg border-4 border-white">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          {/* Left Column: Full Uncropped Elena Photo matching vc_box_rounded */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="relative rounded-3xl shadow-lg border-4 border-white bg-white p-1 flex items-center justify-center">
               <Image
-                src={hero.photo || '/images/lena-4.png'}
+                src={hero.photo || '/images/lena-4.webp'}
                 alt="Elena Stazhkova Real Estate Agent"
-                fill
+                width={380}
+                height={570}
                 priority
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 550px"
+                className="w-auto h-auto max-h-[460px] object-contain rounded-2xl"
               />
             </div>
           </div>
 
           {/* Right Column: 5 Bullet points with FontAwesome checkmark + CTA */}
-          <div className="lg:col-span-6 space-y-5">
-            <div className="space-y-4">
+          <div className="lg:col-span-7 space-y-5">
+            <div className="space-y-3.5">
               {hero.bullets.map((bullet: string, idx: number) => (
                 <div key={idx} className="flex items-start gap-3">
-                  <CheckCircle className="w-5 h-5 text-[#20c063] shrink-0 mt-1" />
+                  <CheckCircle className="w-5 h-5 text-[#20c063] shrink-0 mt-0.5" />
                   <p className="text-[15px] sm:text-[16px] text-[#000000] leading-relaxed font-normal">
                     {bullet}
                   </p>
@@ -53,7 +53,7 @@ export default function Hero({ content, lang }: HeroProps) {
               ))}
             </div>
 
-            <p className="pt-2 text-[16px] font-medium text-gray-900 leading-relaxed">
+            <p className="pt-2 text-[15px] sm:text-[16px] font-medium text-gray-900 leading-relaxed">
               {hero.cta_text}
             </p>
 
@@ -77,7 +77,7 @@ export default function Hero({ content, lang }: HeroProps) {
             </div>
 
             {/* Official Real Estate Trust Badges */}
-            <div className="pt-4 border-t border-gray-200/60 flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-500">
+            <div className="pt-3 border-t border-gray-200/60 flex flex-wrap items-center gap-3 text-xs font-semibold text-gray-500">
               <span className="px-2.5 py-1 rounded-md bg-white border border-gray-200 text-gray-700">
                 REALTOR®
               </span>

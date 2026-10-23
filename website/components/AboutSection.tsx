@@ -20,15 +20,15 @@ export default function AboutSection({ data }: AboutProps) {
 
         {/* 2 Columns: Photo (Left) + 3 Message Cards (Right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left: Original Elena Photo (Elena_green.webp) */}
+          {/* Left: Original Elena Photo (Elena_green.webp) - Fully visible, no crop */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden shadow-xl border-4 border-white">
+            <div className="relative rounded-3xl shadow-xl border-4 border-white bg-white p-1 flex items-center justify-center">
               <Image
                 src={data.photo || '/images/elena_green.webp'}
                 alt="Elena Stazhkova"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 450px"
+                width={360}
+                height={580}
+                className="w-auto h-auto max-h-[450px] object-contain rounded-2xl"
               />
             </div>
           </div>
