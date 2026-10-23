@@ -5,6 +5,7 @@ const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const langParam = request.nextUrl.searchParams.get('lang');
 
   // Skip static files, api, admin, next internals
   if (
@@ -20,39 +21,47 @@ export function middleware(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // If visiting Russian or Spanish pages directly, remember choice
-  if (pathname.startsWith('/ru')) {
+  // If user explicitly switched language via ?lang= param, remember it in cookie
+  if (langParam === 'en') {
     const response = NextResponse.next();
-    response.cookies.set('NEXT_LOCALE', 'ru', { path: '/', maxAge: 60 * 60 * 24 * 365 });
+    response.cookies.set('NEXT_LOCALE', 'en', { path: '/', maxAge: 60 * 60 * 24 * 365, sameSite: 'lax' });
     return response;
   }
-  if (pathname.startsWith('/es')) {
+  if (langParam === 'ru') {
     const response = NextResponse.next();
-    response.cookies.set('NEXT_LOCALE', 'es', { path: '/', maxAge: 60 * 60 * 24 * 365 });
+    response.cookies.set('NEXT_LOCALE', 'ru', { path: '/', maxAge: 60 * 60 * 24 * 365, sameSite: 'lax' });
+    return response;
+  }
+  if (langParam === 'es') {
+    const response = NextResponse.next();
+    response.cookies.set('NEXT_LOCALE', 'es', { path: '/', maxAge: 60 * 60 * 24 * 365, sameSite: 'lax' });
     return response;
   }
 
-  // Only auto-redirect on the root URL '/'
+  // Only auto-redirect on root URL '/'
   if (pathname === '/') {
-    // 1. Check if user already set an explicit language cookie
     const localeCookie = request.cookies.get('NEXT_LOCALE')?.value;
+
+    // If user has explicitly chosen English, ALWAYS serve English!
+    if (localeCookie === 'en') {
+      return NextResponse.next();
+    }
+
+    // Never redirect search engine bots on root
+    const userAgent = request.headers.get('user-agent') || '';
+    if (/bot|crawler|spider|crawling|googlebot|bingbot|yandex/i.test(userAgent)) {
+      return NextResponse.next();
+    }
+
+    // If user previously chose RU or ES explicitly, redirect them
     if (localeCookie === 'ru') {
       return NextResponse.redirect(new URL('/ru', request.url));
     }
     if (localeCookie === 'es') {
       return NextResponse.redirect(new URL('/es', request.url));
     }
-    if (localeCookie === 'en') {
-      return NextResponse.next();
-    }
 
-    // 2. Never redirect search engine bots on root
-    const userAgent = request.headers.get('user-agent') || '';
-    if (/bot|crawler|spider|crawling|googlebot|bingbot|yandex/i.test(userAgent)) {
-      return NextResponse.next();
-    }
-
-    // 3. Inspect browser Accept-Language header
+    // If first-time visitor with NO cookie set, inspect Accept-Language
     const acceptLanguage = request.headers.get('accept-language');
     if (acceptLanguage) {
       const preferences = acceptLanguage
@@ -65,17 +74,12 @@ export function middleware(request: NextRequest) {
 
       for (const item of preferences) {
         if (item.tag.startsWith('ru')) {
-          const response = NextResponse.redirect(new URL('/ru', request.url));
-          response.cookies.set('NEXT_LOCALE', 'ru', { path: '/', maxAge: 60 * 60 * 24 * 365 });
-          return response;
+          return NextResponse.redirect(new URL('/ru', request.url));
         }
         if (item.tag.startsWith('es')) {
-          const response = NextResponse.redirect(new URL('/es', request.url));
-          response.cookies.set('NEXT_LOCALE', 'es', { path: '/', maxAge: 60 * 60 * 24 * 365 });
-          return response;
+          return NextResponse.redirect(new URL('/es', request.url));
         }
         if (item.tag.startsWith('en')) {
-          // English preferred -> stay on default '/'
           break;
         }
       }

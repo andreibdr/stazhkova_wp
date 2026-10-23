@@ -62,48 +62,48 @@ export async function getChannelVideos(): Promise<YouTubeVideo[]> {
     console.error('Error fetching YouTube channel feed:', e);
   }
 
-  // Robust fallback of Elena Stazhkova latest horizontal public videos
+  // Robust fallback of Elena Stazhkova latest horizontal public videos with local thumbnails
   return [
     {
       id: 'MOB2LSCgWXE',
       title: 'Florida Homestead Exemption and the Buyer Tax Reset',
       published: '2026-08-08',
-      thumbnail: 'https://i.ytimg.com/vi/MOB2LSCgWXE/hqdefault.jpg',
+      thumbnail: '/images/youtube/MOB2LSCgWXE.jpg',
       url: 'https://www.youtube.com/watch?v=MOB2LSCgWXE',
     },
     {
       id: '4QQX9tDdrnE',
       title: 'St. Tropez Market Intelligence | Patience Gives You Negotiation Leverage',
       published: '2026-07-10',
-      thumbnail: 'https://i.ytimg.com/vi/4QQX9tDdrnE/hqdefault.jpg',
+      thumbnail: '/images/youtube/4QQX9tDdrnE.jpg',
       url: 'https://www.youtube.com/watch?v=4QQX9tDdrnE',
     },
     {
       id: '8j8A5yayEzQ',
       title: 'Trump Towers Sunny Isles market data reveals massive buyer advantage right now',
       published: '2026-06-22',
-      thumbnail: 'https://i.ytimg.com/vi/8j8A5yayEzQ/hqdefault.jpg',
+      thumbnail: '/images/youtube/8j8A5yayEzQ.jpg',
       url: 'https://www.youtube.com/watch?v=8j8A5yayEzQ',
     },
     {
       id: 'lhWRookt06g',
       title: 'Parque Towers Sunny Isles: Is This $137,000 Discount a Trap?',
       published: '2026-06-01',
-      thumbnail: 'https://i.ytimg.com/vi/lhWRookt06g/hqdefault.jpg',
+      thumbnail: '/images/youtube/lhWRookt06g.jpg',
       url: 'https://www.youtube.com/watch?v=lhWRookt06g',
     },
     {
       id: 'hRhz1-qc-lE',
       title: 'La Perla Sunny Isles: Huge Price Reductions?',
       published: '2026-05-27',
-      thumbnail: 'https://i.ytimg.com/vi/hRhz1-qc-lE/hqdefault.jpg',
+      thumbnail: '/images/youtube/hRhz1-qc-lE.jpg',
       url: 'https://www.youtube.com/watch?v=hRhz1-qc-lE',
     },
     {
       id: 'noxEndyrIFk',
       title: 'Poinciana Island Sunny Isles: Private Marina Condo Buyer Guide',
       published: '2026-05-21',
-      thumbnail: 'https://i.ytimg.com/vi/noxEndyrIFk/hqdefault.jpg',
+      thumbnail: '/images/youtube/noxEndyrIFk.jpg',
       url: 'https://www.youtube.com/watch?v=noxEndyrIFk',
     },
   ];

@@ -77,9 +77,10 @@ export default function VideosPreview({ videos, lang }: VideosPreviewProps) {
               <div>
                 <div className="relative aspect-video w-full rounded-2xl overflow-hidden mb-4 bg-gray-100 shadow-xs">
                   <Image
-                    src={video.thumbnail}
+                    src={video.thumbnail || `/images/youtube/${video.id}.jpg`}
                     alt={video.title}
                     fill
+                    unoptimized
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
