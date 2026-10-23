@@ -169,9 +169,19 @@ export default function Footer({ lang }: FooterProps) {
         </div>
 
         {/* Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-4">
-          <p>© 2026 Elena Stazhkova. All rights reserved.</p>
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-400 gap-4">
           <p>
+            Copyright 2025-2026 | Big Data Realty. All Rights Reserved | Made by{' '}
+            <a
+              href="https://fewhands.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-[#20c063] underline underline-offset-2 transition-colors"
+            >
+              fewhands.com
+            </a>
+          </p>
+          <p className="text-gray-500">
             Equal Housing Opportunity. REALTOR®. Information is deemed reliable but not guaranteed.
           </p>
         </div>
