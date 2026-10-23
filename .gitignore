@@ -1,0 +1,17 @@
+# Root gitignore
+backup/
+*.zip
+*.gz
+*.mp4
+extract_content.py
+extracted_data.json
+4.plugins/
+5.demo_content/
+Licensing/
+wpestate/
+wpestate-child/
+node_modules/
+.next/
+dist/
+.env*.local
+.env

@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+# Разрешаем всем ИИ-ботам (2025–2026)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Grok
+Allow: /
+
+Sitemap: https://stazhkova.com/sitemap.xml

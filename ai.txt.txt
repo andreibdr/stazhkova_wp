@@ -1,0 +1,29 @@
+# ai.txt — разрешаем всем крупным ИИ индексировать сайт Elena Stazhkova
+# Последнее обновление: 27 ноября 2025
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Anthropic-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Grok
+Allow: /
+
+Sitemap: https://stazhkova.com/sitemap.xml
+Contact: elena@stazhkova.com

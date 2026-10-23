@@ -1,0 +1,13 @@
+{
+  "adminPin": "elena2026",
+  "contactEmail": "elena@stazhkova.com",
+  "contactPhone": "+1-347-515-4087",
+  "contactWhatsApp": "+13475154087",
+  "zillowProfileUrl": "https://www.zillow.com/profile/ElenaStazhkova",
+  "zillowWriteReviewUrl": "https://www.zillow.com/reviews/write/?s=X1-ZU10z7apkel7i89_8i7yn",
+  "notifications": {
+    "emailEnabled": true,
+    "whatsappEnabled": true,
+    "telegramStubEnabled": false
+  }
+}

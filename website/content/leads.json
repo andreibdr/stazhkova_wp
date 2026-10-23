@@ -1,0 +1,16 @@
+[
+  {
+    "id": "lead-sample-1",
+    "createdAt": "2026-10-23T12:30:00Z",
+    "name": "Александр",
+    "phone": "+1 (305) 555-0199",
+    "email": "alex.florida@example.com",
+    "bedrooms": "2 спальни",
+    "area": "Sunny Isles Beach",
+    "timeline": "В течение 1-3 месяцев",
+    "budget": "$1,000,000 – $2,500,000",
+    "lang": "ru",
+    "status": "new",
+    "notes": "Интересуется кондоминиумом с прямым видом на океан."
+  }
+]

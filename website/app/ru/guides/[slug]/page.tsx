@@ -1,0 +1,130 @@
+import React from 'react';
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { notFound } from 'next/navigation';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import QuickBar from '@/components/QuickBar';
+import { getGuideBySlug, getGuides } from '@/lib/content';
+import { ArrowLeft, MessageCircle, User, ShieldCheck } from 'lucide-react';
+
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  const guides = getGuides('ru');
+  return guides.map((guide) => ({
+    slug: guide.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const guide = getGuideBySlug(slug, 'ru');
+  if (!guide) return { title: 'Статья не найдена' };
+
+  return {
+    title: `${guide.title} | Гайд Елены Стажковой`,
+    description: guide.excerpt,
+    openGraph: {
+      title: guide.title,
+      description: guide.excerpt,
+      type: 'article',
+      locale: 'ru_RU',
+    },
+  };
+}
+
+export default async function RussianGuideArticlePage({ params }: Props) {
+  const { slug } = await params;
+  const guide = getGuideBySlug(slug, 'ru');
+  if (!guide) notFound();
+
+  const allGuides = getGuides('ru');
+  const currentIndex = allGuides.findIndex((g) => g.id === guide.id);
+  const nextGuide = currentIndex < allGuides.length - 1 ? allGuides[currentIndex + 1] : null;
+  const prevGuide = currentIndex > 0 ? allGuides[currentIndex - 1] : null;
+
+  return (
+    <>
+      <Navbar lang="ru" />
+      <main className="flex-1 py-16 bg-[#f7fbfc]">
+        <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <Link
+            href="/ru/guides"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-gray-500 hover:text-black mb-8 transition-colors"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Все статьи гайда</span>
+          </Link>
+
+          <div className="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100 mb-8">
+            <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-500 mb-4">
+              <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                Проверенный гайд
+              </span>
+              <span className="flex items-center gap-1.5">
+                <User className="w-3.5 h-3.5" />
+                Елена Стажкова
+              </span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#31312c] tracking-tight mb-8">
+              {guide.title}
+            </h1>
+
+            <div
+              className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-6"
+              dangerouslySetInnerHTML={{ __html: guide.content }}
+            />
+
+            <div className="mt-12 p-8 rounded-2xl bg-emerald-50 border border-emerald-100 flex flex-col sm:flex-row items-center justify-between gap-6">
+              <div>
+                <h3 className="font-bold text-lg text-emerald-950">
+                  Остались вопросы по этому шагу?
+                </h3>
+                <p className="text-sm text-emerald-800 font-light mt-1">
+                  Напишите Елене лично для консультации или индивидуального подбора объектов.
+                </p>
+              </div>
+              <a
+                href="https://wa.me/13475154087"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl shadow-md transition-all shrink-0"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>Написать в WhatsApp</span>
+              </a>
+            </div>
+
+            <div className="flex items-center justify-between pt-10 mt-10 border-t border-gray-100">
+              {prevGuide ? (
+                <Link
+                  href={`/ru/guides/${encodeURIComponent(prevGuide.slug)}`}
+                  className="text-xs sm:text-sm font-semibold text-gray-600 hover:text-[#20c063] transition-colors"
+                >
+                  ← Предыдущий шаг
+                </Link>
+              ) : (
+                <div />
+              )}
+              {nextGuide && (
+                <Link
+                  href={`/ru/guides/${encodeURIComponent(nextGuide.slug)}`}
+                  className="text-xs sm:text-sm font-semibold text-[#20c063] hover:text-[#1aa654] transition-colors"
+                >
+                  Следующий шаг →
+                </Link>
+              )}
+            </div>
+          </div>
+        </article>
+      </main>
+      <QuickBar lang="ru" />
+      <Footer lang="ru" />
+    </>
+  );
+}
