@@ -57,10 +57,10 @@ export default function Footer({ lang }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-800">
           {/* Brand Col */}
           <div className="space-y-4">
-            {/* White Official Logo on Dark Footer */}
+            {/* Official Logo on Dark Footer */}
             <div className="relative w-52 h-14">
               <Image
-                src="/images/logo_horizon_weba.webp"
+                src="/images/logo_dark_transparent.webp"
                 alt="Elena Stazhkova Real Estate"
                 fill
                 className="object-contain object-left"

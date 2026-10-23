@@ -52,7 +52,7 @@ export default function Navbar({ lang }: NavbarProps) {
           <Link href={langLinks[lang]} className="flex items-center">
             <div className="relative w-48 sm:w-60 h-12 sm:h-14">
               <Image
-                src="/images/logo_horizon_black_weba.webp"
+                src="/images/logo_light_transparent.webp"
                 alt="Elena Stazhkova Real Estate"
                 fill
                 className="object-contain object-left"
