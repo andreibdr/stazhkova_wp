@@ -17,6 +17,17 @@ export default function QuickBar({ lang }: QuickBarProps) {
     es: { call: 'Llamar', wa: 'WhatsApp', quiz: 'Buscar' },
   }[lang];
 
+  const handleQuizClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const el =
+      document.getElementById('findmyhome') ||
+      document.getElementById('quiz') ||
+      document.getElementById('quiz-box');
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   return (
     <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-gray-200 px-4 py-2.5 sm:hidden shadow-2xl">
       <div className="grid grid-cols-3 gap-2">
@@ -39,7 +50,8 @@ export default function QuickBar({ lang }: QuickBarProps) {
         </a>
 
         <Link
-          href={`${homePath}#quiz`}
+          href={`${homePath}#findmyhome`}
+          onClick={handleQuizClick}
           className="flex flex-col items-center justify-center py-1.5 rounded-xl bg-[#20c063] text-white hover:bg-[#1aa654] transition-colors"
         >
           <Home className="w-5 h-5" />

@@ -56,6 +56,15 @@ export default function Navbar({ lang }: NavbarProps) {
   const reviewsLink = `${homePath}#reviews`;
   const findHomeLink = `${homePath}#findmyhome`;
 
+  const handleAnchorClick = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setMobileMenuOpen(false);
+    const el = document.getElementById(id);
+    if (el) {
+      e.preventDefault();
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const pathname = usePathname() || '';
 
   const getTargetUrl = (targetLang: 'en' | 'ru' | 'es') => {
@@ -165,6 +174,7 @@ export default function Navbar({ lang }: NavbarProps) {
             {/* CTA Button */}
             <Link
               href={findHomeLink}
+              onClick={handleAnchorClick('findmyhome')}
               className="px-5 py-2.5 bg-[#20c063] hover:bg-[#1aa654] text-white text-sm font-semibold rounded-xl shadow-xs transition-all hover:shadow-md"
             >
               {navLabels.findHome}
@@ -213,21 +223,21 @@ export default function Navbar({ lang }: NavbarProps) {
         <div className="lg:hidden border-t border-gray-100 bg-white px-4 pt-3 pb-6 space-y-3">
           <Link
             href={aboutLink}
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={handleAnchorClick('about')}
             className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
           >
             {navLabels.about}
           </Link>
           <Link
             href={workLink}
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={handleAnchorClick('workelena')}
             className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
           >
             {navLabels.work}
           </Link>
           <Link
             href={reviewsLink}
-            onClick={() => setMobileMenuOpen(false)}
+            onClick={handleAnchorClick('reviews')}
             className="block py-2 text-base font-medium text-gray-700 hover:text-[#20c063]"
           >
             {navLabels.reviews}
@@ -256,7 +266,7 @@ export default function Navbar({ lang }: NavbarProps) {
             </a>
             <Link
               href={findHomeLink}
-              onClick={() => setMobileMenuOpen(false)}
+              onClick={handleAnchorClick('findmyhome')}
               className="flex items-center justify-center w-full py-2.5 bg-[#20c063] text-white rounded-xl font-semibold text-sm"
             >
               {navLabels.findHome}

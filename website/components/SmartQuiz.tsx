@@ -86,7 +86,8 @@ export default function SmartQuiz({ quizData, transitionData, lang }: QuizProps)
   const progressPercent = (step / totalSteps) * 100;
 
   return (
-    <section id="findmyhome" className="py-20 bg-[#f7fbfc] border-y border-gray-100">
+    <section id="findmyhome" className="py-20 bg-[#f7fbfc] border-y border-gray-100 scroll-mt-16 relative">
+      <span id="quiz" className="absolute -top-20 left-0 pointer-events-none" />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Transition Text & Button from Original WP */}
         <div className="text-center mb-12 space-y-6">
