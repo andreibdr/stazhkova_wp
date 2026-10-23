@@ -75,7 +75,7 @@ export default function Footer({ lang }: FooterProps) {
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-6 border-b border-white/[0.06]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pb-4">
           {/* Brand Col */}
           <div className="space-y-4">
             {/* Official Logo on Dark Footer */}
@@ -222,7 +222,7 @@ export default function Footer({ lang }: FooterProps) {
         </div>
 
         {/* Copyright Centered */}
-        <div className="pt-4 text-center text-xs text-gray-400">
+        <div className="pt-2 text-center text-xs text-gray-400">
           <p>
             Copyright 2025-2026 | Big Data Realty. All Rights Reserved | Made by{' '}
             <a
