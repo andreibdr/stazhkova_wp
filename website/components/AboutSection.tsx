@@ -19,16 +19,19 @@ export default function AboutSection({ data }: AboutProps) {
         </div>
 
         {/* 2 Columns: Photo (Left) + 3 Message Cards (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center lg:items-end">
-          {/* Left: Original Elena Photo without podlozhka, scaled to match text height */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end items-end">
-            <Image
-              src={data.photo || '/images/elena_green.webp'}
-              alt="Elena Stazhkova"
-              width={622}
-              height={1016}
-              className="w-auto h-auto max-h-[500px] sm:max-h-[560px] lg:max-h-[620px] object-contain object-bottom drop-shadow-sm"
-            />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          {/* Left: Original Elena Photo with rounded card styling */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <div className="relative w-full max-w-[480px] rounded-2xl overflow-hidden shadow-md border border-gray-100 bg-white">
+              <Image
+                src={data.photo || '/images/elena_about.webp'}
+                alt="Elena Stazhkova"
+                width={800}
+                height={744}
+                className="w-full h-auto object-cover"
+                priority
+              />
+            </div>
           </div>
 
           {/* Right: 3 Styled Message Boxes matching WP alert-info, alert-success, vista_blue */}
