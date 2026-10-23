@@ -48,6 +48,10 @@ export default function Navbar({ lang }: NavbarProps) {
   const guidesLink = lang === 'en' ? '/guides' : `/${lang}/guides`;
   const videoLink = lang === 'en' ? '/video' : `/${lang}/video`;
 
+  const setLangCookie = (locale: string) => {
+    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; SameSite=Lax`;
+  };
+
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,6 +94,7 @@ export default function Navbar({ lang }: NavbarProps) {
             <div className="flex items-center bg-gray-100 rounded-full p-1 text-xs font-semibold">
               <Link
                 href="/ru"
+                onClick={() => setLangCookie('ru')}
                 className={`px-2.5 py-1 rounded-full transition-all ${
                   lang === 'ru' ? 'bg-[#20c063] text-white shadow-xs' : 'text-gray-600 hover:text-black'
                 }`}
@@ -98,6 +103,7 @@ export default function Navbar({ lang }: NavbarProps) {
               </Link>
               <Link
                 href="/"
+                onClick={() => setLangCookie('en')}
                 className={`px-2.5 py-1 rounded-full transition-all ${
                   lang === 'en' ? 'bg-[#20c063] text-white shadow-xs' : 'text-gray-600 hover:text-black'
                 }`}
@@ -106,6 +112,7 @@ export default function Navbar({ lang }: NavbarProps) {
               </Link>
               <Link
                 href="/es"
+                onClick={() => setLangCookie('es')}
                 className={`px-2.5 py-1 rounded-full transition-all ${
                   lang === 'es' ? 'bg-[#20c063] text-white shadow-xs' : 'text-gray-600 hover:text-black'
                 }`}
@@ -148,18 +155,21 @@ export default function Navbar({ lang }: NavbarProps) {
             <div className="flex items-center bg-gray-100 rounded-full p-0.5 text-xs font-semibold">
               <Link
                 href="/ru"
+                onClick={() => setLangCookie('ru')}
                 className={`px-2 py-0.5 rounded-full ${lang === 'ru' ? 'bg-[#20c063] text-white' : 'text-gray-600'}`}
               >
                 RU
               </Link>
               <Link
                 href="/"
+                onClick={() => setLangCookie('en')}
                 className={`px-2 py-0.5 rounded-full ${lang === 'en' ? 'bg-[#20c063] text-white' : 'text-gray-600'}`}
               >
                 EN
               </Link>
               <Link
                 href="/es"
+                onClick={() => setLangCookie('es')}
                 className={`px-2 py-0.5 rounded-full ${lang === 'es' ? 'bg-[#20c063] text-white' : 'text-gray-600'}`}
               >
                 ES
