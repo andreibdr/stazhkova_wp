@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
+import MiamiSkylineDivider from '@/components/dividers/MiamiSkylineDivider';
 
 interface AboutProps {
   data: any;
@@ -8,7 +9,9 @@ interface AboutProps {
 
 export default function AboutSection({ data }: AboutProps) {
   return (
-    <section id="about" className="py-20 bg-[#f7fbfc] border-t border-gray-100">
+    <>
+      <MiamiSkylineDivider fillColor="#f7fbfc" className="bg-white -mb-px" />
+      <section id="about" className="py-16 sm:py-20 bg-[#f7fbfc]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <div className="text-center mb-14">
@@ -63,5 +66,6 @@ export default function AboutSection({ data }: AboutProps) {
         </div>
       </div>
     </section>
+    </>
   );
 }
