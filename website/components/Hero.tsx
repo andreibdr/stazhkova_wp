@@ -25,19 +25,17 @@ export default function Hero({ content, lang }: HeroProps) {
         </div>
 
         {/* 2 Columns: Photo (Left) + Bullets & CTA (Right) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          {/* Left Column: Full Uncropped Elena Photo matching vc_box_rounded */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative rounded-3xl shadow-lg border-4 border-white bg-white p-1 flex items-center justify-center">
-              <Image
-                src={hero.photo || '/images/lena-4.webp'}
-                alt="Elena Stazhkova Real Estate Agent"
-                width={380}
-                height={570}
-                priority
-                className="w-auto h-auto max-h-[460px] object-contain rounded-2xl"
-              />
-            </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center lg:items-end">
+          {/* Left Column: Full Elena Photo without podlozhka, matching full text height */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end items-end">
+            <Image
+              src={hero.photo || '/images/lena-4.webp'}
+              alt="Elena Stazhkova Real Estate Agent"
+              width={673}
+              height={1013}
+              priority
+              className="w-auto h-auto max-h-[500px] sm:max-h-[560px] lg:max-h-[620px] object-contain object-bottom drop-shadow-sm"
+            />
           </div>
 
           {/* Right Column: 5 Bullet points with FontAwesome checkmark + CTA */}
@@ -57,23 +55,13 @@ export default function Hero({ content, lang }: HeroProps) {
               {hero.cta_text}
             </p>
 
-            <div className="pt-2 flex flex-wrap items-center gap-4">
+            <div className="pt-2">
               <a
                 href="#findmyhome"
                 className="inline-block px-8 py-3.5 bg-[#31312c] hover:bg-[#20c063] text-white font-bold text-sm tracking-wide uppercase rounded-xl shadow-md transition-all"
               >
                 {hero.cta_button}
               </a>
-
-              {/* Logo Emblem badge */}
-              <div className="relative w-28 h-10 opacity-80 hover:opacity-100 transition-opacity">
-                <Image
-                  src="/images/logo.webp"
-                  alt="Elena Stazhkova Emblem"
-                  fill
-                  className="object-contain"
-                />
-              </div>
             </div>
 
             {/* Official Real Estate Trust Badges */}

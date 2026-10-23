@@ -58,7 +58,7 @@ export default function Footer({ lang }: FooterProps) {
           {/* Brand Col */}
           <div className="space-y-4">
             {/* Official Logo on Dark Footer */}
-            <div className="relative w-52 h-14">
+            <div className="relative w-56 h-14 sm:w-60 sm:h-16">
               <Image
                 src="/images/logo_dark_transparent.webp"
                 alt="Elena Stazhkova Real Estate"
