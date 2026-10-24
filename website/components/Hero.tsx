@@ -66,11 +66,11 @@ export default function Hero({ content, lang }: HeroProps) {
               ))}
             </div>
 
-            <p className="pt-2 text-[15px] sm:text-[16px] font-medium text-gray-900 leading-relaxed">
+            <p className="pt-2 text-[15px] sm:text-[16px] font-medium text-gray-900 leading-relaxed text-center lg:text-left">
               {hero.cta_text}
             </p>
 
-            <div className="pt-2">
+            <div className="pt-2 text-center lg:text-left">
               <a
                 href="#findmyhome"
                 className="inline-block px-8 py-3.5 bg-[#31312c] hover:bg-[#20c063] text-white font-bold text-sm tracking-wide uppercase rounded-xl shadow-md transition-all"
