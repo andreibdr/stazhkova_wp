@@ -13,14 +13,46 @@ export const metadata: Metadata = {
   title: 'Reseñas en video e inteligencia de bienes raíces en Miami | Elena Stazhkova',
   description:
     'Vea los últimos recorridos en video, visitas guiadas a propiedades y análisis de mercado en el sur de Florida por la agente Elena Stazhkova.',
+  alternates: {
+    canonical: 'https://stazhkova.com/es/video',
+    languages: {
+      en: 'https://stazhkova.com/video',
+      ru: 'https://stazhkova.com/ru/video',
+      es: 'https://stazhkova.com/es/video',
+      'x-default': 'https://stazhkova.com/video',
+    },
+  },
 };
 
 export default async function SpanishVideoPage() {
   const lang = 'es';
   const videos = await getChannelVideos(lang);
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Inicio',
+        item: 'https://stazhkova.com/es',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Reseñas en video',
+        item: 'https://stazhkova.com/es/video',
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navbar lang={lang} />
       <main className="flex-1 py-16 bg-[#f7fbfc]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

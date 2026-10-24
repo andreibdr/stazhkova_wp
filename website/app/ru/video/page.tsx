@@ -13,14 +13,46 @@ export const metadata: Metadata = {
   title: 'Видеообзоры недвижимости Майами и Флориды | Елена Стажкова',
   description:
     'Смотрите авторские видеообзоры новостроек, районов Майами, Санни-Айлс, Авентуры и инвестиционной недвижимости от лицензированного риелтора Елены Стажковой.',
+  alternates: {
+    canonical: 'https://stazhkova.com/ru/video',
+    languages: {
+      en: 'https://stazhkova.com/video',
+      ru: 'https://stazhkova.com/ru/video',
+      es: 'https://stazhkova.com/es/video',
+      'x-default': 'https://stazhkova.com/video',
+    },
+  },
 };
 
 export default async function RussianVideoPage() {
   const lang = 'ru';
   const videos = await getChannelVideos(lang);
 
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Главная',
+        item: 'https://stazhkova.com/ru',
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Видеообзоры',
+        item: 'https://stazhkova.com/ru/video',
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navbar lang={lang} />
       <main className="flex-1 py-16 bg-[#f7fbfc]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

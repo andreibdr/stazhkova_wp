@@ -22,6 +22,7 @@ export const metadata: Metadata = {
       en: 'https://stazhkova.com',
       ru: 'https://stazhkova.com/ru',
       es: 'https://stazhkova.com/es',
+      'x-default': 'https://stazhkova.com',
     },
   },
 };

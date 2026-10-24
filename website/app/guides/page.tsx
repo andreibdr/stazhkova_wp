@@ -12,6 +12,15 @@ export const metadata: Metadata = {
   title: 'First Time Home Buyer? | South Florida Home Buying Guide',
   description:
     'How To Buy Your Dream Home Step By Step! Comprehensive guide on purchasing real estate in Miami and South Florida by licensed realtor Elena Stazhkova.',
+  alternates: {
+    canonical: 'https://stazhkova.com/guides',
+    languages: {
+      en: 'https://stazhkova.com/guides',
+      ru: 'https://stazhkova.com/ru/guides',
+      es: 'https://stazhkova.com/es/guides',
+      'x-default': 'https://stazhkova.com/guides',
+    },
+  },
 };
 
 export default function GuidesPage() {

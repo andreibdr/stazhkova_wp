@@ -1,4 +1,5 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import ReviewsCarousel from '@/components/ReviewsCarousel';
@@ -10,6 +11,21 @@ import GuidesPreview from '@/components/GuidesPreview';
 import QuickBar from '@/components/QuickBar';
 import Footer from '@/components/Footer';
 import { getSiteContent, getAllReviews, getGuides } from '@/lib/content';
+
+export const metadata: Metadata = {
+  title: 'Elena Stazhkova | Licensed Miami Real Estate Agent & Investment Advisory',
+  description:
+    'Find your dream home or high-yield investment property in South Florida with Elena Stazhkova. Miami, Sunny Isles Beach, Aventura. License #3352133.',
+  alternates: {
+    canonical: 'https://stazhkova.com',
+    languages: {
+      en: 'https://stazhkova.com',
+      ru: 'https://stazhkova.com/ru',
+      es: 'https://stazhkova.com/es',
+      'x-default': 'https://stazhkova.com',
+    },
+  },
+};
 
 export default async function HomePage() {
   const lang = 'en';

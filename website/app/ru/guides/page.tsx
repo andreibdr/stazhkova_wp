@@ -12,6 +12,15 @@ export const metadata: Metadata = {
   title: 'Пошаговый гайд: Покупка недвижимости в США | Елена Стажкова',
   description:
     'Как купить дом мечты шаг за шагом! Пошаговая инструкция по покупке квартиры и дома в Майами: ипотека, инспекция, офер, эскроу, закрытие сделки.',
+  alternates: {
+    canonical: 'https://stazhkova.com/ru/guides',
+    languages: {
+      en: 'https://stazhkova.com/guides',
+      ru: 'https://stazhkova.com/ru/guides',
+      es: 'https://stazhkova.com/es/guides',
+      'x-default': 'https://stazhkova.com/guides',
+    },
+  },
 };
 
 export default function RussianGuidesPage() {

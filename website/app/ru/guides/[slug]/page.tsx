@@ -25,14 +25,50 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const guide = getGuideBySlug(slug, 'ru');
   if (!guide) return { title: 'Статья не найдена' };
 
+  const baseUrl = 'https://stazhkova.com';
+  const currentUrl = `${baseUrl}/ru/guides/${encodeURIComponent(guide.slug)}`;
+
+  // Find matching guide translations by step
+  const allGuides = getGuides();
+  const step = guide.step;
+  const matchingEn = allGuides.find((g) => g.lang === 'en' && g.step === step);
+  const matchingRu = allGuides.find((g) => g.lang === 'ru' && g.step === step);
+  const matchingEs = allGuides.find((g) => g.lang === 'es' && g.step === step);
+
+  const languages: Record<string, string> = {};
+  if (matchingEn) {
+    languages.en = `${baseUrl}/guides/${matchingEn.slug}`;
+    languages['x-default'] = `${baseUrl}/guides/${matchingEn.slug}`;
+  }
+  if (matchingRu) {
+    languages.ru = `${baseUrl}/ru/guides/${encodeURIComponent(matchingRu.slug)}`;
+  }
+  if (matchingEs) {
+    languages.es = `${baseUrl}/es/guides/${encodeURIComponent(matchingEs.slug)}`;
+  }
+
+  const imageUrl = guide.image ? (guide.image.startsWith('http') ? guide.image : `${baseUrl}${guide.image}`) : undefined;
+
   return {
     title: `${guide.title} | Гайд Елены Стажковой`,
     description: guide.excerpt,
+    alternates: {
+      canonical: currentUrl,
+      languages: Object.keys(languages).length > 0 ? languages : undefined,
+    },
     openGraph: {
       title: guide.title,
       description: guide.excerpt,
       type: 'article',
       locale: 'ru_RU',
+      url: currentUrl,
+      images: imageUrl ? [{ url: imageUrl, width: 1200, height: 630, alt: guide.title }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: guide.title,
+      description: guide.excerpt,
+      images: imageUrl ? [imageUrl] : undefined,
     },
   };
 }
@@ -42,6 +78,58 @@ export default async function RussianGuideArticlePage({ params }: Props) {
   const guide = getGuideBySlug(slug, 'ru');
   if (!guide) notFound();
 
+  const baseUrl = 'https://stazhkova.com';
+  const currentUrl = `${baseUrl}/ru/guides/${encodeURIComponent(guide.slug)}`;
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: guide.title,
+    description: guide.excerpt,
+    image: guide.image ? `${baseUrl}${guide.image}` : undefined,
+    author: {
+      '@type': 'Person',
+      name: 'Елена Стажкова',
+      jobTitle: 'Лицензированный риелтор в Майами',
+      url: `${baseUrl}/ru`,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Big Data Realty',
+      url: 'https://bigdatarealty.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${baseUrl}/images/logo_dark_transparent.webp`,
+      },
+    },
+    mainEntityOfPage: currentUrl,
+  };
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Главная',
+        item: `${baseUrl}/ru`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'База знаний',
+        item: `${baseUrl}/ru/guides`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: guide.title,
+        item: currentUrl,
+      },
+    ],
+  };
+
   const allGuides = getGuides('ru');
   const currentIndex = allGuides.findIndex((g) => g.id === guide.id);
   const nextGuide = currentIndex < allGuides.length - 1 ? allGuides[currentIndex + 1] : null;
@@ -49,6 +137,14 @@ export default async function RussianGuideArticlePage({ params }: Props) {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Navbar lang="ru" />
       <main className="flex-1 py-16 bg-[#f7fbfc]">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

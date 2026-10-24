@@ -21,10 +21,15 @@ export default function Footer({ lang }: FooterProps) {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
     name: 'Elena Stazhkova',
-    image: 'https://stazhkova.com/images/lena-4.png',
+    image: 'https://stazhkova.com/images/lena-4.webp',
     url: 'https://stazhkova.com',
     telephone: '+1-347-515-4087',
     email: 'elena@stazhkova.com',
+    parentOrganization: {
+      '@type': 'RealEstateAgency',
+      name: 'Big Data Realty',
+      url: 'https://bigdatarealty.com/',
+    },
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Aventura',

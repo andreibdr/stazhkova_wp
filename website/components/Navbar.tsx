@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Phone, Menu, X } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/icons/SocialIcons';
+import LangSetter from '@/components/LangSetter';
 
 interface NavbarProps {
   lang: 'ru' | 'en' | 'es';
@@ -84,6 +85,7 @@ export default function Navbar({ lang }: NavbarProps) {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-xs">
+      <LangSetter lang={lang} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Official Brand Logo */}
