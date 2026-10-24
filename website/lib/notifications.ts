@@ -158,6 +158,31 @@ export async function sendLeadNotifications(lead: Lead): Promise<NotificationRes
     }
   }
 
+  // 4. WhatsApp Dispatcher (CallMeBot)
+  const callMeBotKey = process.env.CALLMEBOT_API_KEY;
+  const rawCallMeBotPhones = process.env.CALLMEBOT_PHONE || settings.contactWhatsApp;
+  if (callMeBotKey && rawCallMeBotPhones) {
+    const phones = rawCallMeBotPhones
+      .split(',')
+      .map((p) => p.replace(/[^0-9]/g, ''))
+      .filter(Boolean);
+    for (const phone of phones) {
+      try {
+        const waText = encodeURIComponent(summaryText);
+        const res = await fetch(
+          `https://api.callmebot.com/whatsapp.php?phone=${phone}&text=${waText}&apikey=${callMeBotKey}`
+        );
+        if (res.ok) {
+          console.log(`[WHATSAPP SUCCESS] Sent lead notification to WhatsApp: ${phone}`);
+        } else {
+          console.error('[WHATSAPP ERROR]', await res.text());
+        }
+      } catch (err) {
+        console.error('[WHATSAPP ERROR]', err);
+      }
+    }
+  }
+
   return {
     emailSent,
     whatsappPrepared,
