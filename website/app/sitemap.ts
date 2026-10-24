@@ -3,7 +3,7 @@ import { getGuides } from '@/lib/content';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://stazhkova.com';
-  const now = new Date();
+  const now = new Date('2026-10-24T00:00:00Z');
 
   // Core Home Pages
   const homeRoutes: MetadataRoute.Sitemap = [

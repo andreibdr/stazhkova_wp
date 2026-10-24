@@ -51,7 +51,11 @@ export interface SiteSettings {
   };
 }
 
-const contentDir = path.join(process.cwd(), 'content');
+const contentDir = fs.existsSync(path.join(process.cwd(), 'content'))
+  ? path.join(process.cwd(), 'content')
+  : fs.existsSync(path.join(process.cwd(), 'website', 'content'))
+  ? path.join(process.cwd(), 'website', 'content')
+  : path.join(process.cwd(), '..', 'content');
 
 export function getSettings(): SiteSettings {
   try {
@@ -165,7 +169,10 @@ export function getGuides(lang?: string): Guide[] {
 
 export function getGuideBySlug(slug: string, lang?: string): Guide | undefined {
   const guides = getGuides();
-  const decoded = decodeURIComponent(slug);
+  let decoded = slug;
+  try {
+    decoded = decodeURIComponent(slug);
+  } catch {}
   return guides.find(
     (g) =>
       (g.slug === slug || g.slug === decoded || decodeURIComponent(g.slug) === decoded) &&
