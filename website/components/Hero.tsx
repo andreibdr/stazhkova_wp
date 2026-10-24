@@ -40,14 +40,17 @@ export default function Hero({ content, lang }: HeroProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center lg:items-end">
           {/* Left Column: Full Elena Photo without podlozhka, matching full text height */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end items-end">
-            <Image
-              src={hero.photo || '/images/lena-4.webp'}
-              alt="Elena Stazhkova Real Estate Agent"
-              width={673}
-              height={1013}
-              priority
-              className="w-auto h-auto max-h-[500px] sm:max-h-[560px] lg:max-h-[620px] object-contain object-bottom drop-shadow-sm"
-            />
+            <div className="relative w-full max-w-[300px] sm:max-w-[360px] lg:max-w-[420px] aspect-[673/1013]">
+              <Image
+                src={hero.photo || '/images/lena-4.webp'}
+                alt="Elena Stazhkova Real Estate Agent"
+                width={673}
+                height={1013}
+                priority
+                sizes="(max-width: 640px) 300px, (max-width: 1024px) 360px, 420px"
+                className="w-full h-full object-contain object-bottom drop-shadow-sm"
+              />
+            </div>
           </div>
 
           {/* Right Column: 5 Bullet points with FontAwesome checkmark + CTA */}

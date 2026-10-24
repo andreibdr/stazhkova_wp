@@ -103,6 +103,7 @@ export default function Navbar({ lang, alternateUrls }: NavbarProps) {
                 src="/images/logo_light_transparent.webp"
                 alt="Elena Stazhkova Real Estate"
                 fill
+                sizes="(max-width: 640px) 192px, 240px"
                 className="object-contain object-left"
                 priority
               />

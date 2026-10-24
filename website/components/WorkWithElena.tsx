@@ -45,8 +45,7 @@ export default function WorkWithElena({ data }: WorkProps) {
                 alt="Elena Stazhkova Real Estate"
                 fill
                 className="object-cover object-center"
-                sizes="(max-width: 1024px) 100vw, 400px"
-                priority
+                sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, 400px"
               />
             </div>
           </div>

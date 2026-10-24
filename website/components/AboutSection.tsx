@@ -22,14 +22,14 @@ export default function AboutSection({ data }: AboutProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           {/* Left: Original Elena Photo with rounded card styling */}
           <div className="lg:col-span-5 flex justify-center lg:justify-end">
-            <div className="relative w-full max-w-[480px] rounded-2xl overflow-hidden shadow-md border border-gray-100 bg-white">
+            <div className="relative w-full max-w-[480px] aspect-[800/744] rounded-2xl overflow-hidden shadow-md border border-gray-100 bg-white">
               <Image
                 src={data.photo || '/images/elena_about.webp'}
                 alt="Elena Stazhkova"
                 width={800}
                 height={744}
-                className="w-full h-auto object-cover"
-                priority
+                className="w-full h-full object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 480px, 480px"
               />
             </div>
           </div>
