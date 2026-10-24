@@ -10,9 +10,14 @@ import LangSetter from '@/components/LangSetter';
 
 interface NavbarProps {
   lang: 'ru' | 'en' | 'es';
+  alternateUrls?: {
+    en?: string;
+    ru?: string;
+    es?: string;
+  };
 }
 
-export default function Navbar({ lang }: NavbarProps) {
+export default function Navbar({ lang, alternateUrls }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLabels = {
@@ -69,6 +74,9 @@ export default function Navbar({ lang }: NavbarProps) {
   const pathname = usePathname() || '';
 
   const getTargetUrl = (targetLang: 'en' | 'ru' | 'es') => {
+    if (alternateUrls && alternateUrls[targetLang]) {
+      return alternateUrls[targetLang]!;
+    }
     let sub = '';
     if (pathname.includes('/guides')) sub = '/guides';
     else if (pathname.includes('/video')) sub = '/video';

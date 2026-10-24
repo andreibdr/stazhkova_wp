@@ -135,6 +135,18 @@ export default async function SpanishGuideArticlePage({ params }: Props) {
   const nextGuide = currentIndex < allGuides.length - 1 ? allGuides[currentIndex + 1] : null;
   const prevGuide = currentIndex > 0 ? allGuides[currentIndex - 1] : null;
 
+  const allGuidesCatalog = getGuides();
+  const step = guide.step;
+  const matchingEn = allGuidesCatalog.find((g) => g.lang === 'en' && g.step === step);
+  const matchingRu = allGuidesCatalog.find((g) => g.lang === 'ru' && g.step === step);
+  const matchingEs = allGuidesCatalog.find((g) => g.lang === 'es' && g.step === step);
+
+  const alternateUrls = {
+    en: matchingEn ? `/guides/${matchingEn.slug}` : '/guides',
+    ru: matchingRu ? `/ru/guides/${encodeURIComponent(matchingRu.slug)}` : '/ru/guides',
+    es: matchingEs ? `/es/guides/${encodeURIComponent(matchingEs.slug)}` : '/es/guides',
+  };
+
   return (
     <>
       <script
@@ -145,7 +157,7 @@ export default async function SpanishGuideArticlePage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      <Navbar lang="es" />
+      <Navbar lang="es" alternateUrls={alternateUrls} />
       <main className="flex-1 py-16 bg-[#f7fbfc]">
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <Link
@@ -170,15 +182,37 @@ export default async function SpanishGuideArticlePage({ params }: Props) {
               </div>
             )}
 
-            <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-500 mb-4">
-              <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                Guía verificada • Paso {guide.step || currentIndex + 1}
-              </span>
-              <span className="flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5" />
-                Elena Stazhkova
-              </span>
+            <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-gray-500 mb-4">
+              <div className="flex flex-wrap items-center gap-4">
+                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                  Guía verificada • Paso {guide.step || currentIndex + 1}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <User className="w-3.5 h-3.5" />
+                  Elena Stazhkova
+                </span>
+              </div>
+              <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-full">
+                <Link
+                  href={alternateUrls.en}
+                  className="px-2.5 py-0.5 rounded-full text-gray-600 hover:text-black font-medium transition-colors"
+                >
+                  EN
+                </Link>
+                <Link
+                  href={alternateUrls.ru}
+                  className="px-2.5 py-0.5 rounded-full text-gray-600 hover:text-black font-medium transition-colors"
+                >
+                  RU
+                </Link>
+                <Link
+                  href={alternateUrls.es}
+                  className="px-2.5 py-0.5 rounded-full bg-[#20c063] text-white shadow-xs font-bold"
+                >
+                  ES
+                </Link>
+              </div>
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-extrabold text-[#31312c] tracking-tight mb-8">
