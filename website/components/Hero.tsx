@@ -27,11 +27,11 @@ export default function Hero({ content, lang }: HeroProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Main Centered Header */}
         <div className="text-center mb-10">
-          <h1 className="text-4xl sm:text-5xl lg:text-[50px] tracking-tight leading-tight">
-            <span className="font-light text-[#31312c]">{hero.title_main} </span>
-            <span className="font-bold text-[#20c063]">{hero.title_accent}</span>
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[50px] tracking-tight leading-tight">
+            <span className="font-light text-[#31312c] block sm:inline">{hero.title_main}{' '}</span>
+            <span className="font-bold text-[#20c063] block sm:inline">{hero.title_accent}</span>
           </h1>
-          <p className="mt-3 text-lg sm:text-[18px] text-[#31312c] font-light max-w-3xl mx-auto">
+          <p className="mt-3 text-base sm:text-lg lg:text-[18px] text-[#31312c] font-light max-w-3xl mx-auto">
             {hero.subtitle}
           </p>
         </div>
