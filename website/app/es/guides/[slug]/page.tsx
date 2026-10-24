@@ -182,37 +182,15 @@ export default async function SpanishGuideArticlePage({ params }: Props) {
               </div>
             )}
 
-            <div className="flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-gray-500 mb-4">
-              <div className="flex flex-wrap items-center gap-4">
-                <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                  Guía verificada • Paso {guide.step || currentIndex + 1}
-                </span>
-                <span className="flex items-center gap-1.5">
-                  <User className="w-3.5 h-3.5" />
-                  Elena Stazhkova
-                </span>
-              </div>
-              <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-full">
-                <Link
-                  href={alternateUrls.en}
-                  className="px-2.5 py-0.5 rounded-full text-gray-600 hover:text-black font-medium transition-colors"
-                >
-                  EN
-                </Link>
-                <Link
-                  href={alternateUrls.ru}
-                  className="px-2.5 py-0.5 rounded-full text-gray-600 hover:text-black font-medium transition-colors"
-                >
-                  RU
-                </Link>
-                <Link
-                  href={alternateUrls.es}
-                  className="px-2.5 py-0.5 rounded-full bg-[#20c063] text-white shadow-xs font-bold"
-                >
-                  ES
-                </Link>
-              </div>
+            <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-500 mb-4">
+              <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+                Guía verificada • Paso {guide.step || currentIndex + 1}
+              </span>
+              <span className="flex items-center gap-1.5">
+                <User className="w-3.5 h-3.5" />
+                Elena Stazhkova
+              </span>
             </div>
 
             <h1 className="text-3xl sm:text-4xl font-extrabold text-[#31312c] tracking-tight mb-8">
