@@ -74,9 +74,9 @@ export default function Navbar({ lang }: NavbarProps) {
     else if (pathname.includes('/video')) sub = '/video';
 
     if (targetLang === 'en') {
-      return (sub || '/') + '?lang=en';
+      return sub || '/';
     }
-    return `/${targetLang}${sub || ''}?lang=${targetLang}`;
+    return `/${targetLang}${sub || ''}`;
   };
 
   const setLangCookie = (locale: string) => {
