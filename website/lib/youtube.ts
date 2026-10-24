@@ -1,3 +1,5 @@
+import { cacheLife } from 'next/cache';
+
 export interface YouTubeVideo {
   id: string;
   title: string;
@@ -339,6 +341,8 @@ function detectVideoLanguage(id: string, title: string, desc: string): 'ru' | 'e
 }
 
 export async function getChannelVideos(lang?: 'ru' | 'en' | 'es'): Promise<YouTubeVideo[]> {
+  'use cache';
+  cacheLife('hours');
   const dynamicVideos: YouTubeVideo[] = [];
 
   try {
