@@ -22,6 +22,22 @@ export const metadata: Metadata = {
       'x-default': 'https://stazhkova.com/video',
     },
   },
+  openGraph: {
+    title: 'Reseñas en video e inteligencia de bienes raíces en Miami | Elena Stazhkova',
+    description:
+      'Vea los últimos recorridos en video, visitas guiadas a propiedades y análisis de mercado en el sur de Florida por la agente Elena Stazhkova.',
+    url: 'https://stazhkova.com/es/video',
+    siteName: 'Elena Stazhkova Real Estate',
+    locale: 'es_ES',
+    type: 'video.other',
+    images: [{ url: 'https://stazhkova.com/images/elena.webp', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Reseñas en video en Miami | Elena Stazhkova',
+    description: 'Recorridos en video y análisis de mercado en el sur de Florida.',
+    images: ['https://stazhkova.com/images/elena.webp'],
+  },
 };
 
 export default async function SpanishVideoPage() {

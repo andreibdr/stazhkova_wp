@@ -21,6 +21,22 @@ export const metadata: Metadata = {
       'x-default': 'https://stazhkova.com/guides',
     },
   },
+  openGraph: {
+    title: '¿Compra de vivienda por primera vez? | Guía de compra en Florida',
+    description:
+      '¡Cómo comprar la casa de sus sueños paso a paso! Guía completa para adquirir inmuebles en Miami por la agente Elena Stazhkova.',
+    url: 'https://stazhkova.com/es/guides',
+    siteName: 'Elena Stazhkova Real Estate',
+    locale: 'es_ES',
+    type: 'website',
+    images: [{ url: 'https://stazhkova.com/images/elena.webp', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Guía de compra de vivienda en Florida | Elena Stazhkova',
+    description: 'Guía completa para adquirir inmuebles en Miami paso a paso.',
+    images: ['https://stazhkova.com/images/elena.webp'],
+  },
 };
 
 export default function SpanishGuidesPage() {

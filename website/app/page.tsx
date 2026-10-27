@@ -25,6 +25,30 @@ export const metadata: Metadata = {
       'x-default': 'https://stazhkova.com',
     },
   },
+  openGraph: {
+    title: 'Elena Stazhkova | Licensed Miami Real Estate Agent & Investment Advisory',
+    description:
+      'Find your dream home or high-yield investment property in South Florida. Expert local guidance in Sunny Isles, Aventura, and Miami.',
+    url: 'https://stazhkova.com',
+    siteName: 'Elena Stazhkova Real Estate',
+    locale: 'en_US',
+    type: 'website',
+    images: [
+      {
+        url: 'https://stazhkova.com/images/elena.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Elena Stazhkova - Real Estate Agent Miami',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Elena Stazhkova | Miami Real Estate Agent',
+    description:
+      'Luxury and investment properties in South Florida. Licensed realtor Elena Stazhkova.',
+    images: ['https://stazhkova.com/images/elena.webp'],
+  },
 };
 
 export default async function HomePage() {

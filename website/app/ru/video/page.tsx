@@ -22,6 +22,22 @@ export const metadata: Metadata = {
       'x-default': 'https://stazhkova.com/video',
     },
   },
+  openGraph: {
+    title: 'Видеообзоры недвижимости в Майами | Елена Стажкова',
+    description:
+      'Рум-туры, закрытые комьюнити, аналитика рынка и советы покупателям квартир и домов в Майами от риелтора Елены Стажковой.',
+    url: 'https://stazhkova.com/ru/video',
+    siteName: 'Elena Stazhkova Real Estate',
+    locale: 'ru_RU',
+    type: 'video.other',
+    images: [{ url: 'https://stazhkova.com/images/elena.webp', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Видеообзоры недвижимости в Майами | Елена Стажкова',
+    description: 'Рум-туры и аналитика рынка недвижимости в Южной Флориде.',
+    images: ['https://stazhkova.com/images/elena.webp'],
+  },
 };
 
 export default async function RussianVideoPage() {

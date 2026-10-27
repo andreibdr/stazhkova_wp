@@ -25,6 +25,30 @@ export const metadata: Metadata = {
       'x-default': 'https://stazhkova.com',
     },
   },
+  openGraph: {
+    title: 'Elena Stazhkova | Agente Inmobiliaria en Miami y Sur de Florida',
+    description:
+      'Inversiones inmobiliarias, casas de lujo y condominios en Miami, Sunny Isles Beach y Aventura. Asesoría integral. Licencia #3352133.',
+    url: 'https://stazhkova.com/es',
+    siteName: 'Elena Stazhkova Real Estate',
+    locale: 'es_ES',
+    type: 'website',
+    images: [
+      {
+        url: 'https://stazhkova.com/images/elena.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Elena Stazhkova - Agente de Bienes Raíces en Miami',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Elena Stazhkova | Bienes Raíces en Miami',
+    description:
+      'Compra de condominios y casas en Miami y el sur de Florida. Licencia #3352133.',
+    images: ['https://stazhkova.com/images/elena.webp'],
+  },
 };
 
 export default async function SpanishHomePage() {

@@ -21,6 +21,22 @@ export const metadata: Metadata = {
       'x-default': 'https://stazhkova.com/guides',
     },
   },
+  openGraph: {
+    title: 'First Time Home Buyer? | South Florida Home Buying Guide',
+    description:
+      'How To Buy Your Dream Home Step By Step! 7-step guide on purchasing real estate in Miami by realtor Elena Stazhkova.',
+    url: 'https://stazhkova.com/guides',
+    siteName: 'Elena Stazhkova Real Estate',
+    locale: 'en_US',
+    type: 'website',
+    images: [{ url: 'https://stazhkova.com/images/elena.webp', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'South Florida Home Buying Guide | Elena Stazhkova',
+    description: 'Comprehensive 7-step guide to buying real estate in Miami.',
+    images: ['https://stazhkova.com/images/elena.webp'],
+  },
 };
 
 export default function GuidesPage() {

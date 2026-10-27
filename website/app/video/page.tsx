@@ -22,6 +22,22 @@ export const metadata: Metadata = {
       'x-default': 'https://stazhkova.com/video',
     },
   },
+  openGraph: {
+    title: 'Miami Real Estate Video Reviews & Market Intelligence | Elena Stazhkova',
+    description:
+      'Watch latest video tours, property walkthroughs, market analytics, and neighborhood guides in South Florida.',
+    url: 'https://stazhkova.com/video',
+    siteName: 'Elena Stazhkova Real Estate',
+    locale: 'en_US',
+    type: 'video.other',
+    images: [{ url: 'https://stazhkova.com/images/elena.webp', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Miami Real Estate Video Reviews | Elena Stazhkova',
+    description: 'Video tours and market analytics in South Florida.',
+    images: ['https://stazhkova.com/images/elena.webp'],
+  },
 };
 
 export default async function VideoPage() {

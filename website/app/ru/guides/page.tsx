@@ -21,6 +21,22 @@ export const metadata: Metadata = {
       'x-default': 'https://stazhkova.com/guides',
     },
   },
+  openGraph: {
+    title: 'Пошаговый гайд: Покупка недвижимости в США | Елена Стажкова',
+    description:
+      'Как купить дом мечты шаг за шагом! 7 шагов покупки квартиры и дома в Майами: ипотека, инспекция, офер, эскроу, закрытие сделки.',
+    url: 'https://stazhkova.com/ru/guides',
+    siteName: 'Elena Stazhkova Real Estate',
+    locale: 'ru_RU',
+    type: 'website',
+    images: [{ url: 'https://stazhkova.com/images/elena.webp', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Пошаговый гайд: Покупка недвижимости в США | Елена Стажкова',
+    description: 'Инструкция по покупке квартиры и дома в Майами шаг за шагом.',
+    images: ['https://stazhkova.com/images/elena.webp'],
+  },
 };
 
 export default function RussianGuidesPage() {

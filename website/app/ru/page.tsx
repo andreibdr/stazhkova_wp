@@ -25,6 +25,30 @@ export const metadata: Metadata = {
       'x-default': 'https://stazhkova.com',
     },
   },
+  openGraph: {
+    title: 'Елена Стажкова | Лицензированный риелтор в Майами и Южной Флориде',
+    description:
+      'Инвестиции и покупка квартир и домов в Майами, Sunny Isles Beach, Aventura. Полное сопровождение сделки и ипотека. Лицензия #3352133.',
+    url: 'https://stazhkova.com/ru',
+    siteName: 'Elena Stazhkova Real Estate',
+    locale: 'ru_RU',
+    type: 'website',
+    images: [
+      {
+        url: 'https://stazhkova.com/images/elena.webp',
+        width: 1200,
+        height: 630,
+        alt: 'Елена Стажкова — риелтор в Майами',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Елена Стажкова | Риелтор в Майами',
+    description:
+      'Покупка квартир и домов в Майами и Южной Флориде. Лицензированный риелтор #3352133.',
+    images: ['https://stazhkova.com/images/elena.webp'],
+  },
 };
 
 export default async function RussianHomePage() {

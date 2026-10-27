@@ -87,6 +87,8 @@ export default async function SpanishGuideArticlePage({ params }: Props) {
     headline: guide.title,
     description: guide.excerpt,
     image: guide.image ? `${baseUrl}${guide.image}` : undefined,
+    datePublished: '2026-01-15T00:00:00Z',
+    dateModified: '2026-10-24T00:00:00Z',
     author: {
       '@type': 'Person',
       name: 'Elena Stazhkova',
