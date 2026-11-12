@@ -15,9 +15,10 @@ interface NavbarProps {
     ru?: string;
     es?: string;
   };
+  onLangChange?: (targetLang: 'en' | 'ru' | 'es') => void;
 }
 
-export default function Navbar({ lang, alternateUrls }: NavbarProps) {
+export default function Navbar({ lang, alternateUrls, onLangChange }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navLabels = {
@@ -72,6 +73,14 @@ export default function Navbar({ lang, alternateUrls }: NavbarProps) {
   };
 
   const pathname = usePathname() || '';
+
+  const handleLangClick = (targetLang: 'en' | 'ru' | 'es') => (e: React.MouseEvent) => {
+    setLangCookie(targetLang);
+    if (onLangChange) {
+      e.preventDefault();
+      onLangChange(targetLang);
+    }
+  };
 
   const getTargetUrl = (targetLang: 'en' | 'ru' | 'es') => {
     if (alternateUrls && alternateUrls[targetLang]) {
@@ -135,7 +144,7 @@ export default function Navbar({ lang, alternateUrls }: NavbarProps) {
             <div className="flex items-center bg-gray-100 rounded-full p-1 text-xs font-semibold">
               <Link
                 href={getTargetUrl('en')}
-                onClick={() => setLangCookie('en')}
+                onClick={handleLangClick('en')}
                 className={`px-2.5 py-1 rounded-full transition-all ${
                   lang === 'en' ? 'bg-[#20c063] text-white shadow-xs' : 'text-gray-600 hover:text-black'
                 }`}
@@ -144,7 +153,7 @@ export default function Navbar({ lang, alternateUrls }: NavbarProps) {
               </Link>
               <Link
                 href={getTargetUrl('ru')}
-                onClick={() => setLangCookie('ru')}
+                onClick={handleLangClick('ru')}
                 className={`px-2.5 py-1 rounded-full transition-all ${
                   lang === 'ru' ? 'bg-[#20c063] text-white shadow-xs' : 'text-gray-600 hover:text-black'
                 }`}
@@ -153,7 +162,7 @@ export default function Navbar({ lang, alternateUrls }: NavbarProps) {
               </Link>
               <Link
                 href={getTargetUrl('es')}
-                onClick={() => setLangCookie('es')}
+                onClick={handleLangClick('es')}
                 className={`px-2.5 py-1 rounded-full transition-all ${
                   lang === 'es' ? 'bg-[#20c063] text-white shadow-xs' : 'text-gray-600 hover:text-black'
                 }`}
@@ -197,21 +206,21 @@ export default function Navbar({ lang, alternateUrls }: NavbarProps) {
             <div className="flex items-center bg-gray-100 rounded-full p-0.5 text-xs font-semibold">
               <Link
                 href={getTargetUrl('en')}
-                onClick={() => setLangCookie('en')}
+                onClick={handleLangClick('en')}
                 className={`px-2 py-0.5 rounded-full ${lang === 'en' ? 'bg-[#20c063] text-white' : 'text-gray-600'}`}
               >
                 EN
               </Link>
               <Link
                 href={getTargetUrl('ru')}
-                onClick={() => setLangCookie('ru')}
+                onClick={handleLangClick('ru')}
                 className={`px-2 py-0.5 rounded-full ${lang === 'ru' ? 'bg-[#20c063] text-white' : 'text-gray-600'}`}
               >
                 RU
               </Link>
               <Link
                 href={getTargetUrl('es')}
-                onClick={() => setLangCookie('es')}
+                onClick={handleLangClick('es')}
                 className={`px-2 py-0.5 rounded-full ${lang === 'es' ? 'bg-[#20c063] text-white' : 'text-gray-600'}`}
               >
                 ES

@@ -105,11 +105,16 @@ export default function NotFoundClient() {
     setLang('en');
   }, [pathname]);
 
+  const handleLangChange = (targetLang: Lang) => {
+    setLang(targetLang);
+    document.cookie = `NEXT_LOCALE=${targetLang}; path=/; max-age=31536000; SameSite=Lax`;
+  };
+
   const t = content[lang];
 
   return (
     <div className="min-h-screen flex flex-col bg-[#fafaf7] text-[#31312c]">
-      <Navbar lang={lang} />
+      <Navbar lang={lang} onLangChange={handleLangChange} />
 
       <main className="flex-1 flex items-center justify-center py-16 px-4 sm:px-6 relative overflow-hidden">
         {/* Soft sunshine background glow */}
