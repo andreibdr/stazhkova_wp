@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { put, get } from '@vercel/blob';
 
 export interface Review {
   id: number;
@@ -57,7 +58,42 @@ const contentDir = fs.existsSync(path.join(process.cwd(), 'content'))
   ? path.join(process.cwd(), 'website', 'content')
   : path.join(process.cwd(), '..', 'content');
 
+let memorySettings: SiteSettings | null = null;
+let memoryReviews: Review[] | null = null;
+let memoryLeads: Lead[] | null = null;
+
+async function readBlobJson<T>(filename: string): Promise<T | null> {
+  const token = process.env.BLOB_READ_WRITE_TOKEN;
+  if (!token) return null;
+  try {
+    const res = await get(filename, { access: 'private', token });
+    if (!res || !res.stream) return null;
+    const text = await new Response(res.stream).text();
+    return JSON.parse(text) as T;
+  } catch (e) {
+    return null;
+  }
+}
+
+async function writeBlobJson(filename: string, data: unknown): Promise<boolean> {
+  const token = process.env.BLOB_READ_WRITE_TOKEN;
+  if (!token) return false;
+  try {
+    await put(filename, JSON.stringify(data, null, 2), {
+      access: 'private',
+      token,
+      contentType: 'application/json',
+      addRandomSuffix: false,
+    });
+    return true;
+  } catch (e) {
+    console.error(`Failed to write blob ${filename}:`, e);
+    return false;
+  }
+}
+
 export function getSettings(): SiteSettings {
+  if (memorySettings) return memorySettings;
   try {
     const file = path.join(contentDir, 'settings.json');
     if (fs.existsSync(file)) {
@@ -81,12 +117,32 @@ export function getSettings(): SiteSettings {
   };
 }
 
-export function saveSettings(settings: SiteSettings) {
-  const file = path.join(contentDir, 'settings.json');
-  fs.writeFileSync(file, JSON.stringify(settings, null, 2), 'utf-8');
+export async function getSettingsAsync(): Promise<SiteSettings> {
+  const blobSettings = await readBlobJson<SiteSettings>('data/settings.json');
+  if (blobSettings) {
+    memorySettings = blobSettings;
+    return blobSettings;
+  }
+  return getSettings();
+}
+
+export async function saveSettings(settings: SiteSettings): Promise<void> {
+  memorySettings = settings;
+  const wroteBlob = await writeBlobJson('data/settings.json', settings);
+  try {
+    const file = path.join(contentDir, 'settings.json');
+    fs.writeFileSync(file, JSON.stringify(settings, null, 2), 'utf-8');
+  } catch (e) {
+    if (!wroteBlob) {
+      throw e;
+    }
+  }
 }
 
 export function getAllReviews(includeHidden = false): Review[] {
+  if (memoryReviews) {
+    return includeHidden ? memoryReviews : memoryReviews.filter((r) => !r.hidden);
+  }
   try {
     const file = path.join(contentDir, 'reviews.json');
     if (fs.existsSync(file)) {
@@ -100,9 +156,26 @@ export function getAllReviews(includeHidden = false): Review[] {
   return [];
 }
 
-export function saveReviews(reviews: Review[]) {
-  const file = path.join(contentDir, 'reviews.json');
-  fs.writeFileSync(file, JSON.stringify(reviews, null, 2), 'utf-8');
+export async function getAllReviewsAsync(includeHidden = false): Promise<Review[]> {
+  const blobReviews = await readBlobJson<Review[]>('data/reviews.json');
+  if (blobReviews) {
+    memoryReviews = blobReviews;
+    return includeHidden ? blobReviews : blobReviews.filter((r) => !r.hidden);
+  }
+  return getAllReviews(includeHidden);
+}
+
+export async function saveReviews(reviews: Review[]): Promise<void> {
+  memoryReviews = reviews;
+  const wroteBlob = await writeBlobJson('data/reviews.json', reviews);
+  try {
+    const file = path.join(contentDir, 'reviews.json');
+    fs.writeFileSync(file, JSON.stringify(reviews, null, 2), 'utf-8');
+  } catch (e) {
+    if (!wroteBlob) {
+      throw e;
+    }
+  }
 }
 
 export function formatGuideContent(content: string): string {
@@ -194,6 +267,7 @@ export function getSiteContent(lang: 'ru' | 'en' | 'es' = 'ru') {
 }
 
 export function getLeads(): Lead[] {
+  if (memoryLeads) return memoryLeads;
   try {
     const file = path.join(contentDir, 'leads.json');
     if (fs.existsSync(file)) {
@@ -205,13 +279,30 @@ export function getLeads(): Lead[] {
   return [];
 }
 
-export function saveLeads(leads: Lead[]) {
-  const file = path.join(contentDir, 'leads.json');
-  fs.writeFileSync(file, JSON.stringify(leads, null, 2), 'utf-8');
+export async function getLeadsAsync(): Promise<Lead[]> {
+  const blobLeads = await readBlobJson<Lead[]>('data/leads.json');
+  if (blobLeads) {
+    memoryLeads = blobLeads;
+    return blobLeads;
+  }
+  return getLeads();
 }
 
-export function addLead(newLead: Omit<Lead, 'id' | 'createdAt' | 'status' | 'notes'>): Lead {
-  const leads = getLeads();
+export async function saveLeads(leads: Lead[]): Promise<void> {
+  memoryLeads = leads;
+  const wroteBlob = await writeBlobJson('data/leads.json', leads);
+  try {
+    const file = path.join(contentDir, 'leads.json');
+    fs.writeFileSync(file, JSON.stringify(leads, null, 2), 'utf-8');
+  } catch (e) {
+    if (!wroteBlob) {
+      throw e;
+    }
+  }
+}
+
+export async function addLead(newLead: Omit<Lead, 'id' | 'createdAt' | 'status' | 'notes'>): Promise<Lead> {
+  const leads = await getLeadsAsync();
   const created: Lead = {
     ...newLead,
     id: `lead-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
@@ -220,6 +311,6 @@ export function addLead(newLead: Omit<Lead, 'id' | 'createdAt' | 'status' | 'not
     notes: '',
   };
   leads.unshift(created);
-  saveLeads(leads);
+  await saveLeads(leads);
   return created;
 }

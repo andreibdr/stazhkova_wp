@@ -1,28 +1,28 @@
 import { NextResponse } from 'next/server';
-import { getSettings, saveSettings } from '@/lib/content';
+import { getSettingsAsync, saveSettings } from '@/lib/content';
 
-function checkAuth(req: Request): boolean {
+async function checkAuth(req: Request): Promise<boolean> {
   const pin = req.headers.get('x-admin-pin');
-  const settings = getSettings();
+  const settings = await getSettingsAsync();
   return pin === settings.adminPin;
 }
 
 export async function GET(req: Request) {
-  if (!checkAuth(req)) {
+  if (!(await checkAuth(req))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  const settings = getSettings();
+  const settings = await getSettingsAsync();
   return NextResponse.json({ settings });
 }
 
 export async function POST(req: Request) {
-  if (!checkAuth(req)) {
+  if (!(await checkAuth(req))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   try {
     const body = await req.json();
-    const current = getSettings();
+    const current = await getSettingsAsync();
     const updated = {
       ...current,
       ...body,
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
         ...(body.notifications || {}),
       },
     };
-    saveSettings(updated);
+    await saveSettings(updated);
     return NextResponse.json({ success: true, settings: updated });
   } catch (error) {
     return NextResponse.json({ error: 'Failed to update settings' }, { status: 500 });

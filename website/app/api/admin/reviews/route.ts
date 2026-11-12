@@ -1,35 +1,35 @@
 import { NextResponse } from 'next/server';
-import { getAllReviews, saveReviews, getSettings, Review } from '@/lib/content';
+import { getAllReviewsAsync, saveReviews, getSettingsAsync, Review } from '@/lib/content';
 
-function checkAuth(req: Request): boolean {
+async function checkAuth(req: Request): Promise<boolean> {
   const pin = req.headers.get('x-admin-pin');
-  const settings = getSettings();
+  const settings = await getSettingsAsync();
   return pin === settings.adminPin;
 }
 
 export async function GET(req: Request) {
-  if (!checkAuth(req)) {
+  if (!(await checkAuth(req))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  const reviews = getAllReviews(true);
+  const reviews = await getAllReviewsAsync(true);
   return NextResponse.json({ reviews });
 }
 
 export async function POST(req: Request) {
-  if (!checkAuth(req)) {
+  if (!(await checkAuth(req))) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
   try {
     const body = await req.json();
     const { action, reviewId, hidden, review } = body;
-    const reviews = getAllReviews(true);
+    const reviews = await getAllReviewsAsync(true);
 
     if (action === 'toggle_hidden') {
       const idx = reviews.findIndex((r) => r.id === reviewId);
       if (idx !== -1) {
         reviews[idx].hidden = hidden;
-        saveReviews(reviews);
+        await saveReviews(reviews);
         return NextResponse.json({ success: true, reviews });
       }
       return NextResponse.json({ error: 'Review not found' }, { status: 404 });
@@ -46,7 +46,7 @@ export async function POST(req: Request) {
         source: 'Zillow',
       };
       reviews.unshift(newReview);
-      saveReviews(reviews);
+      await saveReviews(reviews);
       return NextResponse.json({ success: true, reviews });
     }
 
@@ -54,7 +54,7 @@ export async function POST(req: Request) {
       const idx = reviews.findIndex((r) => r.id === review.id);
       if (idx !== -1) {
         reviews[idx] = { ...reviews[idx], ...review };
-        saveReviews(reviews);
+        await saveReviews(reviews);
         return NextResponse.json({ success: true, reviews });
       }
       return NextResponse.json({ error: 'Review not found' }, { status: 404 });
@@ -62,7 +62,7 @@ export async function POST(req: Request) {
 
     if (action === 'delete') {
       const filtered = reviews.filter((r) => r.id !== reviewId);
-      saveReviews(filtered);
+      await saveReviews(filtered);
       return NextResponse.json({ success: true, reviews: filtered });
     }
 
