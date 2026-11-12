@@ -287,7 +287,7 @@ export default function AdminPage() {
                 required
                 value={pin}
                 onChange={(e) => setPin(e.target.value)}
-                placeholder="По умолчанию: elena2026"
+                placeholder="PIN-код"
                 className="w-full px-4 py-3 bg-gray-50 rounded-xl border border-gray-200 focus:outline-none focus:border-[#20c063] focus:bg-white text-gray-900"
               />
             </div>

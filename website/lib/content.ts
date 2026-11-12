@@ -67,7 +67,7 @@ export function getSettings(): SiteSettings {
     console.error('Error reading settings:', e);
   }
   return {
-    adminPin: 'elena2026',
+    adminPin: process.env.ADMIN_PIN || 'Marina2014',
     contactEmail: 'elena@stazhkova.com',
     contactPhone: '+1-347-515-4087',
     contactWhatsApp: '+13475154087',
