@@ -75,9 +75,9 @@ async function readBlobJson<T>(filename: string): Promise<T | null> {
   }
 }
 
-async function writeBlobJson(filename: string, data: unknown): Promise<boolean> {
+async function writeBlobJson(filename: string, data: unknown): Promise<{ ok: boolean; error?: string }> {
   const token = process.env.BLOB_READ_WRITE_TOKEN;
-  if (!token) return false;
+  if (!token) return { ok: false, error: 'NO_BLOB_TOKEN' };
   try {
     await put(filename, JSON.stringify(data, null, 2), {
       access: 'private',
@@ -85,10 +85,10 @@ async function writeBlobJson(filename: string, data: unknown): Promise<boolean> 
       contentType: 'application/json',
       addRandomSuffix: false,
     });
-    return true;
-  } catch (e) {
+    return { ok: true };
+  } catch (e: any) {
     console.error(`Failed to write blob ${filename}:`, e);
-    return false;
+    return { ok: false, error: e?.message || String(e) };
   }
 }
 
@@ -128,13 +128,13 @@ export async function getSettingsAsync(): Promise<SiteSettings> {
 
 export async function saveSettings(settings: SiteSettings): Promise<void> {
   memorySettings = settings;
-  const wroteBlob = await writeBlobJson('data/settings.json', settings);
-  try {
-    const file = path.join(contentDir, 'settings.json');
-    fs.writeFileSync(file, JSON.stringify(settings, null, 2), 'utf-8');
-  } catch (e) {
-    if (!wroteBlob) {
-      throw e;
+  const result = await writeBlobJson('data/settings.json', settings);
+  if (!result.ok) {
+    try {
+      const file = path.join(contentDir, 'settings.json');
+      fs.writeFileSync(file, JSON.stringify(settings, null, 2), 'utf-8');
+    } catch (e: any) {
+      throw new Error(`Blob write failed (${result.error}) and disk write failed (${e?.message})`);
     }
   }
 }
