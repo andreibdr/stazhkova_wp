@@ -72,6 +72,15 @@ export default function Navbar({ lang, alternateUrls, onLangChange }: NavbarProp
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setMobileMenuOpen(false);
+    const targetHome = langLinks[lang];
+    if (pathname === targetHome) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
   const pathname = usePathname() || '';
 
   const handleLangClick = (targetLang: 'en' | 'ru' | 'es') => (e: React.MouseEvent) => {
@@ -106,7 +115,7 @@ export default function Navbar({ lang, alternateUrls, onLangChange }: NavbarProp
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Official Brand Logo */}
-          <Link href={langLinks[lang]} className="flex items-center">
+          <Link href={langLinks[lang]} onClick={handleLogoClick} className="flex items-center">
             <div className="relative w-48 sm:w-60 h-12 sm:h-14">
               <Image
                 src="/images/logo_light_transparent.webp"
