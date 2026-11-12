@@ -84,6 +84,7 @@ async function writeBlobJson(filename: string, data: unknown): Promise<{ ok: boo
       token,
       contentType: 'application/json',
       addRandomSuffix: false,
+      allowOverwrite: true,
     });
     return { ok: true };
   } catch (e: any) {
