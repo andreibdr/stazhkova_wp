@@ -65,10 +65,14 @@ export default function Navbar({ lang, alternateUrls, onLangChange }: NavbarProp
 
   const handleAnchorClick = (id: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
     setMobileMenuOpen(false);
-    const el = document.getElementById(id);
-    if (el) {
-      e.preventDefault();
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const targetHome = langLinks[lang];
+    if (pathname === targetHome) {
+      const el = document.getElementById(id);
+      if (el) {
+        e.preventDefault();
+        window.history.pushState(null, '', `${targetHome}#${id}`);
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
   };
 
@@ -77,6 +81,7 @@ export default function Navbar({ lang, alternateUrls, onLangChange }: NavbarProp
     const targetHome = langLinks[lang];
     if (pathname === targetHome) {
       e.preventDefault();
+      window.history.pushState(null, '', targetHome);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -130,13 +135,25 @@ export default function Navbar({ lang, alternateUrls, onLangChange }: NavbarProp
 
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-gray-700">
-            <Link href={aboutLink} className="hover:text-[#20c063] transition-colors">
+            <Link
+              href={aboutLink}
+              onClick={handleAnchorClick('about')}
+              className="hover:text-[#20c063] transition-colors"
+            >
               {navLabels.about}
             </Link>
-            <Link href={workLink} className="hover:text-[#20c063] transition-colors">
+            <Link
+              href={workLink}
+              onClick={handleAnchorClick('workelena')}
+              className="hover:text-[#20c063] transition-colors"
+            >
               {navLabels.work}
             </Link>
-            <Link href={reviewsLink} className="hover:text-[#20c063] transition-colors">
+            <Link
+              href={reviewsLink}
+              onClick={handleAnchorClick('reviews')}
+              className="hover:text-[#20c063] transition-colors"
+            >
               {navLabels.reviews}
             </Link>
             <Link href={guidesLink} className="hover:text-[#20c063] transition-colors">
