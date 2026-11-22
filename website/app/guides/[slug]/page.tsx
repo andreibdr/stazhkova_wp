@@ -28,12 +28,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = 'https://stazhkova.com';
   const currentUrl = `${baseUrl}/guides/${guide.slug}`;
 
-  // Find matching guide translations by step
+  // Find matching guide translations by translationKey or step
   const allGuides = getGuides();
+  const key = guide.translationKey;
   const step = guide.step;
-  const matchingEn = allGuides.find((g) => g.lang === 'en' && g.step === step);
-  const matchingRu = allGuides.find((g) => g.lang === 'ru' && g.step === step);
-  const matchingEs = allGuides.find((g) => g.lang === 'es' && g.step === step);
+  const matchingEn = allGuides.find((g) => g.lang === 'en' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingRu = allGuides.find((g) => g.lang === 'ru' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingEs = allGuides.find((g) => g.lang === 'es' && ((key && g.translationKey === key) || (step && g.step === step)));
 
   const languages: Record<string, string> = {};
   if (matchingEn) {
@@ -137,10 +138,11 @@ export default async function GuideArticlePage({ params }: Props) {
   const prevGuide = currentIndex > 0 ? allGuides[currentIndex - 1] : null;
 
   const allGuidesCatalog = getGuides();
+  const key = guide.translationKey;
   const step = guide.step;
-  const matchingEn = allGuidesCatalog.find((g) => g.lang === 'en' && g.step === step);
-  const matchingRu = allGuidesCatalog.find((g) => g.lang === 'ru' && g.step === step);
-  const matchingEs = allGuidesCatalog.find((g) => g.lang === 'es' && g.step === step);
+  const matchingEn = allGuidesCatalog.find((g) => g.lang === 'en' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingRu = allGuidesCatalog.find((g) => g.lang === 'ru' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingEs = allGuidesCatalog.find((g) => g.lang === 'es' && ((key && g.translationKey === key) || (step && g.step === step)));
 
   const alternateUrls = {
     en: matchingEn ? `/guides/${matchingEn.slug}` : '/guides',
@@ -186,7 +188,7 @@ export default async function GuideArticlePage({ params }: Props) {
             <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-500 mb-4">
               <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                Verified Guide • Step {guide.step || currentIndex + 1}
+                {guide.step ? `Verified Guide • Step ${guide.step}` : 'Expert Guide • Florida Real Estate'}
               </span>
               <span className="flex items-center gap-1.5">
                 <User className="w-3.5 h-3.5" />
@@ -206,7 +208,7 @@ export default async function GuideArticlePage({ params }: Props) {
             <div className="mt-12 p-8 rounded-2xl bg-emerald-50 border border-emerald-100 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
                 <h3 className="font-bold text-lg text-emerald-950">
-                  Questions about this step?
+                  {guide.step ? 'Questions about this step?' : 'Questions about this topic?'}
                 </h3>
                 <p className="text-sm text-emerald-800 font-light mt-1">
                   Connect with Elena for a personalized consultation or tailored property search.
@@ -223,26 +225,37 @@ export default async function GuideArticlePage({ params }: Props) {
               </a>
             </div>
 
-            <div className="flex items-center justify-between pt-10 mt-10 border-t border-gray-100">
-              {prevGuide ? (
+            {guide.step ? (
+              <div className="flex items-center justify-between pt-10 mt-10 border-t border-gray-100">
+                {prevGuide ? (
+                  <Link
+                    href={`/guides/${prevGuide.slug}`}
+                    className="text-xs sm:text-sm font-semibold text-gray-600 hover:text-[#20c063] transition-colors"
+                  >
+                    ← Previous Step
+                  </Link>
+                ) : (
+                  <div />
+                )}
+                {nextGuide && (
+                  <Link
+                    href={`/guides/${nextGuide.slug}`}
+                    className="text-xs sm:text-sm font-semibold text-[#20c063] hover:text-[#1aa654] transition-colors"
+                  >
+                    Next Step →
+                  </Link>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center justify-center pt-10 mt-10 border-t border-gray-100">
                 <Link
-                  href={`/guides/${prevGuide.slug}`}
-                  className="text-xs sm:text-sm font-semibold text-gray-600 hover:text-[#20c063] transition-colors"
-                >
-                  ← Previous Step
-                </Link>
-              ) : (
-                <div />
-              )}
-              {nextGuide && (
-                <Link
-                  href={`/guides/${nextGuide.slug}`}
+                  href="/guides"
                   className="text-xs sm:text-sm font-semibold text-[#20c063] hover:text-[#1aa654] transition-colors"
                 >
-                  Next Step →
+                  ← Back to All Guides & Articles
                 </Link>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </article>
       </main>

@@ -143,18 +143,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  // Individual Step Guides with reciprocal multilingual mapping
+  // Individual Guides with reciprocal multilingual mapping (by step or translationKey)
   const allGuides = getGuides();
-  const guidesByStep: Record<number, { en?: string; ru?: string; es?: string }> = {};
+  const guidesByGroup: Record<string, { en?: string; ru?: string; es?: string }> = {};
 
   for (const g of allGuides) {
-    if (g.step) {
-      if (!guidesByStep[g.step]) guidesByStep[g.step] = {};
+    const key = g.translationKey || (g.step ? `step-${g.step}` : undefined);
+    if (key) {
+      if (!guidesByGroup[key]) guidesByGroup[key] = {};
       const fullUrl =
         g.lang === 'en'
           ? `${baseUrl}/guides/${g.slug}`
           : `${baseUrl}/${g.lang}/guides/${encodeURIComponent(g.slug)}`;
-      guidesByStep[g.step][g.lang] = fullUrl;
+      guidesByGroup[key][g.lang] = fullUrl;
     }
   }
 
@@ -164,7 +165,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ? `${baseUrl}/guides/${g.slug}`
         : `${baseUrl}/${g.lang}/guides/${encodeURIComponent(g.slug)}`;
 
-    const stepAlts = g.step ? guidesByStep[g.step] : undefined;
+    const key = g.translationKey || (g.step ? `step-${g.step}` : undefined);
+    const stepAlts = key ? guidesByGroup[key] : undefined;
     const languages: Record<string, string> = {};
     if (stepAlts?.en) {
       languages.en = stepAlts.en;

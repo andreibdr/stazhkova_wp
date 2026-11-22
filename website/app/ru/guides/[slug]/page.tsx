@@ -28,12 +28,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = 'https://stazhkova.com';
   const currentUrl = `${baseUrl}/ru/guides/${encodeURIComponent(guide.slug)}`;
 
-  // Find matching guide translations by step
+  // Find matching guide translations by translationKey or step
   const allGuides = getGuides();
+  const key = guide.translationKey;
   const step = guide.step;
-  const matchingEn = allGuides.find((g) => g.lang === 'en' && g.step === step);
-  const matchingRu = allGuides.find((g) => g.lang === 'ru' && g.step === step);
-  const matchingEs = allGuides.find((g) => g.lang === 'es' && g.step === step);
+  const matchingEn = allGuides.find((g) => g.lang === 'en' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingRu = allGuides.find((g) => g.lang === 'ru' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingEs = allGuides.find((g) => g.lang === 'es' && ((key && g.translationKey === key) || (step && g.step === step)));
 
   const languages: Record<string, string> = {};
   if (matchingEn) {
@@ -138,10 +139,11 @@ export default async function RussianGuideArticlePage({ params }: Props) {
   const prevGuide = currentIndex > 0 ? allGuides[currentIndex - 1] : null;
 
   const allGuidesCatalog = getGuides();
+  const key = guide.translationKey;
   const step = guide.step;
-  const matchingEn = allGuidesCatalog.find((g) => g.lang === 'en' && g.step === step);
-  const matchingRu = allGuidesCatalog.find((g) => g.lang === 'ru' && g.step === step);
-  const matchingEs = allGuidesCatalog.find((g) => g.lang === 'es' && g.step === step);
+  const matchingEn = allGuidesCatalog.find((g) => g.lang === 'en' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingRu = allGuidesCatalog.find((g) => g.lang === 'ru' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingEs = allGuidesCatalog.find((g) => g.lang === 'es' && ((key && g.translationKey === key) || (step && g.step === step)));
 
   const alternateUrls = {
     en: matchingEn ? `/guides/${matchingEn.slug}` : '/guides',
@@ -187,7 +189,7 @@ export default async function RussianGuideArticlePage({ params }: Props) {
             <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-500 mb-4">
               <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                Проверенный гайд • Шаг {guide.step || currentIndex + 1}
+                {guide.step ? `Проверенный гайд • Шаг ${guide.step}` : 'Экспертная статья • Недвижимость во Флориде'}
               </span>
               <span className="flex items-center gap-1.5">
                 <User className="w-3.5 h-3.5" />
@@ -207,7 +209,7 @@ export default async function RussianGuideArticlePage({ params }: Props) {
             <div className="mt-12 p-8 rounded-2xl bg-emerald-50 border border-emerald-100 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
                 <h3 className="font-bold text-lg text-emerald-950">
-                  Остались вопросы по этому шагу?
+                  {guide.step ? 'Остались вопросы по этому шагу?' : 'Остались вопросы по этой теме?'}
                 </h3>
                 <p className="text-sm text-emerald-800 font-light mt-1">
                   Напишите Елене лично для консультации или индивидуального подбора объектов.
@@ -224,26 +226,37 @@ export default async function RussianGuideArticlePage({ params }: Props) {
               </a>
             </div>
 
-            <div className="flex items-center justify-between pt-10 mt-10 border-t border-gray-100">
-              {prevGuide ? (
+            {guide.step ? (
+              <div className="flex items-center justify-between pt-10 mt-10 border-t border-gray-100">
+                {prevGuide ? (
+                  <Link
+                    href={`/ru/guides/${encodeURIComponent(prevGuide.slug)}`}
+                    className="text-xs sm:text-sm font-semibold text-gray-600 hover:text-[#20c063] transition-colors"
+                  >
+                    ← Предыдущий шаг
+                  </Link>
+                ) : (
+                  <div />
+                )}
+                {nextGuide && (
+                  <Link
+                    href={`/ru/guides/${encodeURIComponent(nextGuide.slug)}`}
+                    className="text-xs sm:text-sm font-semibold text-[#20c063] hover:text-[#1aa654] transition-colors"
+                  >
+                    Следующий шаг →
+                  </Link>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center justify-center pt-10 mt-10 border-t border-gray-100">
                 <Link
-                  href={`/ru/guides/${encodeURIComponent(prevGuide.slug)}`}
-                  className="text-xs sm:text-sm font-semibold text-gray-600 hover:text-[#20c063] transition-colors"
-                >
-                  ← Предыдущий шаг
-                </Link>
-              ) : (
-                <div />
-              )}
-              {nextGuide && (
-                <Link
-                  href={`/ru/guides/${encodeURIComponent(nextGuide.slug)}`}
+                  href="/ru/guides"
                   className="text-xs sm:text-sm font-semibold text-[#20c063] hover:text-[#1aa654] transition-colors"
                 >
-                  Следующий шаг →
+                  ← Назад ко всем статьям и гайдам
                 </Link>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </article>
       </main>

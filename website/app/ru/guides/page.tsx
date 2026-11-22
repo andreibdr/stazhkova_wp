@@ -89,7 +89,7 @@ export default function RussianGuidesPage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                       <div className="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-xs font-bold text-gray-900 shadow-sm border border-gray-100">
-                        Шаг {guide.step || idx + 1}
+                        {guide.step ? `Шаг ${guide.step}` : 'Гайд'}
                       </div>
                     </div>
                   )}
@@ -103,7 +103,7 @@ export default function RussianGuidesPage() {
                 </div>
 
                 <div className="pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-bold text-[#20c063]">
-                  <span>Читать шаг {guide.step || idx + 1}</span>
+                  <span>{guide.step ? `Читать шаг ${guide.step}` : 'Читать статью'}</span>
                   <div className="p-2 rounded-xl bg-emerald-50 group-hover:bg-[#20c063] text-[#20c063] group-hover:text-white transition-colors">
                     <ArrowRight className="w-4 h-4" />
                   </div>

@@ -21,6 +21,7 @@ export interface Guide {
   content: string;
   image?: string;
   step?: number;
+  translationKey?: string;
 }
 
 export interface Lead {

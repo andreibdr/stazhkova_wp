@@ -28,12 +28,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const baseUrl = 'https://stazhkova.com';
   const currentUrl = `${baseUrl}/es/guides/${encodeURIComponent(guide.slug)}`;
 
-  // Find matching guide translations by step
+  // Find matching guide translations by translationKey or step
   const allGuides = getGuides();
+  const key = guide.translationKey;
   const step = guide.step;
-  const matchingEn = allGuides.find((g) => g.lang === 'en' && g.step === step);
-  const matchingRu = allGuides.find((g) => g.lang === 'ru' && g.step === step);
-  const matchingEs = allGuides.find((g) => g.lang === 'es' && g.step === step);
+  const matchingEn = allGuides.find((g) => g.lang === 'en' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingRu = allGuides.find((g) => g.lang === 'ru' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingEs = allGuides.find((g) => g.lang === 'es' && ((key && g.translationKey === key) || (step && g.step === step)));
 
   const languages: Record<string, string> = {};
   if (matchingEn) {
@@ -138,10 +139,11 @@ export default async function SpanishGuideArticlePage({ params }: Props) {
   const prevGuide = currentIndex > 0 ? allGuides[currentIndex - 1] : null;
 
   const allGuidesCatalog = getGuides();
+  const key = guide.translationKey;
   const step = guide.step;
-  const matchingEn = allGuidesCatalog.find((g) => g.lang === 'en' && g.step === step);
-  const matchingRu = allGuidesCatalog.find((g) => g.lang === 'ru' && g.step === step);
-  const matchingEs = allGuidesCatalog.find((g) => g.lang === 'es' && g.step === step);
+  const matchingEn = allGuidesCatalog.find((g) => g.lang === 'en' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingRu = allGuidesCatalog.find((g) => g.lang === 'ru' && ((key && g.translationKey === key) || (step && g.step === step)));
+  const matchingEs = allGuidesCatalog.find((g) => g.lang === 'es' && ((key && g.translationKey === key) || (step && g.step === step)));
 
   const alternateUrls = {
     en: matchingEn ? `/guides/${matchingEn.slug}` : '/guides',
@@ -187,7 +189,7 @@ export default async function SpanishGuideArticlePage({ params }: Props) {
             <div className="flex flex-wrap items-center gap-4 text-xs font-semibold text-gray-500 mb-4">
               <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800">
                 <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-                Guía verificada • Paso {guide.step || currentIndex + 1}
+                {guide.step ? `Guía verificada • Paso ${guide.step}` : 'Guía experta • Bienes Raíces en Florida'}
               </span>
               <span className="flex items-center gap-1.5">
                 <User className="w-3.5 h-3.5" />
@@ -207,7 +209,7 @@ export default async function SpanishGuideArticlePage({ params }: Props) {
             <div className="mt-12 p-8 rounded-2xl bg-emerald-50 border border-emerald-100 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div>
                 <h3 className="font-bold text-lg text-emerald-950">
-                  ¿Tiene preguntas sobre este paso?
+                  {guide.step ? '¿Tiene preguntas sobre este paso?' : '¿Tiene preguntas sobre este tema?'}
                 </h3>
                 <p className="text-sm text-emerald-800 font-light mt-1">
                   Escríbale a Elena directamente para recibir asesoría personalizada.
@@ -224,26 +226,37 @@ export default async function SpanishGuideArticlePage({ params }: Props) {
               </a>
             </div>
 
-            <div className="flex items-center justify-between pt-10 mt-10 border-t border-gray-100">
-              {prevGuide ? (
+            {guide.step ? (
+              <div className="flex items-center justify-between pt-10 mt-10 border-t border-gray-100">
+                {prevGuide ? (
+                  <Link
+                    href={`/es/guides/${encodeURIComponent(prevGuide.slug)}`}
+                    className="text-xs sm:text-sm font-semibold text-gray-600 hover:text-[#20c063] transition-colors"
+                  >
+                    ← Paso anterior
+                  </Link>
+                ) : (
+                  <div />
+                )}
+                {nextGuide && (
+                  <Link
+                    href={`/es/guides/${encodeURIComponent(nextGuide.slug)}`}
+                    className="text-xs sm:text-sm font-semibold text-[#20c063] hover:text-[#1aa654] transition-colors"
+                  >
+                    Siguiente paso →
+                  </Link>
+                )}
+              </div>
+            ) : (
+              <div className="flex items-center justify-center pt-10 mt-10 border-t border-gray-100">
                 <Link
-                  href={`/es/guides/${encodeURIComponent(prevGuide.slug)}`}
-                  className="text-xs sm:text-sm font-semibold text-gray-600 hover:text-[#20c063] transition-colors"
-                >
-                  ← Paso anterior
-                </Link>
-              ) : (
-                <div />
-              )}
-              {nextGuide && (
-                <Link
-                  href={`/es/guides/${encodeURIComponent(nextGuide.slug)}`}
+                  href="/es/guides"
                   className="text-xs sm:text-sm font-semibold text-[#20c063] hover:text-[#1aa654] transition-colors"
                 >
-                  Siguiente paso →
+                  ← Volver a todas las guías y artículos
                 </Link>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </article>
       </main>
